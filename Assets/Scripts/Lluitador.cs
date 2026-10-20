@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Fighter : MonoBehaviour
+public class Lluitador : MonoBehaviour
 {
     public int puntuacio;
     public int energia;
