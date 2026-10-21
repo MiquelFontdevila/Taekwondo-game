@@ -15,14 +15,24 @@ public class LoadScene : MonoBehaviour
 
     }
 
-    public void ToGame()
+    public void ToLevelSelection()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("LevelSelectionScene");
     }
 
-    public void ToMenu()
+    public void ToConfigMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("ConfigMenuScene");
+    }
+
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void ToLevel(int levelIndex)
+    {
+        SceneManager.LoadScene("Level" + levelIndex + "Scene");
     }
 
     public void Quit()
