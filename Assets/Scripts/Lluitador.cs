@@ -6,14 +6,16 @@ public class Lluitador : MonoBehaviour
     public int energia;
     public int posicio;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void AugmentarPunts(int punts)
     {
-        
+        puntuacio =+ punts;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void AugmentarPosicio(int numPosicio)
     {
-        
+        posicio =+ numPosicio;
+    }
+    public void DisminuirPosicio(int numPosicio)
+    {
+        posicio =+ numPosicio;
     }
 }
