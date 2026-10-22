@@ -30,11 +30,6 @@ public class LoadScene : MonoBehaviour
         SceneManager.LoadScene("MainMenuScene");
     }
 
-    public void ToLevel(int levelIndex)
-    {
-        SceneManager.LoadScene("Level" + levelIndex + "Scene");
-    }
-
     public void Quit()
     {
         Application.Quit();

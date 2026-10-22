@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tornar
+  m_text: X
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -395,6 +395,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553397534}
   m_CullTransparentMesh: 1
+--- !u!1 &588092395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 588092396}
+  - component: {fileID: 588092397}
+  m_Layer: 5
+  m_Name: LevelButtons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &588092396
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588092395}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2103979395}
+  - {fileID: 898952298}
+  - {fileID: 1684358780}
+  - {fileID: 1685040533}
+  m_Father: {fileID: 1127291545}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -7.3103, y: 0}
+  m_SizeDelta: {x: 575.1653, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &588092397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588092395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 70, y: 70}
+  m_Spacing: {x: 20, y: 20}
+  m_Constraint: 1
+  m_ConstraintCount: 4
 --- !u!1 &768152699
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +473,7 @@ GameObject:
   - component: {fileID: 768152700}
   - component: {fileID: 768152704}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: LevelSelectCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -507,9 +571,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 768152699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c31b4b8eb38b38e4693e7594c1ac887a, type: 3}
+  m_Script: {fileID: 11500000, guid: 81b63cb54a0e9af49aa305b9f34ad5e9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneManager
+  m_EditorClassIdentifier: Assembly-CSharp::LoadLevelScene
+  buttons: []
+  levelButtons: {fileID: 588092395}
 --- !u!1 &898952297
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,12 +608,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 553397535}
-  m_Father: {fileID: 1127291545}
+  m_Father: {fileID: 588092396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: 0}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &898952299
 MonoBehaviour:
@@ -594,7 +660,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 768152704}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadLevelScene, Assembly-CSharp
         m_MethodName: ToLevel
         m_Mode: 3
         m_Arguments:
@@ -1066,7 +1132,7 @@ GameObject:
   - component: {fileID: 1127291547}
   - component: {fileID: 1127291546}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: LevelSelectPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1085,10 +1151,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 998448010}
-  - {fileID: 2103979395}
-  - {fileID: 898952298}
-  - {fileID: 1684358780}
-  - {fileID: 1685040533}
+  - {fileID: 588092396}
   - {fileID: 1713747338}
   m_Father: {fileID: 768152703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1520,12 +1583,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1322863306}
-  m_Father: {fileID: 1127291545}
+  m_Father: {fileID: 588092396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1684358781
 MonoBehaviour:
@@ -1572,7 +1635,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 768152704}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadLevelScene, Assembly-CSharp
         m_MethodName: ToLevel
         m_Mode: 3
         m_Arguments:
@@ -1653,12 +1716,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1284930353}
-  m_Father: {fileID: 1127291545}
+  m_Father: {fileID: 588092396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1685040534
 MonoBehaviour:
@@ -1705,7 +1768,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 768152704}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadLevelScene, Assembly-CSharp
         m_MethodName: ToLevel
         m_Mode: 3
         m_Arguments:
@@ -1790,8 +1853,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -75}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 335.5, y: 177.9}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713747339
 MonoBehaviour:
@@ -1838,8 +1901,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 768152704}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: ToMainMenu
+        m_TargetAssemblyTypeName: LoadLevelScene, Assembly-CSharp
+        m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1919,12 +1982,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 917131044}
-  m_Father: {fileID: 1127291545}
+  m_Father: {fileID: 588092396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 0}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2103979396
 MonoBehaviour:
@@ -1971,7 +2034,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 768152704}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadLevelScene, Assembly-CSharp
         m_MethodName: ToLevel
         m_Mode: 3
         m_Arguments:
