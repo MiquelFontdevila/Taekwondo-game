@@ -17,7 +17,14 @@ public class Sistemadebatalla : MonoBehaviour
 
     public Transform SpawnDelJugador;
     public Transform SpawnDelRival;
-    
+
+    public Transform Posicio1;
+    public Transform Posicio2;
+    public Transform Posicio3;
+    public Transform Posicio4;
+    public Transform Posicio5;
+    public Transform Posicio6;
+
     public Lluitador lluitadorJugador;
     public Lluitador lluitadorRival;
 
@@ -43,6 +50,12 @@ public class Sistemadebatalla : MonoBehaviour
         lluitadorJugador.posicio = 3;
         lluitadorRival.posicio = 4;
 
+                
+        lluitadorJugador.energia = 5;
+        lluitadorRival.energia = 5;
+
+
+        ActualitzarPosicions();
         
         torn = 0;
         estat = Estat.tornJugador;
@@ -177,6 +190,9 @@ public class Sistemadebatalla : MonoBehaviour
             default:
                 break;
         }
+
+
+
         switch (accioRival)
         {
             //Atac
@@ -244,6 +260,52 @@ public class Sistemadebatalla : MonoBehaviour
             default:
                 break;
         }
+
+        // Comprovar si algun lluitador surt de la zona de combat
+        if (lluitadorJugador.posicio < 1)
+        {
+            Debug.Log("El jugador ha sortit de la zona! Punt per al rival.");
+
+            lluitadorRival.AugmentarPunts(1);
+
+            lluitadorJugador.posicio = 3;
+            lluitadorRival.posicio = 4;
+        }
+        else if (lluitadorRival.posicio > 6)
+        {
+            Debug.Log("El rival ha sortit de la zona! Punt per al jugador.");
+
+            lluitadorJugador.AugmentarPunts(1);
+
+            lluitadorJugador.posicio = 3;
+            lluitadorRival.posicio = 4;
+        }
+
+        ActualitzarPosicions();
+
+        if (lluitadorJugador.energia > 10)
+        {
+            Debug.Log("Energia maxima es 10 per tant tornem a 10, borrar misatge al acabar el joc. (Jugador)");
+
+            lluitadorJugador.energia = 10;
+        }else if (lluitadorRival.energia > 10)
+        {
+            Debug.Log("Energia maxima es 10 per tant tornem a 10, borrar misatge al acabar el joc. (Rival)");
+
+            lluitadorRival.energia = 10;
+        }
+        if (lluitadorJugador.energia < 0)
+        {
+            Debug.Log("La energia no podra ser menys de 0, es desactivaran botons quan no puguis utilitzar un moviment, de moment la posem a 0, eliminar en producte final(Jugador)");
+
+            lluitadorJugador.energia = 0;
+        }else if (lluitadorRival.energia < 0)
+        {
+            Debug.Log("La energia no podra ser menys de 0, es desactivaran botons quan no puguis utilitzar un moviment, de moment la posem a 0, eliminar en producte final(Jugador)");
+
+            lluitadorRival.energia = 0;
+        }
+
 
         Debug.Log("--- RESULTAT DEL TORN ---");
         Debug.Log("Punts jugador: " + lluitadorJugador.puntuacio);
@@ -351,39 +413,91 @@ public class Sistemadebatalla : MonoBehaviour
         return;
     }
     
+    void ActualitzarPosicions()
+    {
+        Transform[] posicions =
+        {
+            Posicio1,
+            Posicio2,
+            Posicio3,
+            Posicio4,
+            Posicio5,
+            Posicio6
+        };
+
+        // Moure el jugador
+        int posJugador = lluitadorJugador.posicio;
+
+        if (posJugador >= 1 && posJugador <= 6)
+        {
+            lluitadorJugador.transform.position =
+                posicions[posJugador - 1].position;
+        }
+
+        // Moure el rival
+        int posRival = lluitadorRival.posicio;
+
+        if (posRival >= 1 && posRival <= 6)
+        {
+            lluitadorRival.transform.position =
+                posicions[posRival - 1].position;
+        }
+    }
+
+
+
+
     //Prova de funcionament elimina_______________________________________________________________________
+
+    private bool esperant = false;
     void Update()
     {
-        if (estat != Estat.tornJugador)
+        if (estat != Estat.tornJugador || esperant)
         {
             return;
         }
 
-        // Triem una acció aleatòria per provar el combat
-        int numero = Random.Range(1, 7);
+        StartCoroutine(EsperarAbansDeJugar());
+    }
 
-        switch (numero)
+    System.Collections.IEnumerator EsperarAbansDeJugar()
+    {
+        esperant = true;
+
+        // Esperar 2 segons
+        yield return new WaitForSeconds(2f);
+
+        // Comprovar que encara és el torn del jugador
+        if (estat == Estat.tornJugador)
         {
-            case 1:
-                accioJugador = "patadaAlta";
-                break;
-            case 2:
-                accioJugador = "patadaAlCos";
-                break;
-            case 3:
-                accioJugador = "empenta";
-                break;
-            case 4:
-                accioJugador = "bloqueigAlt";
-                break;
-            case 5:
-                accioJugador = "bloqueigAlCos";
-                break;
-            case 6:
-                accioJugador = "esquivar";
-                break;
+            // Triar una acció aleatòria per provar el combat
+            int numero = Random.Range(1, 7);
+
+            switch (numero)
+            {
+                case 1:
+                    accioJugador = "patadaAlta";
+                    break;
+                case 2:
+                    accioJugador = "patadaAlCos";
+                    break;
+                case 3:
+                    accioJugador = "empenta";
+                    break;
+                case 4:
+                    accioJugador = "bloqueigAlt";
+                    break;
+                case 5:
+                    accioJugador = "bloqueigAlCos";
+                    break;
+                case 6:
+                    accioJugador = "esquivar";
+                    break;
+            }
+
+            ConfirmarAccioJugador();
         }
 
-        ConfirmarAccioJugador();
+        esperant = false;
     }
 }
