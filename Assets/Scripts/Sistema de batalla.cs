@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, derrota}
+public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empat, derrota}
 
 //codi basat en // https://www.youtube.com/watch?v=_1pz_ohupPs
 
@@ -38,32 +38,22 @@ public class Sistemadebatalla : MonoBehaviour
         GameObject rivalGO = Instantiate(rivalPrefab, SpawnDelRival);
 
         lluitadorJugador = jugadorGO.GetComponent<Lluitador>();
-        lluitadorRival = jugadorGO.GetComponent<Lluitador>();
+        lluitadorRival = rivalGO.GetComponent<Lluitador>();
+
+        lluitadorJugador.posicio = 3;
+        lluitadorRival.posicio = 4;
+
         
         torn = 0;
-        if (torn > 10)
-        {
-            if (lluitadorJugador.puntuacio > lluitadorRival.puntuacio)
-            {
-                estat = Estat.victoria;
-            } else
-            {
-                estat = Estat.derrota;
-            }
-
-            // FiDelJoc();
-        }
         estat = Estat.tornJugador;
-        TornJugador();
-    }
 
-    void TornJugador()
-    {
-        torn =+ 1;
-        //fer que vaguis a menus de eleguir moviments etc...
-
-        estat = Estat.tornRival;
-        TornRival();
+        //Mira que el combat funciona__________________________________________________________________________________
+        Debug.Log("=== COMENÇA EL COMBAT ===");
+        Debug.Log("Jugador: " + lluitadorJugador.name);
+        Debug.Log("Rival: " + lluitadorRival.name);
+        Debug.Log("Posicio Jugador: " + lluitadorJugador.posicio);
+        Debug.Log("Posicio Rival: " + lluitadorRival.posicio);
+        Debug.Log("Torn preparat: " + (torn + 1));
     }
 
     void TornRival()
@@ -81,7 +71,7 @@ public class Sistemadebatalla : MonoBehaviour
                 accioRival = "empenta";
                 break;
             case 4:
-                accioRival = "BloqueigAlt";
+                accioRival = "bloqueigAlt";
                 break;
             case 5:
                 accioRival = "bloqueigAlCos";
@@ -95,42 +85,202 @@ public class Sistemadebatalla : MonoBehaviour
         estat = Estat.resolucioTorn;
         resolucioTorn();
     }
-    
-    public void resolucioTorn() //TODO________________________________________________________________________________________________
+
+    public void ConfirmarAccioJugador()
     {
+        if (estat != Estat.tornJugador)
+        {
+            return;
+        }
+
+        if (string.IsNullOrEmpty(accioJugador))
+        {
+            return;
+        }
+
+        estat = Estat.tornRival;
+        TornRival();
+    }
+    
+    public void resolucioTorn()
+    {
+        Debug.Log(" ");
+        Debug.Log("========== TORN " + (torn + 1) + " ==========");
+        Debug.Log("Acció del jugador: " + accioJugador);
+        Debug.Log("Acció del rival: " + accioRival);
+
+
         switch (accioJugador)
         {
+            //Atac
             case "patadaAlta":
-                if (accioRival == "bloqueigAlCos" || accioRival == "empenta")
+                lluitadorJugador.DisminuirEnergia(3);
+                if (accioRival == "bloqueigAlt" || accioRival == "esquivar")
                 {
-                    
-                } else if (accioRival == "BloqueigAlt" || accioRival == "esquivar")
-                {
-                    
-                }
+                    //no fa res, si que una animacio
+                } 
                 else
                 {
-                    
+                    lluitadorJugador.AugmentarPunts(3);
                 }
                 break;
 
             case "patadaAlCos":
+                lluitadorJugador.DisminuirEnergia(1);
+                if (accioRival == "bloqueigAlCos" || accioRival == "esquivar")
+                {
+                    //no fa res, si que una animacio
+                } 
+                else
+                {
+                    lluitadorJugador.AugmentarPunts(1);
+                }
                 break;
 
             case "empenta":
+                lluitadorJugador.DisminuirEnergia(2);
+                if (accioRival == "patadaAlta" || accioRival == "patadaAlCos")
+                {
+                    //no fa res, si que una animacio
+                }
+                else
+                {
+                    lluitadorJugador.AugmentarPosicio(1);
+                    lluitadorRival.AugmentarPosicio(1);
+                }
                 break;
 
-            case "BloqueigAlt":
+            //defensa
+            case "bloqueigAlt":
+                lluitadorJugador.AugmentarEnergia(1);
+                if (accioRival == "patadaAlta")
+                {
+                    lluitadorJugador.AugmentarEnergia(2);
+                } 
                 break;
 
             case "bloqueigAlCos":
+                lluitadorJugador.AugmentarEnergia(1);
+                if (accioRival == "patadaAlCos")
+                {
+                    lluitadorJugador.AugmentarEnergia(2);
+                } 
                 break;
 
             case "esquivar":
+                lluitadorJugador.AugmentarEnergia(2);
+                
+                lluitadorJugador.DisminuirPosicio(1);
+                lluitadorRival.DisminuirPosicio(1);
+                
                 break;
-
             default:
                 break;
+        }
+        switch (accioRival)
+        {
+            //Atac
+            case "patadaAlta":
+                lluitadorRival.DisminuirEnergia(3);
+                if (accioJugador == "bloqueigAlt" || accioJugador == "esquivar")
+                {
+                    //no fa res, si que una animacio
+                } 
+                else
+                {
+                    lluitadorRival.AugmentarPunts(3);
+                }
+                break;
+
+            case "patadaAlCos":
+                lluitadorRival.DisminuirEnergia(1);
+                if (accioJugador == "bloqueigAlCos" || accioJugador == "esquivar")
+                {
+                    //no fa res, si que una animacio
+                } 
+                else
+                {
+                    lluitadorRival.AugmentarPunts(1);
+                }
+                break;
+
+            case "empenta":
+                lluitadorRival.DisminuirEnergia(2);
+                if (accioJugador == "patadaAlta" || accioJugador == "patadaAlCos")
+                {
+                    //no fa res, si que una animacio
+                }
+                else
+                {
+                    lluitadorJugador.DisminuirPosicio(1);
+                    lluitadorRival.DisminuirPosicio(1);
+                }
+                break;
+
+            //defensa
+            case "bloqueigAlt":
+                lluitadorRival.AugmentarEnergia(1);
+                if (accioJugador == "patadaAlta")
+                {
+                    lluitadorRival.AugmentarEnergia(2);
+                } 
+                break;
+
+            case "bloqueigAlCos":
+                lluitadorRival.AugmentarEnergia(1);
+                if (accioJugador == "patadaAlCos")
+                {
+                    lluitadorRival.AugmentarEnergia(2);
+                } 
+                break;
+
+            case "esquivar":
+                lluitadorRival.AugmentarEnergia(2);
+                
+                lluitadorJugador.AugmentarPosicio(1);
+                lluitadorRival.AugmentarPosicio(1);
+                
+                break;
+            default:
+                break;
+        }
+
+        Debug.Log("--- RESULTAT DEL TORN ---");
+        Debug.Log("Punts jugador: " + lluitadorJugador.puntuacio);
+        Debug.Log("Punts rival: " + lluitadorRival.puntuacio);
+        Debug.Log("Energia jugador: " + lluitadorJugador.energia);
+        Debug.Log("Energia rival: " + lluitadorRival.energia);
+        Debug.Log("Posicio Jugador: " + lluitadorJugador.posicio);
+        Debug.Log("Posicio Rival: " + lluitadorRival.posicio);
+
+        torn++;
+
+        if (torn >= 10)
+        {
+
+            Debug.Log(" ");
+            Debug.Log("========== FINAL DEL COMBAT ==========");
+            Debug.Log("Puntuació final del jugador: " + lluitadorJugador.puntuacio);
+            Debug.Log("Puntuació final del rival: " + lluitadorRival.puntuacio);
+
+            if (lluitadorJugador.puntuacio > lluitadorRival.puntuacio)
+            {
+                estat = Estat.victoria;
+            } else if (lluitadorJugador.puntuacio == lluitadorRival.puntuacio)
+            {
+                estat = Estat.empat;
+            }
+            else
+            {
+                estat = Estat.derrota;
+            }
+
+            // FiDelJoc();
+        }
+        else
+        {
+            accioJugador = "";
+            estat = Estat.tornJugador;
         }
     }
 
@@ -181,7 +331,7 @@ public class Sistemadebatalla : MonoBehaviour
         {
             return;
         }
-        accioJugador = "BloqueigAlt";
+        accioJugador = "bloqueigAlt";
         return;
     }
     public void EnBotoBloqueigAlCos(){
@@ -199,5 +349,41 @@ public class Sistemadebatalla : MonoBehaviour
         }
         accioJugador = "esquivar";
         return;
+    }
+    
+    //Prova de funcionament elimina_______________________________________________________________________
+    void Update()
+    {
+        if (estat != Estat.tornJugador)
+        {
+            return;
+        }
+
+        // Triem una acció aleatòria per provar el combat
+        int numero = Random.Range(1, 7);
+
+        switch (numero)
+        {
+            case 1:
+                accioJugador = "patadaAlta";
+                break;
+            case 2:
+                accioJugador = "patadaAlCos";
+                break;
+            case 3:
+                accioJugador = "empenta";
+                break;
+            case 4:
+                accioJugador = "bloqueigAlt";
+                break;
+            case 5:
+                accioJugador = "bloqueigAlCos";
+                break;
+            case 6:
+                accioJugador = "esquivar";
+                break;
+        }
+
+        ConfirmarAccioJugador();
     }
 }

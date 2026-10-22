@@ -8,14 +8,22 @@ public class Lluitador : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void AugmentarPunts(int punts)
     {
-        puntuacio =+ punts;
+        puntuacio += punts;
     }
     public void AugmentarPosicio(int numPosicio)
     {
-        posicio =+ numPosicio;
+        posicio += numPosicio;
     }
     public void DisminuirPosicio(int numPosicio)
     {
-        posicio =+ numPosicio;
+        posicio -= numPosicio;
+    }
+    public void AugmentarEnergia(int numEnergia)
+    {
+        energia += numEnergia;
+    }
+    public void DisminuirEnergia(int numEnergia)
+    {
+        energia -= numEnergia;
     }
 }
