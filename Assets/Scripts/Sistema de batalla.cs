@@ -449,55 +449,55 @@ public class Sistemadebatalla : MonoBehaviour
 
     //Prova de funcionament elimina_______________________________________________________________________
 
-    private bool esperant = false;
-    void Update()
-    {
-        if (estat != Estat.tornJugador || esperant)
-        {
-            return;
-        }
+    // private bool esperant = false;
+    // void Update()
+    // {
+    //     if (estat != Estat.tornJugador || esperant)
+    //     {s
+    //         return;
+    //     }
 
-        StartCoroutine(EsperarAbansDeJugar());
-    }
+    //     StartCoroutine(EsperarAbansDeJugar());
+    // }
 
-    System.Collections.IEnumerator EsperarAbansDeJugar()
-    {
-        esperant = true;
+    // System.Collections.IEnumerator EsperarAbansDeJugar()
+    // {
+    //     esperant = true;
 
-        // Esperar 2 segons
-        yield return new WaitForSeconds(2f);
+    //     // Esperar 2 segons
+    //     yield return new WaitForSeconds(2f);
 
-        // Comprovar que encara és el torn del jugador
-        if (estat == Estat.tornJugador)
-        {
-            // Triar una acció aleatòria per provar el combat
-            int numero = Random.Range(1, 7);
+    //     // Comprovar que encara és el torn del jugador
+    //     if (estat == Estat.tornJugador)
+    //     {
+    //         // Triar una acció aleatòria per provar el combat
+    //         int numero = Random.Range(1, 7);
 
-            switch (numero)
-            {
-                case 1:
-                    accioJugador = "patadaAlta";
-                    break;
-                case 2:
-                    accioJugador = "patadaAlCos";
-                    break;
-                case 3:
-                    accioJugador = "empenta";
-                    break;
-                case 4:
-                    accioJugador = "bloqueigAlt";
-                    break;
-                case 5:
-                    accioJugador = "bloqueigAlCos";
-                    break;
-                case 6:
-                    accioJugador = "esquivar";
-                    break;
-            }
+    //         switch (numero)
+    //         {
+    //             case 1:
+    //                 accioJugador = "patadaAlta";
+    //                 break;
+    //             case 2:
+    //                 accioJugador = "patadaAlCos";
+    //                 break;
+    //             case 3:
+    //                 accioJugador = "empenta";
+    //                 break;
+    //             case 4:
+    //                 accioJugador = "bloqueigAlt";
+    //                 break;
+    //             case 5:
+    //                 accioJugador = "bloqueigAlCos";
+    //                 break;
+    //             case 6:
+    //                 accioJugador = "esquivar";
+    //                 break;
+    //         }
 
-            ConfirmarAccioJugador();
-        }
+    //         ConfirmarAccioJugador();
+    //     }
 
-        esperant = false;
-    }
+    //     esperant = false;
+    // }
 }
