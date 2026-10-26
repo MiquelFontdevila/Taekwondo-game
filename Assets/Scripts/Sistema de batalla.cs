@@ -2,10 +2,6 @@ using UnityEngine;
 
 public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empat, derrota}
 
-//codi basat en // https://www.youtube.com/watch?v=_1pz_ohupPs
-
-//en la batalla, posar 6 "punts de spawn" per la posicio, en canviar la posicio puc spawnear el jugador i el rival en aquella posicio
-
 public class Sistemadebatalla : MonoBehaviour
 {
 
@@ -60,7 +56,7 @@ public class Sistemadebatalla : MonoBehaviour
         torn = 0;
         estat = Estat.tornJugador;
 
-        //Mira que el combat funciona__________________________________________________________________________________
+        //Mira que el combat funciona_
         Debug.Log("=== COMENÇA EL COMBAT ===");
         Debug.Log("Jugador: " + lluitadorJugador.name);
         Debug.Log("Rival: " + lluitadorRival.name);
@@ -71,29 +67,57 @@ public class Sistemadebatalla : MonoBehaviour
 
     void TornRival()
     {
-        int numero = Random.Range(1, 7);
-        switch (numero)
+        bool energiaSuficient = false;
+        while (energiaSuficient == false)
         {
-            case 1:
-                accioRival = "patadaAlta";
-                break;
-            case 2:
-                accioRival = "patadaAlCos";
-                break;
-            case 3:
-                accioRival = "empenta";
-                break;
-            case 4:
-                accioRival = "bloqueigAlt";
-                break;
-            case 5:
-                accioRival = "bloqueigAlCos";
-                break;
-            case 6:
-                accioRival = "esquivar";
-                break;
-            default:
-                break;
+            int numero = Random.Range(1, 7);
+            switch (numero)
+            {
+                case 1:
+                    if (lluitadorRival.energia < 3)
+                    {
+                        energiaSuficient = false;
+                    } else
+                    {
+                        accioRival = "patadaAlta";
+                        energiaSuficient = true;
+                    }
+                    break;
+                case 2:
+                    if (lluitadorRival.energia < 1)
+                    {
+                        energiaSuficient = false;
+                    } else
+                    {
+                        accioRival = "patadaAlCos";
+                        energiaSuficient = true;
+                    }
+                    break;
+                case 3:
+                    if (lluitadorRival.energia < 2)
+                    {
+                        energiaSuficient = false;
+                    } else
+                    {
+                        accioRival = "empenta";
+                        energiaSuficient = true;
+                    }
+                    break;
+                case 4:
+                    accioRival = "bloqueigAlt";
+                    energiaSuficient = true;
+                    break;
+                case 5:
+                    accioRival = "bloqueigAlCos";
+                    energiaSuficient = true;
+                    break;
+                case 6:
+                    accioRival = "esquivar";
+                    energiaSuficient = true;
+                    break;
+                default:
+                    break;
+            }
         }
         estat = Estat.resolucioTorn;
         resolucioTorn();
@@ -288,7 +312,8 @@ public class Sistemadebatalla : MonoBehaviour
             Debug.Log("Energia maxima es 10 per tant tornem a 10, borrar misatge al acabar el joc. (Jugador)");
 
             lluitadorJugador.energia = 10;
-        }else if (lluitadorRival.energia > 10)
+        }
+        if (lluitadorRival.energia > 10)
         {
             Debug.Log("Energia maxima es 10 per tant tornem a 10, borrar misatge al acabar el joc. (Rival)");
 
@@ -299,7 +324,8 @@ public class Sistemadebatalla : MonoBehaviour
             Debug.Log("La energia no podra ser menys de 0, es desactivaran botons quan no puguis utilitzar un moviment, de moment la posem a 0, eliminar en producte final(Jugador)");
 
             lluitadorJugador.energia = 0;
-        }else if (lluitadorRival.energia < 0)
+        }
+        if (lluitadorRival.energia < 0)
         {
             Debug.Log("La energia no podra ser menys de 0, es desactivaran botons quan no puguis utilitzar un moviment, de moment la posem a 0, eliminar en producte final(Jugador)");
 
@@ -359,7 +385,13 @@ public class Sistemadebatalla : MonoBehaviour
         {
             return;
         }
+        if (lluitadorJugador.energia < 3)
+        {
+            Debug.Log("Energia insuficient");
+            return;
+        }
         accioJugador = "patadaAlta";
+        ConfirmarAccioJugador();
         return;
     }
     public void EnBotoPatadaAlCos(){
@@ -367,7 +399,13 @@ public class Sistemadebatalla : MonoBehaviour
         {
             return;
         }
+        if (lluitadorJugador.energia < 1)
+        {
+            Debug.Log("Energia insuficient");
+            return;
+        }
         accioJugador = "patadaAlCos";
+        ConfirmarAccioJugador();
         return;
     }
     public void EnBotoEmpenta(){
@@ -375,7 +413,13 @@ public class Sistemadebatalla : MonoBehaviour
         {
             return;
         }
+        if (lluitadorJugador.energia < 2)
+        {
+            Debug.Log("Energia insuficient");
+            return;
+        }
         accioJugador = "empenta";
+        ConfirmarAccioJugador();
         return;
     }
 
@@ -394,6 +438,7 @@ public class Sistemadebatalla : MonoBehaviour
             return;
         }
         accioJugador = "bloqueigAlt";
+        ConfirmarAccioJugador();
         return;
     }
     public void EnBotoBloqueigAlCos(){
@@ -402,6 +447,7 @@ public class Sistemadebatalla : MonoBehaviour
             return;
         }
         accioJugador = "bloqueigAlCos";
+        ConfirmarAccioJugador();
         return;
     }
     public void EnBotoEsquivar(){
@@ -410,6 +456,7 @@ public class Sistemadebatalla : MonoBehaviour
             return;
         }
         accioJugador = "esquivar";
+        ConfirmarAccioJugador();
         return;
     }
     
@@ -447,7 +494,7 @@ public class Sistemadebatalla : MonoBehaviour
 
 
 
-    //Prova de funcionament elimina_______________________________________________________________________
+    //Prova de funcionament elimina
 
     // private bool esperant = false;
     // void Update()
