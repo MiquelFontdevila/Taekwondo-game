@@ -142,6 +142,16 @@ ScriptedImporter:
   resliceFromLayer: 0
   pSDLayerImportSetting: []
   psdLayers:
+  - name: Vores
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c19a4eb6e8ab9604c8bb6e1ad1932ff4
+    layerID: 3
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
   - name: Capa 1
     spriteName: 
     isGroup: 0
