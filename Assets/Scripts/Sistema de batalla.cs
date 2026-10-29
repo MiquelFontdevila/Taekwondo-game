@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empat, derrota}
+public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empat, derrota }
 
 //codi basat en // https://www.youtube.com/watch?v=_1pz_ohupPs
 
@@ -52,17 +52,17 @@ public class Sistemadebatalla : MonoBehaviour
         lluitadorJugador.posicio = 3;
         lluitadorRival.posicio = 4;
 
-                
+
         lluitadorJugador.energia = 5;
         lluitadorRival.energia = 5;
 
 
         ActualitzarPosicions();
-        
+
         torn = 0;
         estat = Estat.tornJugador;
 
-        //combatUI.Inicialitzar(lluitadorJugador);
+        combatUI.Inicialitzar(lluitadorJugador);
 
         //Mira que el combat funciona__________________________________________________________________________________
         Debug.Log("=== COMENÇA EL COMBAT ===");
@@ -118,7 +118,7 @@ public class Sistemadebatalla : MonoBehaviour
         estat = Estat.tornRival;
         TornRival();
     }
-    
+
     public void resolucioTorn()
     {
         Debug.Log(" ");
@@ -135,7 +135,7 @@ public class Sistemadebatalla : MonoBehaviour
                 if (accioRival == "bloqueigAlt" || accioRival == "esquivar")
                 {
                     //no fa res, si que una animacio
-                } 
+                }
                 else
                 {
                     lluitadorJugador.AugmentarPunts(3);
@@ -147,7 +147,7 @@ public class Sistemadebatalla : MonoBehaviour
                 if (accioRival == "bloqueigAlCos" || accioRival == "esquivar")
                 {
                     //no fa res, si que una animacio
-                } 
+                }
                 else
                 {
                     lluitadorJugador.AugmentarPunts(1);
@@ -173,7 +173,7 @@ public class Sistemadebatalla : MonoBehaviour
                 if (accioRival == "patadaAlta")
                 {
                     lluitadorJugador.AugmentarEnergia(2);
-                } 
+                }
                 break;
 
             case "bloqueigAlCos":
@@ -181,15 +181,15 @@ public class Sistemadebatalla : MonoBehaviour
                 if (accioRival == "patadaAlCos")
                 {
                     lluitadorJugador.AugmentarEnergia(2);
-                } 
+                }
                 break;
 
             case "esquivar":
                 lluitadorJugador.AugmentarEnergia(2);
-                
+
                 lluitadorJugador.DisminuirPosicio(1);
                 lluitadorRival.DisminuirPosicio(1);
-                
+
                 break;
             default:
                 break;
@@ -205,7 +205,7 @@ public class Sistemadebatalla : MonoBehaviour
                 if (accioJugador == "bloqueigAlt" || accioJugador == "esquivar")
                 {
                     //no fa res, si que una animacio
-                } 
+                }
                 else
                 {
                     lluitadorRival.AugmentarPunts(3);
@@ -217,7 +217,7 @@ public class Sistemadebatalla : MonoBehaviour
                 if (accioJugador == "bloqueigAlCos" || accioJugador == "esquivar")
                 {
                     //no fa res, si que una animacio
-                } 
+                }
                 else
                 {
                     lluitadorRival.AugmentarPunts(1);
@@ -243,7 +243,7 @@ public class Sistemadebatalla : MonoBehaviour
                 if (accioJugador == "patadaAlta")
                 {
                     lluitadorRival.AugmentarEnergia(2);
-                } 
+                }
                 break;
 
             case "bloqueigAlCos":
@@ -251,15 +251,15 @@ public class Sistemadebatalla : MonoBehaviour
                 if (accioJugador == "patadaAlCos")
                 {
                     lluitadorRival.AugmentarEnergia(2);
-                } 
+                }
                 break;
 
             case "esquivar":
                 lluitadorRival.AugmentarEnergia(2);
-                
+
                 lluitadorJugador.AugmentarPosicio(1);
                 lluitadorRival.AugmentarPosicio(1);
-                
+
                 break;
             default:
                 break;
@@ -292,7 +292,8 @@ public class Sistemadebatalla : MonoBehaviour
             Debug.Log("Energia maxima es 10 per tant tornem a 10, borrar misatge al acabar el joc. (Jugador)");
 
             lluitadorJugador.energia = 10;
-        }else if (lluitadorRival.energia > 10)
+        }
+        else if (lluitadorRival.energia > 10)
         {
             Debug.Log("Energia maxima es 10 per tant tornem a 10, borrar misatge al acabar el joc. (Rival)");
 
@@ -303,7 +304,8 @@ public class Sistemadebatalla : MonoBehaviour
             Debug.Log("La energia no podra ser menys de 0, es desactivaran botons quan no puguis utilitzar un moviment, de moment la posem a 0, eliminar en producte final(Jugador)");
 
             lluitadorJugador.energia = 0;
-        }else if (lluitadorRival.energia < 0)
+        }
+        else if (lluitadorRival.energia < 0)
         {
             Debug.Log("La energia no podra ser menys de 0, es desactivaran botons quan no puguis utilitzar un moviment, de moment la posem a 0, eliminar en producte final(Jugador)");
 
@@ -334,7 +336,8 @@ public class Sistemadebatalla : MonoBehaviour
             if (lluitadorJugador.puntuacio > lluitadorRival.puntuacio)
             {
                 estat = Estat.victoria;
-            } else if (lluitadorJugador.puntuacio == lluitadorRival.puntuacio)
+            }
+            else if (lluitadorJugador.puntuacio == lluitadorRival.puntuacio)
             {
                 estat = Estat.empat;
             }
@@ -343,17 +346,18 @@ public class Sistemadebatalla : MonoBehaviour
                 estat = Estat.derrota;
             }
 
-            //combatUI.AcabarCombat(estat);
+            combatUI.AcabarCombat(estat);
         }
         else
         {
             accioJugador = "";
             estat = Estat.tornJugador;
-            //combatUI.MostrarMenuPrincipal();
+            combatUI.MostrarPanellPrincipal();
         }
     }
 
-    public void EnBotoAtac(){
+    public void EnBotoAtac()
+    {
         if (estat != Estat.tornJugador)
         {
             return;
@@ -361,7 +365,8 @@ public class Sistemadebatalla : MonoBehaviour
         //deshabilitar menu de atac/defensa
         //habilitar menu d'atac
     }
-    public void EnBotoPatadaAlta(){
+    public void EnBotoPatadaAlta()
+    {
         if (estat != Estat.tornJugador)
         {
             return;
@@ -369,7 +374,8 @@ public class Sistemadebatalla : MonoBehaviour
         accioJugador = "patadaAlta";
         ConfirmarAccioJugador();
     }
-    public void EnBotoPatadaAlCos(){
+    public void EnBotoPatadaAlCos()
+    {
         if (estat != Estat.tornJugador)
         {
             return;
@@ -377,7 +383,8 @@ public class Sistemadebatalla : MonoBehaviour
         accioJugador = "patadaAlCos";
         ConfirmarAccioJugador();
     }
-    public void EnBotoEmpenta(){
+    public void EnBotoEmpenta()
+    {
         if (estat != Estat.tornJugador)
         {
             return;
@@ -387,7 +394,8 @@ public class Sistemadebatalla : MonoBehaviour
     }
 
 
-    public void EnBotoDefensa(){
+    public void EnBotoDefensa()
+    {
         if (estat != Estat.tornJugador)
         {
             return;
@@ -395,7 +403,8 @@ public class Sistemadebatalla : MonoBehaviour
         //deshabilitar menu de atac/defensa
         //habilitar menu de defensa
     }
-    public void EnBotoBloqueigAlt(){
+    public void EnBotoBloqueigAlt()
+    {
         if (estat != Estat.tornJugador)
         {
             return;
@@ -403,7 +412,8 @@ public class Sistemadebatalla : MonoBehaviour
         accioJugador = "bloqueigAlt";
         ConfirmarAccioJugador();
     }
-    public void EnBotoBloqueigAlCos(){
+    public void EnBotoBloqueigAlCos()
+    {
         if (estat != Estat.tornJugador)
         {
             return;
@@ -411,7 +421,8 @@ public class Sistemadebatalla : MonoBehaviour
         accioJugador = "bloqueigAlCos";
         ConfirmarAccioJugador();
     }
-    public void EnBotoEsquivar(){
+    public void EnBotoEsquivar()
+    {
         if (estat != Estat.tornJugador)
         {
             return;
@@ -419,7 +430,7 @@ public class Sistemadebatalla : MonoBehaviour
         accioJugador = "esquivar";
         ConfirmarAccioJugador();
     }
-    
+
     void ActualitzarPosicions()
     {
         Transform[] posicions =
