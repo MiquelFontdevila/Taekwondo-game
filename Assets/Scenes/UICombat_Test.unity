@@ -610,11 +610,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af784227a7cfa045b562e6bba09f64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TecnicaBoto
-  nomTecnica: 
+  nomTecnica: Bloqueig Alt
   esDefensa: 1
   cost: 0
-  resultat: 0
-  descripcio: 
+  resultat: 1
+  descripcio: +2 de Stamina extra si el rival realitza Patada Alta
 --- !u!1 &495046057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,11 +1926,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af784227a7cfa045b562e6bba09f64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TecnicaBoto
-  nomTecnica: 
+  nomTecnica: Empenta
   esDefensa: 0
   cost: 2
   resultat: 0
-  descripcio: Empenta al rival. Falla si el rival realitza qualsevol Patada.
+  descripcio: Empenta al rival. Falla si el rival realitza qualsevol Patada
 --- !u!1 &1105214011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2513,11 +2513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af784227a7cfa045b562e6bba09f64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TecnicaBoto
-  nomTecnica: 
+  nomTecnica: Bloqueig Baix
   esDefensa: 1
   cost: 0
-  resultat: 0
-  descripcio: 
+  resultat: 1
+  descripcio: +2 de Stamina extra si el rival realitza Patada Baixa
 --- !u!1 &1400674171
 GameObject:
   m_ObjectHideFlags: 0
@@ -3351,8 +3351,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
-  m_fontSizeBase: 44
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3677,11 +3677,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af784227a7cfa045b562e6bba09f64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TecnicaBoto
-  nomTecnica: 
+  nomTecnica: Esquiva
   esDefensa: 1
   cost: 0
-  resultat: 0
-  descripcio: 
+  resultat: 2
+  descripcio: "Evita les patades, per\xF2 retrocedeix una posici\xF3"
 --- !u!1 &2054031358
 GameObject:
   m_ObjectHideFlags: 0
