@@ -31,6 +31,8 @@ public class Sistemadebatalla : MonoBehaviour
     public string accioJugador;
     public string accioRival;
 
+    public CombatUIManager combatUI;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -59,6 +61,8 @@ public class Sistemadebatalla : MonoBehaviour
         
         torn = 0;
         estat = Estat.tornJugador;
+
+        //combatUI.Inicialitzar(lluitadorJugador);
 
         //Mira que el combat funciona__________________________________________________________________________________
         Debug.Log("=== COMENÇA EL COMBAT ===");
@@ -317,6 +321,8 @@ public class Sistemadebatalla : MonoBehaviour
 
         torn++;
 
+        combatUI.MostrarEstamina(lluitadorJugador.energia);
+
         if (torn >= 10)
         {
 
@@ -337,12 +343,13 @@ public class Sistemadebatalla : MonoBehaviour
                 estat = Estat.derrota;
             }
 
-            // FiDelJoc();
+            //combatUI.AcabarCombat(estat);
         }
         else
         {
             accioJugador = "";
             estat = Estat.tornJugador;
+            //combatUI.MostrarMenuPrincipal();
         }
     }
 
@@ -360,7 +367,7 @@ public class Sistemadebatalla : MonoBehaviour
             return;
         }
         accioJugador = "patadaAlta";
-        return;
+        ConfirmarAccioJugador();
     }
     public void EnBotoPatadaAlCos(){
         if (estat != Estat.tornJugador)
@@ -368,7 +375,7 @@ public class Sistemadebatalla : MonoBehaviour
             return;
         }
         accioJugador = "patadaAlCos";
-        return;
+        ConfirmarAccioJugador();
     }
     public void EnBotoEmpenta(){
         if (estat != Estat.tornJugador)
@@ -376,7 +383,7 @@ public class Sistemadebatalla : MonoBehaviour
             return;
         }
         accioJugador = "empenta";
-        return;
+        ConfirmarAccioJugador();
     }
 
 
@@ -394,7 +401,7 @@ public class Sistemadebatalla : MonoBehaviour
             return;
         }
         accioJugador = "bloqueigAlt";
-        return;
+        ConfirmarAccioJugador();
     }
     public void EnBotoBloqueigAlCos(){
         if (estat != Estat.tornJugador)
@@ -402,7 +409,7 @@ public class Sistemadebatalla : MonoBehaviour
             return;
         }
         accioJugador = "bloqueigAlCos";
-        return;
+        ConfirmarAccioJugador();
     }
     public void EnBotoEsquivar(){
         if (estat != Estat.tornJugador)
@@ -410,7 +417,7 @@ public class Sistemadebatalla : MonoBehaviour
             return;
         }
         accioJugador = "esquivar";
-        return;
+        ConfirmarAccioJugador();
     }
     
     void ActualitzarPosicions()
@@ -457,7 +464,7 @@ public class Sistemadebatalla : MonoBehaviour
             return;
         }
 
-        StartCoroutine(EsperarAbansDeJugar());
+        // StartCoroutine(EsperarAbansDeJugar());
     }
 
     System.Collections.IEnumerator EsperarAbansDeJugar()

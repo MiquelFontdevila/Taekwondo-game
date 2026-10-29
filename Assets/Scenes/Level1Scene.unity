@@ -1109,6 +1109,7 @@ MonoBehaviour:
   lluitadorRival: {fileID: 0}
   accioJugador: empenta
   accioRival: esquivar
+  combatUI: {fileID: 0}
 --- !u!4 &1701260233
 Transform:
   m_ObjectHideFlags: 0

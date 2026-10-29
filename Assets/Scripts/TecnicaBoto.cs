@@ -41,11 +41,5 @@ public class TecnicaBoto : MonoBehaviour, ISelectHandler
             text += "\n" + descripcio;
 
         return text;
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
