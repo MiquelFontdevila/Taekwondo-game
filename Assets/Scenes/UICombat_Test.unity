@@ -447,7 +447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102294635}
   m_Layer: 5
-  m_Name: DefenseButtons
+  m_Name: DeffenseButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,8 +488,9 @@ GameObject:
   - component: {fileID: 214123519}
   - component: {fileID: 214123518}
   - component: {fileID: 214123517}
+  - component: {fileID: 214123520}
   m_Layer: 5
-  m_Name: DefensaAltaButton
+  m_Name: BloqueigAltButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,6 +598,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214123515}
   m_CullTransparentMesh: 1
+--- !u!114 &214123520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214123515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af784227a7cfa045b562e6bba09f64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TecnicaBoto
+  nomTecnica: 
+  esDefensa: 1
+  cost: 0
+  resultat: 0
+  descripcio: 
 --- !u!1 &495046057
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +627,7 @@ GameObject:
   - component: {fileID: 495046061}
   - component: {fileID: 495046060}
   - component: {fileID: 495046059}
+  - component: {fileID: 495046062}
   m_Layer: 5
   m_Name: PatadaAltaButton
   m_TagString: Untagged
@@ -718,6 +737,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495046057}
   m_CullTransparentMesh: 1
+--- !u!114 &495046062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495046057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af784227a7cfa045b562e6bba09f64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TecnicaBoto
+  nomTecnica: Patada Alta
+  esDefensa: 0
+  cost: 3
+  resultat: 3
+  descripcio: Falla si el rival realitza Bloqueig Alt o Esquiva
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,22 +1472,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1303579470}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 102294634}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1514465916}
+        m_TargetAssemblyTypeName: CombatUIManager, Assembly-CSharp
+        m_MethodName: MostrarPanellPrincipal
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1718,22 +1742,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 102294634}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1303579470}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1514465916}
+        m_TargetAssemblyTypeName: CombatUIManager, Assembly-CSharp
+        m_MethodName: MostrarPanellDefensa
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1792,6 +1804,7 @@ GameObject:
   - component: {fileID: 1070536571}
   - component: {fileID: 1070536570}
   - component: {fileID: 1070536569}
+  - component: {fileID: 1070536572}
   m_Layer: 5
   m_Name: EmpentaButton
   m_TagString: Untagged
@@ -1901,6 +1914,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070536567}
   m_CullTransparentMesh: 1
+--- !u!114 &1070536572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070536567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af784227a7cfa045b562e6bba09f64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TecnicaBoto
+  nomTecnica: 
+  esDefensa: 0
+  cost: 2
+  resultat: 0
+  descripcio: Empenta al rival. Falla si el rival realitza qualsevol Patada.
 --- !u!1 &1105214011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,8 +2391,9 @@ GameObject:
   - component: {fileID: 1391696705}
   - component: {fileID: 1391696704}
   - component: {fileID: 1391696703}
+  - component: {fileID: 1391696706}
   m_Layer: 5
-  m_Name: DefensaBaixaButton
+  m_Name: BloqueigBaixButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2470,6 +2501,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391696701}
   m_CullTransparentMesh: 1
+--- !u!114 &1391696706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391696701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af784227a7cfa045b562e6bba09f64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TecnicaBoto
+  nomTecnica: 
+  esDefensa: 1
+  cost: 0
+  resultat: 0
+  descripcio: 
 --- !u!1 &1400674171
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,7 +2650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Defensa Alta
+  m_text: Bloqueig Alt
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2691,6 +2739,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1514465915}
+  - component: {fileID: 1514465916}
   m_Layer: 5
   m_Name: CombatAttackModeUI
   m_TagString: Untagged
@@ -2719,6 +2768,23 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000033379, y: 0}
   m_SizeDelta: {x: 1920, y: 280}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1514465916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514465914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbea60d2add5051408b9f191330f86f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatUIManager
+  panellPrincipal: {fileID: 1303579470}
+  panellAtac: {fileID: 764415308}
+  panellDefensa: {fileID: 102294634}
+  textInfo: {fileID: 1831953878}
+  missatgePrincipal: "Qu\xE8 far\xE0 el jugador?"
 --- !u!1 &1535869273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,22 +3005,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1303579470}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 764415308}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1514465916}
+        m_TargetAssemblyTypeName: CombatUIManager, Assembly-CSharp
+        m_MethodName: MostrarPanellPrincipal
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3084,22 +3138,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 764415308}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1303579470}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1514465916}
+        m_TargetAssemblyTypeName: CombatUIManager, Assembly-CSharp
+        m_MethodName: MostrarPanellAtac
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3282,7 +3324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Atac X Cost de Stamina X Punts X
+  m_text: "Informaci\xF3 del torn"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3374,6 +3416,7 @@ GameObject:
   - component: {fileID: 1940714757}
   - component: {fileID: 1940714756}
   - component: {fileID: 1940714755}
+  - component: {fileID: 1940714758}
   m_Layer: 5
   m_Name: PatadaBaixaButton
   m_TagString: Untagged
@@ -3483,6 +3526,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940714753}
   m_CullTransparentMesh: 1
+--- !u!114 &1940714758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940714753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af784227a7cfa045b562e6bba09f64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TecnicaBoto
+  nomTecnica: Patada Baixa
+  esDefensa: 0
+  cost: 1
+  resultat: 1
+  descripcio: Falla si el rival realitza Bloqueig Baix o Esquiva
 --- !u!1 &1960163161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3495,6 +3555,7 @@ GameObject:
   - component: {fileID: 1960163165}
   - component: {fileID: 1960163164}
   - component: {fileID: 1960163163}
+  - component: {fileID: 1960163166}
   m_Layer: 5
   m_Name: EsquivaButton
   m_TagString: Untagged
@@ -3604,6 +3665,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960163161}
   m_CullTransparentMesh: 1
+--- !u!114 &1960163166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960163161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af784227a7cfa045b562e6bba09f64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TecnicaBoto
+  nomTecnica: 
+  esDefensa: 1
+  cost: 0
+  resultat: 0
+  descripcio: 
 --- !u!1 &2054031358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3661,7 +3739,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Defensa Baixa
+  m_text: Bloqueig Baix
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
