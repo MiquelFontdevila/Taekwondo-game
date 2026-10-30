@@ -12,16 +12,19 @@ public class CombatUIManager : MonoBehaviour
     [SerializeField] private GameObject panellDefensa; //DeffenseButtons
 
     [Header("Panell d'informació")]
-    [SerializeField] private TextMeshProUGUI textInfo;   // TurnInfoTMP
+    [SerializeField] private TextMeshProUGUI textInfoTorn;   // TurnInfoTMP
     [SerializeField] private string missatgePrincipal = "Què farà el jugador?";
 
     [Header("Barra d'Estamina")]
-    [SerializeField] private Image barraEstamina;           // StaminaBar_Fill
-    [SerializeField] private TextMeshProUGUI textEstamina;  // StaminaText
+    [SerializeField] private GameObject barraEstaminaGroup; // EstaminaBar_Group
+    [SerializeField] private Image barraEstamina;           // EstaminaBar_Fill
+    [SerializeField] private TextMeshProUGUI textEstamina;  // EstaminaText
     [SerializeField] private int estaminaMaxima = 10;
     [SerializeField] private float velocitatBarra = 1.5f;
+    
+    [Header("Resultat del Torn")]
+    [SerializeField] private SistemaDeBatalla sistemaBatalla;
 
-    //private Coroutine seleccioPendent;
     private GameObject panellActiu;
     private Lluitador jugador;
 
@@ -39,12 +42,54 @@ public class CombatUIManager : MonoBehaviour
         MostrarPanellPrincipal();
     }
 
+    // FORMAT DE TEXTOS
+    private void FormatMissatgePanellPrincipal()
+    {
+        textInfoTorn.fontSizeMax = 48;
+        textInfoTorn.alignment = TextAlignmentOptions.Left;
+    }
+
+    private void FormatMissatgeDestacat()
+    {
+        textInfoTorn.fontSizeMax = 38;
+        textInfoTorn.alignment = TextAlignmentOptions.Left;
+    }
+
+    private void FormatMissatgeInfoTecnica()
+    {
+        textInfoTorn.fontSizeMax = 32;
+        textInfoTorn.alignment = TextAlignmentOptions.TopLeft;
+    }
+
+    // Crear efecte d'escriptura de text (typewriter effect)
+    private IEnumerator EscriureTextTypewriter(string text, float segonsPerLletra = 0.05f)
+    {
+        textInfoTorn.text = text;
+        textInfoTorn.maxVisibleCharacters = 0;
+
+        textInfoTorn.ForceMeshUpdate(); //Forçar procesar el text abans d'escriure
+        int totalLletres = textInfoTorn.textInfo.characterCount;
+
+        for (int i = 0; i <= totalLletres; i++)
+        {
+            textInfoTorn.maxVisibleCharacters = i;
+            yield return new WaitForSeconds(segonsPerLletra);
+        }
+    }
+
+    private void MostrarTextInstantani(string text)
+    {
+        textInfoTorn.maxVisibleCharacters = 99999;
+        textInfoTorn.text = text;
+    }
+
     // MENÚS
     //Mètodes public per poder cridar-los des de l'Inspector
     public void MostrarPanellPrincipal()
     {
         CanviarPanell(panellPrincipal);
-        textInfo.text = missatgePrincipal;
+        FormatMissatgePanellPrincipal();
+        StartCoroutine(EscriureTextTypewriter(missatgePrincipal));
     }
     public void MostrarPanellAtac()
     {
@@ -86,35 +131,13 @@ public class CombatUIManager : MonoBehaviour
             }
         }
 
-        /*if (seleccioPendent != null)
-        {
-            StopCoroutine(seleccioPendent);
-        }
-
-        seleccioPendent = StartCoroutine(SeleccioDespresDeFrame(panell));*/
     }
-
-    /*private IEnumerator SeleccioDespresDeFrame(GameObject panell)
-    {
-        yield return null; //Esperem un frame
-
-        //Selecciona el primer boto interactuable del panell
-        foreach (Button boto in panell.GetComponentsInChildren<Button>())
-        {
-            if (boto.interactable)
-            {
-                EventSystem.current.SetSelectedGameObject(boto.gameObject);
-                break;
-            }
-        }
-
-        seleccioPendent = null;
-    }*/
 
     // ESTAMINA I INFO
     public void MostrarInfoTecnica(TecnicaBoto tecnica)
     {
-        textInfo.text = tecnica.GenerarText();
+        FormatMissatgeInfoTecnica();
+        MostrarTextInstantani(tecnica.GenerarText());
     }
 
     private float omplirObjectiu = 0.5f;
@@ -143,7 +166,55 @@ public class CombatUIManager : MonoBehaviour
         }
     }
 
-    // Final del combat
+    // TORN
+    private string NomAccio(string accio)
+    {
+        switch (accio)
+        {
+            case "patadaAlta":
+                return "Patada Alta";
+            case "patadaBaixa":
+                return "Patada Baixa";
+            case "empenta":
+                return "Empenta";
+            case "bloqueigAlt":
+                return "Bloqueig Alt";
+            case "bloqueigBaix":
+                return "Bloqueig Baix";
+            case "esquivar":
+                return "Esquivar";
+            default:
+                return accio;
+        }
+    }
+
+    public void MostrarResultatTorn(string accioJugador, string accioRival)
+    {
+        StartCoroutine(SequenciaResultat(accioJugador, accioRival));
+    }
+
+    private IEnumerator SequenciaResultat(string accioJug, string accioRiv)
+    {
+        panellPrincipal.SetActive(false);
+        panellAtac.SetActive(false);
+        panellDefensa.SetActive(false);
+        panellActiu = null;
+        barraEstaminaGroup.SetActive(false);
+
+        FormatMissatgeDestacat();
+        string missatgeTornRealitzat = "El jugador ha realitzat <b>" + NomAccio(accioJug) + "</b>!" + 
+                                        "\n\nEl rival ha realitzat <b>" + NomAccio(accioRiv) + "</b>!";
+
+        yield return EscriureTextTypewriter(missatgeTornRealitzat);
+
+        yield return new WaitForSeconds(2f);
+
+        barraEstaminaGroup.SetActive(true);
+        MostrarPanellPrincipal();
+        sistemaBatalla.AcabarMostrarResultatTorn();
+    }
+
+    // FINAL DEL COMBAT
     public void AcabarCombat(Estat resultat)
     {
         panellPrincipal.SetActive(false);
@@ -154,13 +225,22 @@ public class CombatUIManager : MonoBehaviour
         switch (resultat)
         {
             case Estat.victoria:
-                textInfo.text = "Guanya el jugador!";
+                FormatMissatgeDestacat();
+                string missatgeVictoria = "Guanya el jugador!";
+                StartCoroutine(EscriureTextTypewriter(missatgeVictoria));
+                barraEstaminaGroup.SetActive(false);
                 break;
             case Estat.derrota:
-                textInfo.text = "Has perdut! Guanya el rival!";
+                FormatMissatgeDestacat();
+                string missatgeDerrota = "Has perdut! Guanya el rival!";
+                StartCoroutine(EscriureTextTypewriter(missatgeDerrota));
+                barraEstaminaGroup.SetActive(false);
                 break;
             case Estat.empat:
-                textInfo.text = "Empat!";
+                FormatMissatgeDestacat();
+                string missatgeEmpat = "Empat!";
+                StartCoroutine(EscriureTextTypewriter(missatgeEmpat));
+                barraEstaminaGroup.SetActive(false);
                 break;
         }
     }

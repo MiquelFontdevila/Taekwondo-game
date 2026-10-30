@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empat, derrota }
 
@@ -6,7 +7,7 @@ public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empa
 
 //en la batalla, posar 6 "punts de spawn" per la posicio, en canviar la posicio puc spawnear el jugador i el rival en aquella posicio
 
-public class Sistemadebatalla : MonoBehaviour
+public class SistemaDeBatalla : MonoBehaviour
 {
 
     public Estat estat;
@@ -41,6 +42,8 @@ public class Sistemadebatalla : MonoBehaviour
         SetupBatalla();
     }
 
+    // CONFIGURACIÓ DE LA BATALLA
+
     void SetupBatalla()
     {
         GameObject jugadorGO = Instantiate(jugadorPrefab, SpawnDelJugador);
@@ -73,6 +76,8 @@ public class Sistemadebatalla : MonoBehaviour
         Debug.Log("Torn preparat: " + (torn + 1));
     }
 
+    // GESTIó DELS TORNS
+
     void TornRival()
     {
         int numero = Random.Range(1, 7);
@@ -82,7 +87,7 @@ public class Sistemadebatalla : MonoBehaviour
                 accioRival = "patadaAlta";
                 break;
             case 2:
-                accioRival = "patadaAlCos";
+                accioRival = "patadaBaixa";
                 break;
             case 3:
                 accioRival = "empenta";
@@ -91,7 +96,7 @@ public class Sistemadebatalla : MonoBehaviour
                 accioRival = "bloqueigAlt";
                 break;
             case 5:
-                accioRival = "bloqueigAlCos";
+                accioRival = "bloqueigBaix";
                 break;
             case 6:
                 accioRival = "esquivar";
@@ -142,9 +147,9 @@ public class Sistemadebatalla : MonoBehaviour
                 }
                 break;
 
-            case "patadaAlCos":
+            case "patadaBaixa":
                 lluitadorJugador.DisminuirEnergia(1);
-                if (accioRival == "bloqueigAlCos" || accioRival == "esquivar")
+                if (accioRival == "bloqueigBaix" || accioRival == "esquivar")
                 {
                     //no fa res, si que una animacio
                 }
@@ -156,7 +161,7 @@ public class Sistemadebatalla : MonoBehaviour
 
             case "empenta":
                 lluitadorJugador.DisminuirEnergia(2);
-                if (accioRival == "patadaAlta" || accioRival == "patadaAlCos")
+                if (accioRival == "patadaAlta" || accioRival == "patadaBaixa")
                 {
                     //no fa res, si que una animacio
                 }
@@ -176,9 +181,9 @@ public class Sistemadebatalla : MonoBehaviour
                 }
                 break;
 
-            case "bloqueigAlCos":
+            case "bloqueigBaix":
                 lluitadorJugador.AugmentarEnergia(1);
-                if (accioRival == "patadaAlCos")
+                if (accioRival == "patadaBaixa")
                 {
                     lluitadorJugador.AugmentarEnergia(2);
                 }
@@ -212,9 +217,9 @@ public class Sistemadebatalla : MonoBehaviour
                 }
                 break;
 
-            case "patadaAlCos":
+            case "patadaBaixa":
                 lluitadorRival.DisminuirEnergia(1);
-                if (accioJugador == "bloqueigAlCos" || accioJugador == "esquivar")
+                if (accioJugador == "bloqueigBaix" || accioJugador == "esquivar")
                 {
                     //no fa res, si que una animacio
                 }
@@ -226,7 +231,7 @@ public class Sistemadebatalla : MonoBehaviour
 
             case "empenta":
                 lluitadorRival.DisminuirEnergia(2);
-                if (accioJugador == "patadaAlta" || accioJugador == "patadaAlCos")
+                if (accioJugador == "patadaAlta" || accioJugador == "patadaBaixa")
                 {
                     //no fa res, si que una animacio
                 }
@@ -246,9 +251,9 @@ public class Sistemadebatalla : MonoBehaviour
                 }
                 break;
 
-            case "bloqueigAlCos":
+            case "bloqueigBaix":
                 lluitadorRival.AugmentarEnergia(1);
-                if (accioJugador == "patadaAlCos")
+                if (accioJugador == "patadaBaixa")
                 {
                     lluitadorRival.AugmentarEnergia(2);
                 }
@@ -293,7 +298,7 @@ public class Sistemadebatalla : MonoBehaviour
 
             lluitadorJugador.energia = 10;
         }
-        else if (lluitadorRival.energia > 10)
+        if (lluitadorRival.energia > 10)
         {
             Debug.Log("Energia maxima es 10 per tant tornem a 10, borrar misatge al acabar el joc. (Rival)");
 
@@ -305,7 +310,7 @@ public class Sistemadebatalla : MonoBehaviour
 
             lluitadorJugador.energia = 0;
         }
-        else if (lluitadorRival.energia < 0)
+        if (lluitadorRival.energia < 0)
         {
             Debug.Log("La energia no podra ser menys de 0, es desactivaran botons quan no puguis utilitzar un moviment, de moment la posem a 0, eliminar en producte final(Jugador)");
 
@@ -350,20 +355,28 @@ public class Sistemadebatalla : MonoBehaviour
         }
         else
         {
-            accioJugador = "";
             estat = Estat.tornJugador;
-            combatUI.MostrarPanellPrincipal();
+            combatUI.MostrarResultatTorn(accioJugador, accioRival);
         }
     }
 
+    public void AcabarMostrarResultatTorn()
+    {
+        if (estat == Estat.resolucioTorn)
+        {
+            accioJugador = "";
+            estat = Estat.tornJugador;
+        }
+    }
+
+    // BOTONS
     public void EnBotoAtac()
     {
         if (estat != Estat.tornJugador)
         {
             return;
         }
-        //deshabilitar menu de atac/defensa
-        //habilitar menu d'atac
+        // UI de selecció de mode deshabilitada a CombatUIManager
     }
     public void EnBotoPatadaAlta()
     {
@@ -374,13 +387,13 @@ public class Sistemadebatalla : MonoBehaviour
         accioJugador = "patadaAlta";
         ConfirmarAccioJugador();
     }
-    public void EnBotoPatadaAlCos()
+    public void EnBotoPatadaBaixa()
     {
         if (estat != Estat.tornJugador)
         {
             return;
         }
-        accioJugador = "patadaAlCos";
+        accioJugador = "patadaBaixa";
         ConfirmarAccioJugador();
     }
     public void EnBotoEmpenta()
@@ -400,8 +413,7 @@ public class Sistemadebatalla : MonoBehaviour
         {
             return;
         }
-        //deshabilitar menu de atac/defensa
-        //habilitar menu de defensa
+        // UI de selecció de mode deshabilitada a CombatUIManager
     }
     public void EnBotoBloqueigAlt()
     {
@@ -412,13 +424,13 @@ public class Sistemadebatalla : MonoBehaviour
         accioJugador = "bloqueigAlt";
         ConfirmarAccioJugador();
     }
-    public void EnBotoBloqueigAlCos()
+    public void EnBotoBloqueigBaix()
     {
         if (estat != Estat.tornJugador)
         {
             return;
         }
-        accioJugador = "bloqueigAlCos";
+        accioJugador = "bloqueigBaix";
         ConfirmarAccioJugador();
     }
     public void EnBotoEsquivar()
@@ -431,6 +443,7 @@ public class Sistemadebatalla : MonoBehaviour
         ConfirmarAccioJugador();
     }
 
+    // MOVIMENT AL CAMP DE BATALLA
     void ActualitzarPosicions()
     {
         Transform[] posicions =
@@ -478,7 +491,7 @@ public class Sistemadebatalla : MonoBehaviour
         // StartCoroutine(EsperarAbansDeJugar());
     }
 
-    System.Collections.IEnumerator EsperarAbansDeJugar()
+    IEnumerator EsperarAbansDeJugar()
     {
         esperant = true;
 
@@ -497,7 +510,7 @@ public class Sistemadebatalla : MonoBehaviour
                     accioJugador = "patadaAlta";
                     break;
                 case 2:
-                    accioJugador = "patadaAlCos";
+                    accioJugador = "patadaBaixa";
                     break;
                 case 3:
                     accioJugador = "empenta";
@@ -506,7 +519,7 @@ public class Sistemadebatalla : MonoBehaviour
                     accioJugador = "bloqueigAlt";
                     break;
                 case 5:
-                    accioJugador = "bloqueigAlCos";
+                    accioJugador = "bloqueigBaix";
                     break;
                 case 6:
                     accioJugador = "esquivar";
