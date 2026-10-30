@@ -15,6 +15,12 @@ public class CombatUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textInfo;   // TurnInfoTMP
     [SerializeField] private string missatgePrincipal = "Què farà el jugador?";
 
+    [Header("Barra d'Estamina")]
+    [SerializeField] private Image barraEstamina;           // StaminaBar_Fill
+    [SerializeField] private TextMeshProUGUI textEstamina;  // StaminaText
+    [SerializeField] private int estaminaMaxima = 10;
+    [SerializeField] private float velocitatBarra = 1.5f;
+
     //private Coroutine seleccioPendent;
     private GameObject panellActiu;
     private Lluitador jugador;
@@ -105,16 +111,11 @@ public class CombatUIManager : MonoBehaviour
         seleccioPendent = null;
     }*/
 
+    // ESTAMINA I INFO
     public void MostrarInfoTecnica(TecnicaBoto tecnica)
     {
         textInfo.text = tecnica.GenerarText();
     }
-
-    [Header("Barra d'Estamina")]
-    [SerializeField] private Image barraEstamina;           // StaminaBar_Fill
-    [SerializeField] private TextMeshProUGUI textEstamina;  // StaminaText
-    [SerializeField] private int estaminaMaxima = 10;
-    [SerializeField] private float velocitatBarra = 1.5f;
 
     private float omplirObjectiu = 0.5f;
 
@@ -139,6 +140,28 @@ public class CombatUIManager : MonoBehaviour
         if (panellActiu != null && EventSystem.current.currentSelectedGameObject == null)
         {
             SeleccionarPrimerBoto(panellActiu);
+        }
+    }
+
+    // Final del combat
+    public void AcabarCombat(Estat resultat)
+    {
+        panellPrincipal.SetActive(false);
+        panellAtac.SetActive(false);
+        panellDefensa.SetActive(false);
+        panellActiu = null;
+
+        switch (resultat)
+        {
+            case Estat.victoria:
+                textInfo.text = "Guanya el jugador!";
+                break;
+            case Estat.derrota:
+                textInfo.text = "Has perdut! Guanya el rival!";
+                break;
+            case Estat.empat:
+                textInfo.text = "Empat!";
+                break;
         }
     }
 }
