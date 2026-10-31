@@ -27,6 +27,7 @@ public class CombatUIManager : MonoBehaviour
 
     private GameObject panellActiu;
     private Lluitador jugador;
+    public bool pausat;
 
     // INICI
     public void Inicialitzar(Lluitador j)
@@ -105,6 +106,8 @@ public class CombatUIManager : MonoBehaviour
         panellPrincipal.SetActive(nou == panellPrincipal);
         panellAtac.SetActive(nou == panellAtac);
         panellDefensa.SetActive(nou == panellDefensa);
+        panellActiu = nou;
+        
         ActualitzarBotonsDisponibles(nou);
         SeleccionarPrimerBoto(nou);
     }
@@ -118,8 +121,23 @@ public class CombatUIManager : MonoBehaviour
         }
     }
 
+    public void RestaurarSeleccio()
+    {
+        if (panellActiu == null)
+        {
+            return;
+        }
+
+        SeleccionarPrimerBoto(panellActiu);
+    }
+
     private void SeleccionarPrimerBoto(GameObject panell)
     {
+        if(pausat)
+        {
+            return;
+        }
+
         EventSystem.current.SetSelectedGameObject(null);
 
         foreach (Button b in panell.GetComponentsInChildren<Button>())
@@ -160,7 +178,7 @@ public class CombatUIManager : MonoBehaviour
         barraEstamina.fillAmount = Mathf.MoveTowards(
             barraEstamina.fillAmount, omplirObjectiu, velocitatBarra * Time.deltaTime);
 
-        if (panellActiu != null && EventSystem.current.currentSelectedGameObject == null)
+        if (!pausat && panellActiu != null && EventSystem.current.currentSelectedGameObject == null)
         {
             SeleccionarPrimerBoto(panellActiu);
         }
