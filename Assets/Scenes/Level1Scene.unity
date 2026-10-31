@@ -747,6 +747,7 @@ MonoBehaviour:
   estaminaMaxima: 10
   velocitatBarra: 1.5
   sistemaBatalla: {fileID: 1701260232}
+  pausat: 0
 --- !u!1 &386813278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,7 +2571,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 40, y: -30}
-  m_SizeDelta: {x: 700, y: 50}
+  m_SizeDelta: {x: 700, y: 130}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &678569662
 MonoBehaviour:
@@ -2619,7 +2620,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 50
   m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3579,10 +3580,10 @@ RectTransform:
   - {fileID: 88103460}
   m_Father: {fileID: 1855850631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -200}
+  m_SizeDelta: {x: 250, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187683920
 MonoBehaviour:
@@ -4170,10 +4171,10 @@ RectTransform:
   - {fileID: 941756176}
   m_Father: {fileID: 1855850631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -320}
+  m_SizeDelta: {x: 250, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464471467
 MonoBehaviour:
@@ -4699,6 +4700,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadPauseScene
   pauseMenuUI: {fileID: 2050858357}
+  pausaButton: {fileID: 1602617396}
+  pauseMenuCanvasGroup: {fileID: 1717319111}
+  primerButton: {fileID: 1762186952}
+  combatUI: {fileID: 341720631}
 --- !u!114 &1692276205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4881,6 +4886,7 @@ GameObject:
   - component: {fileID: 1717319108}
   - component: {fileID: 1717319110}
   - component: {fileID: 1717319109}
+  - component: {fileID: 1717319111}
   m_Layer: 5
   m_Name: MainCombatPanel
   m_TagString: Untagged
@@ -4948,6 +4954,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717319107}
   m_CullTransparentMesh: 1
+--- !u!225 &1717319111
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717319107}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1762186950
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,10 +5000,10 @@ RectTransform:
   - {fileID: 1849207792}
   m_Father: {fileID: 1855850631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -80}
+  m_SizeDelta: {x: 250, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1762186952
 MonoBehaviour:
@@ -5616,7 +5634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2050858358
 MonoBehaviour:
   m_ObjectHideFlags: 0
