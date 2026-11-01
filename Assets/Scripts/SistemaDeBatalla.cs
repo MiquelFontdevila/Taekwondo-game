@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empat, derrota }
 
@@ -9,6 +8,10 @@ public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empa
 
 public class SistemaDeBatalla : MonoBehaviour
 {
+    // Costos d'energia dels atacs
+    private const int COST_PATADA_ALTA = 3;
+    private const int COST_PATADA_AL_COS = 1;
+    private const int COST_EMPENTA = 2;
 
     public Estat estat;
     public int torn;
@@ -35,7 +38,6 @@ public class SistemaDeBatalla : MonoBehaviour
     public CombatUIManager combatUI;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         estat = Estat.inici;
@@ -55,10 +57,8 @@ public class SistemaDeBatalla : MonoBehaviour
         lluitadorJugador.posicio = 3;
         lluitadorRival.posicio = 4;
 
-
         lluitadorJugador.energia = 5;
         lluitadorRival.energia = 5;
-
 
         ActualitzarPosicions();
 
@@ -67,7 +67,7 @@ public class SistemaDeBatalla : MonoBehaviour
 
         combatUI.Inicialitzar(lluitadorJugador);
 
-        //Mira que el combat funciona__________________________________________________________________________________
+        //Mira que el combat funciona
         Debug.Log("=== COMENÇA EL COMBAT ===");
         Debug.Log("Jugador: " + lluitadorJugador.name);
         Debug.Log("Rival: " + lluitadorRival.name);
@@ -76,33 +76,64 @@ public class SistemaDeBatalla : MonoBehaviour
         Debug.Log("Torn preparat: " + (torn + 1));
     }
 
-    // GESTIó DELS TORNS
+    // GESTIÓ DELS TORNS
 
     void TornRival()
     {
-        int numero = Random.Range(1, 7);
-        switch (numero)
+        bool energiaSuficient = false;
+        while (energiaSuficient == false)
         {
-            case 1:
-                accioRival = "patadaAlta";
-                break;
-            case 2:
-                accioRival = "patadaBaixa";
-                break;
-            case 3:
-                accioRival = "empenta";
-                break;
-            case 4:
-                accioRival = "bloqueigAlt";
-                break;
-            case 5:
-                accioRival = "bloqueigBaix";
-                break;
-            case 6:
-                accioRival = "esquivar";
-                break;
-            default:
-                break;
+            int numero = Random.Range(1, 7);
+            switch (numero)
+            {
+                case 1:
+                    if (lluitadorRival.energia < 3)
+                    {
+                        energiaSuficient = false;
+                    }
+                    else
+                    {
+                        accioRival = "patadaAlta";
+                        energiaSuficient = true;
+                    }
+                    break;
+                case 2:
+                    if (lluitadorRival.energia < 1)
+                    {
+                        energiaSuficient = false;
+                    }
+                    else
+                    {
+                        accioRival = "patadaAlCos";
+                        energiaSuficient = true;
+                    }
+                    break;
+                case 3:
+                    if (lluitadorRival.energia < 2)
+                    {
+                        energiaSuficient = false;
+                    }
+                    else
+                    {
+                        accioRival = "empenta";
+                        energiaSuficient = true;
+                    }
+                    break;
+                case 4:
+                    accioRival = "bloqueigAlt";
+                    energiaSuficient = true;
+                    break;
+                case 5:
+                    accioRival = "bloqueigAlCos";
+                    energiaSuficient = true;
+                    break;
+                case 6:
+                    accioRival = "esquivar";
+                    energiaSuficient = true;
+                    break;
+                default:
+                    break;
+            }
         }
         estat = Estat.resolucioTorn;
         resolucioTorn();
@@ -147,9 +178,9 @@ public class SistemaDeBatalla : MonoBehaviour
                 }
                 break;
 
-            case "patadaBaixa":
+            case "patadaAlCos":
                 lluitadorJugador.DisminuirEnergia(1);
-                if (accioRival == "bloqueigBaix" || accioRival == "esquivar")
+                if (accioRival == "bloqueigAlCos" || accioRival == "esquivar")
                 {
                     //no fa res, si que una animacio
                 }
@@ -161,7 +192,7 @@ public class SistemaDeBatalla : MonoBehaviour
 
             case "empenta":
                 lluitadorJugador.DisminuirEnergia(2);
-                if (accioRival == "patadaAlta" || accioRival == "patadaBaixa")
+                if (accioRival == "patadaAlta" || accioRival == "patadaAlCos")
                 {
                     //no fa res, si que una animacio
                 }
@@ -181,9 +212,9 @@ public class SistemaDeBatalla : MonoBehaviour
                 }
                 break;
 
-            case "bloqueigBaix":
+            case "bloqueigAlCos":
                 lluitadorJugador.AugmentarEnergia(1);
-                if (accioRival == "patadaBaixa")
+                if (accioRival == "patadaAlCos")
                 {
                     lluitadorJugador.AugmentarEnergia(2);
                 }
@@ -217,9 +248,9 @@ public class SistemaDeBatalla : MonoBehaviour
                 }
                 break;
 
-            case "patadaBaixa":
+            case "patadaAlCos":
                 lluitadorRival.DisminuirEnergia(1);
-                if (accioJugador == "bloqueigBaix" || accioJugador == "esquivar")
+                if (accioJugador == "bloqueigAlCos" || accioJugador == "esquivar")
                 {
                     //no fa res, si que una animacio
                 }
@@ -231,7 +262,7 @@ public class SistemaDeBatalla : MonoBehaviour
 
             case "empenta":
                 lluitadorRival.DisminuirEnergia(2);
-                if (accioJugador == "patadaAlta" || accioJugador == "patadaBaixa")
+                if (accioJugador == "patadaAlta" || accioJugador == "patadaAlCos")
                 {
                     //no fa res, si que una animacio
                 }
@@ -251,9 +282,9 @@ public class SistemaDeBatalla : MonoBehaviour
                 }
                 break;
 
-            case "bloqueigBaix":
+            case "bloqueigAlCos":
                 lluitadorRival.AugmentarEnergia(1);
-                if (accioJugador == "patadaBaixa")
+                if (accioJugador == "patadaAlCos")
                 {
                     lluitadorRival.AugmentarEnergia(2);
                 }
@@ -312,7 +343,7 @@ public class SistemaDeBatalla : MonoBehaviour
         }
         if (lluitadorRival.energia < 0)
         {
-            Debug.Log("La energia no podra ser menys de 0, es desactivaran botons quan no puguis utilitzar un moviment, de moment la posem a 0, eliminar en producte final(Jugador)");
+            Debug.Log("La energia no podra ser menys de 0, es desactivaran botons quan no puguis utilitzar un moviment, de moment la posem a 0, eliminar en producte final(Rival)");
 
             lluitadorRival.energia = 0;
         }
@@ -357,6 +388,9 @@ public class SistemaDeBatalla : MonoBehaviour
         {
             estat = Estat.tornJugador;
             combatUI.MostrarResultatTorn(accioJugador, accioRival);
+
+            // Netejar l'acció del jugador per al proper torn (després d'avisar la UI)
+            accioJugador = "";
         }
     }
 
@@ -370,6 +404,18 @@ public class SistemaDeBatalla : MonoBehaviour
     }
 
     // BOTONS
+
+    // Comprova que el jugador tingui prou energia per fer un atac
+    private bool TeEnergiaSuficient(int cost)
+    {
+        if (lluitadorJugador.energia < cost)
+        {
+            Debug.Log("Energia insuficient");
+            return false;
+        }
+        return true;
+    }
+
     public void EnBotoAtac()
     {
         if (estat != Estat.tornJugador)
@@ -384,6 +430,10 @@ public class SistemaDeBatalla : MonoBehaviour
         {
             return;
         }
+        if (!TeEnergiaSuficient(COST_PATADA_ALTA))
+        {
+            return;
+        }
         accioJugador = "patadaAlta";
         ConfirmarAccioJugador();
     }
@@ -393,12 +443,20 @@ public class SistemaDeBatalla : MonoBehaviour
         {
             return;
         }
-        accioJugador = "patadaBaixa";
+        if (!TeEnergiaSuficient(COST_PATADA_AL_COS))
+        {
+            return;
+        }
+        accioJugador = "patadaAlCos";
         ConfirmarAccioJugador();
     }
     public void EnBotoEmpenta()
     {
         if (estat != Estat.tornJugador)
+        {
+            return;
+        }
+        if (!TeEnergiaSuficient(COST_EMPENTA))
         {
             return;
         }
@@ -430,7 +488,7 @@ public class SistemaDeBatalla : MonoBehaviour
         {
             return;
         }
-        accioJugador = "bloqueigBaix";
+        accioJugador = "bloqueigAlCos";
         ConfirmarAccioJugador();
     }
     public void EnBotoEsquivar()
@@ -473,62 +531,5 @@ public class SistemaDeBatalla : MonoBehaviour
             lluitadorRival.transform.position =
                 posicions[posRival - 1].position;
         }
-    }
-
-
-
-
-    //Prova de funcionament elimina_______________________________________________________________________
-
-    private bool esperant = false;
-    void Update()
-    {
-        if (estat != Estat.tornJugador || esperant)
-        {
-            return;
-        }
-
-        // StartCoroutine(EsperarAbansDeJugar());
-    }
-
-    IEnumerator EsperarAbansDeJugar()
-    {
-        esperant = true;
-
-        // Esperar 2 segons
-        yield return new WaitForSeconds(2f);
-
-        // Comprovar que encara és el torn del jugador
-        if (estat == Estat.tornJugador)
-        {
-            // Triar una acció aleatòria per provar el combat
-            int numero = Random.Range(1, 7);
-
-            switch (numero)
-            {
-                case 1:
-                    accioJugador = "patadaAlta";
-                    break;
-                case 2:
-                    accioJugador = "patadaBaixa";
-                    break;
-                case 3:
-                    accioJugador = "empenta";
-                    break;
-                case 4:
-                    accioJugador = "bloqueigAlt";
-                    break;
-                case 5:
-                    accioJugador = "bloqueigBaix";
-                    break;
-                case 6:
-                    accioJugador = "esquivar";
-                    break;
-            }
-
-            ConfirmarAccioJugador();
-        }
-
-        esperant = false;
     }
 }
