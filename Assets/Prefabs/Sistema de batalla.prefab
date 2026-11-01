@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5514321465010991400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7393865675152195089}
+  - component: {fileID: 5074149660998642223}
+  m_Layer: 0
+  m_Name: Sistema de batalla
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7393865675152195089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514321465010991400}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.75282, y: 1.05437, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5074149660998642223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514321465010991400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea78d1783aa074499d0c9830d812ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sistemadebatalla
+  estat: 0
+  torn: 0
+  jugadorPrefab: {fileID: 5010534916122386260, guid: 4c9fc73ba5efee84981246b69cd39a5b, type: 3}
+  rivalPrefab: {fileID: 8485488786018233726, guid: 6615fc0d09f5ac247ba3424c2b3f78dd, type: 3}
+  SpawnDelJugador: {fileID: 0}
+  SpawnDelRival: {fileID: 0}
+  Posicio1: {fileID: 0}
+  Posicio2: {fileID: 0}
+  Posicio3: {fileID: 0}
+  Posicio4: {fileID: 0}
+  Posicio5: {fileID: 0}
+  Posicio6: {fileID: 0}
+  lluitadorJugador: {fileID: 0}
+  lluitadorRival: {fileID: 0}
+  accioJugador: empenta
+  accioRival: esquivar
+  combatUI: {fileID: 0}
