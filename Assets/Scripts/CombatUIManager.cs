@@ -46,22 +46,19 @@ public class CombatUIManager : MonoBehaviour
     // FORMAT DE TEXTOS
     private void FormatMissatgePanellPrincipal()
     {
-        textInfoTorn.color = Color.white;
-        textInfoTorn.fontSizeMax = 48;
+        textInfoTorn.fontSizeMax = 44;
         textInfoTorn.alignment = TextAlignmentOptions.Left;
     }
 
     private void FormatMissatgeDestacat()
     {
-        textInfoTorn.color = Color.white;
-        textInfoTorn.fontSizeMax = 38;
+        textInfoTorn.fontSizeMax = 34;
         textInfoTorn.alignment = TextAlignmentOptions.Left;
     }
 
     private void FormatMissatgeInfoTecnica()
     {
-        textInfoTorn.color = Color.white;
-        textInfoTorn.fontSizeMax = 32;
+        textInfoTorn.fontSizeMax = 28;
         textInfoTorn.alignment = TextAlignmentOptions.TopLeft;
     }
 
