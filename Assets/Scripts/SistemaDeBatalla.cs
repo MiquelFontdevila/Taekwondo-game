@@ -38,6 +38,7 @@ public class SistemaDeBatalla : MonoBehaviour
     public CombatUIManager combatUI;
 
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         estat = Estat.inici;
@@ -67,7 +68,7 @@ public class SistemaDeBatalla : MonoBehaviour
 
         combatUI.Inicialitzar(lluitadorJugador);
 
-        //Mira que el combat funciona
+        //Mira que el combat funciona__________________________________________________________________________________
         Debug.Log("=== COMENÇA EL COMBAT ===");
         Debug.Log("Jugador: " + lluitadorJugador.name);
         Debug.Log("Rival: " + lluitadorRival.name);
