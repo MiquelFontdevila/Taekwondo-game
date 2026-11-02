@@ -17,6 +17,12 @@ public class SistemaDeBatalla : MonoBehaviour
     public int torn;
     public int tornsMaxims = 10;
 
+    public GameObject jugadorPrefab;
+    public GameObject rivalPrefab;
+
+    public Transform SpawnDelJugador;
+    public Transform SpawnDelRival;
+
     public Transform Posicio1;
     public Transform Posicio2;
     public Transform Posicio3;
@@ -24,7 +30,6 @@ public class SistemaDeBatalla : MonoBehaviour
     public Transform Posicio5;
     public Transform Posicio6;
 
-    // Arrossega aquí els lluitadors que ja estan a l'escena (des de la Hierarchy)
     public Lluitador lluitadorJugador;
     public Lluitador lluitadorRival;
 
@@ -33,21 +38,24 @@ public class SistemaDeBatalla : MonoBehaviour
 
     public CombatUIManager combatUI;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         estat = Estat.inici;
         SetupBatalla();
     }
-    void LateUpdate()
-    {
-        ActualitzarPosicions();
-    }
 
     // CONFIGURACIÓ DE LA BATALLA
 
     void SetupBatalla()
     {
+        GameObject jugadorGO = Instantiate(jugadorPrefab, SpawnDelJugador);
+        GameObject rivalGO = Instantiate(rivalPrefab, SpawnDelRival);
+
+        lluitadorJugador = jugadorGO.GetComponent<Lluitador>();
+        lluitadorRival = rivalGO.GetComponent<Lluitador>();
+
         lluitadorJugador.posicio = 3;
         lluitadorRival.posicio = 4;
 
@@ -356,7 +364,38 @@ public class SistemaDeBatalla : MonoBehaviour
         estat = Estat.resolucioTorn;
         combatUI.MostrarEstamina(lluitadorJugador.energia);
         combatUI.MostrarResultatTorn(accioJugador, accioRival);
-        
+
+        /*if (torn >= 10)
+        {
+
+            Debug.Log(" ");
+            Debug.Log("========== FINAL DEL COMBAT ==========");
+            Debug.Log("Puntuació final del jugador: " + lluitadorJugador.puntuacio);
+            Debug.Log("Puntuació final del rival: " + lluitadorRival.puntuacio);
+
+            if (lluitadorJugador.puntuacio > lluitadorRival.puntuacio)
+            {
+                estat = Estat.victoria;
+            }
+            else if (lluitadorJugador.puntuacio == lluitadorRival.puntuacio)
+            {
+                estat = Estat.empat;
+            }
+            else
+            {
+                estat = Estat.derrota;
+            }
+
+            combatUI.AcabarCombat(estat);
+        }
+        else
+        {
+            estat = Estat.tornJugador;
+            combatUI.MostrarResultatTorn(accioJugador, accioRival);
+
+            // Netejar l'acció del jugador per al proper torn (després d'avisar la UI)
+            accioJugador = "";
+        }*/
     }
 
     public void AcabarMostrarResultatTorn()
