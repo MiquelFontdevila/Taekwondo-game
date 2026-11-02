@@ -25,6 +25,11 @@ public class CombatUIManager : MonoBehaviour
     [Header("Resultat del Torn")]
     [SerializeField] private SistemaDeBatalla sistemaBatalla;
 
+    [Header("Marcador")]
+    [SerializeField] private TextMeshProUGUI textMarcadorPunts;
+    [SerializeField] private TextMeshProUGUI textMarcadorTorn;
+    [SerializeField] private int tornsTotals = 10;
+
     private GameObject panellActiu;
     private Lluitador jugador;
     public bool pausat;
@@ -34,6 +39,7 @@ public class CombatUIManager : MonoBehaviour
     {
         jugador = j;
         MostrarEstamina(jugador.energia, true);
+        ActualitzarMarcador();
         MostrarPanellPrincipal();
     }
 
@@ -52,13 +58,13 @@ public class CombatUIManager : MonoBehaviour
 
     private void FormatMissatgeDestacat()
     {
-        textInfoTorn.fontSizeMax = 34;
+        textInfoTorn.fontSizeMax = 30;
         textInfoTorn.alignment = TextAlignmentOptions.Left;
     }
 
     private void FormatMissatgeInfoTecnica()
     {
-        textInfoTorn.fontSizeMax = 28;
+        textInfoTorn.fontSizeMax = 26;
         textInfoTorn.alignment = TextAlignmentOptions.TopLeft;
     }
 
@@ -177,10 +183,22 @@ public class CombatUIManager : MonoBehaviour
         // Mou la barra suaument cap al valor objectiu
         barraEstamina.fillAmount = Mathf.MoveTowards(
             barraEstamina.fillAmount, omplirObjectiu, velocitatBarra * Time.deltaTime);
+    }
 
-        if (!pausat && panellActiu != null && EventSystem.current.currentSelectedGameObject == null)
+    // MARCADOR
+    public void ActualitzarMarcador()
+    {
+        int puntsJug = sistemaBatalla.lluitadorJugador.puntuacio;
+        int puntsRiv = sistemaBatalla.lluitadorRival.puntuacio;
+
+        textMarcadorPunts.text = puntsJug.ToString("00") + " - " + puntsRiv.ToString("00");
+
+        int tornActual = Mathf.Min(sistemaBatalla.torn + 1, tornsTotals);
+        textMarcadorTorn.text = tornActual.ToString("00") + "/" + tornsTotals.ToString("00");
+
+        if (tornsTotals == 11)
         {
-            SeleccionarPrimerBoto(panellActiu);
+            return;
         }
     }
 
@@ -191,13 +209,13 @@ public class CombatUIManager : MonoBehaviour
         {
             case "patadaAlta":
                 return "Patada Alta";
-            case "patadaBaixa":
+            case "patadaAlCos":
                 return "Patada Baixa";
             case "empenta":
                 return "Empenta";
             case "bloqueigAlt":
                 return "Bloqueig Alt";
-            case "bloqueigBaix":
+            case "bloqueigAlCos":
                 return "Bloqueig Baix";
             case "esquivar":
                 return "Esquivar";
@@ -209,6 +227,7 @@ public class CombatUIManager : MonoBehaviour
     public void MostrarResultatTorn(string accioJugador, string accioRival)
     {
         StartCoroutine(SequenciaResultat(accioJugador, accioRival));
+        sistemaBatalla.AcabarMostrarResultatTorn();
     }
 
     private IEnumerator SequenciaResultat(string accioJug, string accioRiv)
@@ -225,16 +244,22 @@ public class CombatUIManager : MonoBehaviour
 
         yield return EscriureTextTypewriter(missatgeTornRealitzat);
 
+        ActualitzarMarcador();
+
         yield return new WaitForSeconds(2f);
 
         barraEstaminaGroup.SetActive(true);
+        if (sistemaBatalla.estat == Estat.tornJugador)
+        {
         MostrarPanellPrincipal();
+        }
         sistemaBatalla.AcabarMostrarResultatTorn();
     }
 
     // FINAL DEL COMBAT
     public void AcabarCombat(Estat resultat)
     {
+        ActualitzarMarcador();
         panellPrincipal.SetActive(false);
         panellAtac.SetActive(false);
         panellDefensa.SetActive(false);

@@ -15,6 +15,7 @@ public class SistemaDeBatalla : MonoBehaviour
 
     public Estat estat;
     public int torn;
+    public int tornsMaxims = 10;
 
     public GameObject jugadorPrefab;
     public GameObject rivalPrefab;
@@ -360,9 +361,11 @@ public class SistemaDeBatalla : MonoBehaviour
 
         torn++;
 
+        estat = Estat.resolucioTorn;
         combatUI.MostrarEstamina(lluitadorJugador.energia);
+        combatUI.MostrarResultatTorn(accioJugador, accioRival);
 
-        if (torn >= 10)
+        /*if (torn >= 10)
         {
 
             Debug.Log(" ");
@@ -392,12 +395,34 @@ public class SistemaDeBatalla : MonoBehaviour
 
             // Netejar l'acció del jugador per al proper torn (després d'avisar la UI)
             accioJugador = "";
-        }
+        }*/
     }
 
     public void AcabarMostrarResultatTorn()
     {
-        if (estat == Estat.resolucioTorn)
+        if (estat != Estat.resolucioTorn)
+        {
+            return;
+        }
+
+        if (torn >= tornsMaxims)
+        {
+            if (lluitadorJugador.puntuacio > lluitadorRival.puntuacio)
+            {
+                estat = Estat.victoria;
+            }
+            else if (lluitadorJugador.puntuacio == lluitadorRival.puntuacio)
+            {
+                estat = Estat.empat;
+            }
+            else
+            {
+                estat = Estat.derrota;
+            }
+
+            combatUI.AcabarCombat(estat);
+        }
+        else
         {
             accioJugador = "";
             estat = Estat.tornJugador;
