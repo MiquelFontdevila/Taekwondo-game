@@ -6496,9 +6496,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4387006915200102613, guid: 761a65c7daa03d4408b5f5b183f361c8, type: 3}
     - target: {fileID: 5074149660998642223, guid: ca1c7964a58b70c46bbbade33d845999, type: 3}
+      propertyPath: lluitadorRival
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074149660998642223, guid: ca1c7964a58b70c46bbbade33d845999, type: 3}
       propertyPath: SpawnDelJugador
       value: 
       objectReference: {fileID: 1610536423}
+    - target: {fileID: 5074149660998642223, guid: ca1c7964a58b70c46bbbade33d845999, type: 3}
+      propertyPath: lluitadorJugador
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5514321465010991400, guid: ca1c7964a58b70c46bbbade33d845999, type: 3}
       propertyPath: m_Name
       value: Sistema de batalla
