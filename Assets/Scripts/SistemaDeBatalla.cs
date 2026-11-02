@@ -2,10 +2,6 @@ using UnityEngine;
 
 public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empat, derrota }
 
-//codi basat en // https://www.youtube.com/watch?v=_1pz_ohupPs
-
-//en la batalla, posar 6 "punts de spawn" per la posicio, en canviar la posicio puc spawnear el jugador i el rival en aquella posicio
-
 public class SistemaDeBatalla : MonoBehaviour
 {
     // Costos d'energia dels atacs
