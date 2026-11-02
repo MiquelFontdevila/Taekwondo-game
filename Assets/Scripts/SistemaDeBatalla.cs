@@ -16,12 +16,6 @@ public class SistemaDeBatalla : MonoBehaviour
     public Estat estat;
     public int torn;
 
-    public GameObject jugadorPrefab;
-    public GameObject rivalPrefab;
-
-    public Transform SpawnDelJugador;
-    public Transform SpawnDelRival;
-
     public Transform Posicio1;
     public Transform Posicio2;
     public Transform Posicio3;
@@ -29,6 +23,7 @@ public class SistemaDeBatalla : MonoBehaviour
     public Transform Posicio5;
     public Transform Posicio6;
 
+    // Arrossega aquí els lluitadors que ja estan a l'escena (des de la Hierarchy)
     public Lluitador lluitadorJugador;
     public Lluitador lluitadorRival;
 
@@ -45,17 +40,15 @@ public class SistemaDeBatalla : MonoBehaviour
         estat = Estat.inici;
         SetupBatalla();
     }
+    void LateUpdate()
+    {
+        ActualitzarPosicions();
+    }
 
     // CONFIGURACIÓ DE LA BATALLA
 
     void SetupBatalla()
     {
-        GameObject jugadorGO = Instantiate(jugadorPrefab, SpawnDelJugador);
-        GameObject rivalGO = Instantiate(rivalPrefab, SpawnDelRival);
-
-        lluitadorJugador = jugadorGO.GetComponent<Lluitador>();
-        lluitadorRival = rivalGO.GetComponent<Lluitador>();
-
         lluitadorJugador.posicio = 3;
         lluitadorRival.posicio = 4;
 
