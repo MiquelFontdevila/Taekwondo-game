@@ -43,12 +43,6 @@ public class CombatUIManager : MonoBehaviour
         MostrarPanellPrincipal();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        MostrarPanellPrincipal();
-    }
-
     // FORMAT DE TEXTOS
     private void FormatMissatgePanellPrincipal()
     {
@@ -227,7 +221,6 @@ public class CombatUIManager : MonoBehaviour
     public void MostrarResultatTorn(string accioJugador, string accioRival)
     {
         StartCoroutine(SequenciaResultat(accioJugador, accioRival));
-        sistemaBatalla.AcabarMostrarResultatTorn();
     }
 
     private IEnumerator SequenciaResultat(string accioJug, string accioRiv)
@@ -248,12 +241,13 @@ public class CombatUIManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        barraEstaminaGroup.SetActive(true);
+        sistemaBatalla.AcabarMostrarResultatTorn();
+
         if (sistemaBatalla.estat == Estat.tornJugador)
         {
-        MostrarPanellPrincipal();
+            barraEstaminaGroup.SetActive(true);
+            MostrarPanellPrincipal();
         }
-        sistemaBatalla.AcabarMostrarResultatTorn();
     }
 
     // FINAL DEL COMBAT
