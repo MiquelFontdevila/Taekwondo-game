@@ -115,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buttons_Pausa_Tornar_0
+      name: Button_Pausa
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 1011
-        height: 670
+        x: 263
+        y: 122
+        width: 762
+        height: 400
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,13 +137,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buttons_Pausa_Tornar_2
+      name: Button_Sortir
       rect:
         serializedVersion: 2
         x: 1154
-        y: 34
-        width: 852
-        height: 663
+        y: 108
+        width: 778
+        height: 418
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,9 +172,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Buttons_Pausa_Tornar_0: -5305987009199132426
+      Button_Pausa: -5305987009199132426
+      Button_Sortir: -4241254314025998828
       Buttons_Pausa_Tornar_1: -7623448571831261232
-      Buttons_Pausa_Tornar_2: -4241254314025998828
       Buttons_Pausa_Tornar_3: 3154265755520302318
       Buttons_Pausa_Tornar_4: 8262024808501537576
       Buttons_Pausa_Tornar_5: 4066686035935680539
