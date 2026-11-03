@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Taekwondo game.slnx"
+    "dotnet.defaultSolution": "Taekwondo-game.slnx"
 }
