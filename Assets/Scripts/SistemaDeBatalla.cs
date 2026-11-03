@@ -30,9 +30,11 @@ public class SistemaDeBatalla : MonoBehaviour
     
     public int tornsMaxims = 10;
 
+    private AudioManager audioManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         estat = Estat.inici;
         SetupBatalla();
     }
@@ -153,7 +155,12 @@ public class SistemaDeBatalla : MonoBehaviour
         Debug.Log("Acció del jugador: " + accioJugador);
         Debug.Log("Acció del rival: " + accioRival);
 
-
+        // --- SONS ---
+        ReproduirSonsAccio(accioJugador);
+        ReproduirSonsAccio(accioRival);
+        ReproduirSonsResultatPatada(accioJugador, accioRival);
+        ReproduirSonsResultatPatada(accioRival, accioJugador);
+        
         switch (accioJugador)
         {
             //Atac
@@ -391,6 +398,67 @@ public class SistemaDeBatalla : MonoBehaviour
         {
             accioJugador = "";
             estat = Estat.tornJugador;
+        }
+    }
+    
+    // SONS
+
+    // So de cada acció (només depèn de l'acció feta)
+    void ReproduirSonsAccio(string accio)
+    {
+        if (audioManager == null) return;
+
+        switch (accio)
+        {
+            case "patadaAlta":
+                audioManager.PlaySFX(audioManager.Veus_Cops_Alts);
+                audioManager.PlaySFX(audioManager.Atac_1);
+                break;
+
+            case "patadaAlCos":
+            case "empenta":
+                audioManager.PlaySFX(audioManager.Veus_Cops_Baixos);
+                audioManager.PlaySFX(audioManager.Atac_2);
+                break;
+
+            case "bloqueigAlt":
+            case "bloqueigAlCos":
+                audioManager.PlaySFX(audioManager.Veus_Bloqueig);
+                break;
+
+            case "esquivar":
+                audioManager.PlaySFX(audioManager.Esquiva);
+                break;
+        }
+    }
+
+    // So del resultat d'una patada: bloquejada/esquivada o punt (amb 1 segon de retard)
+    void ReproduirSonsResultatPatada(string atacant, string defensor)
+    {
+        if (audioManager == null) return;
+
+        bool esPatadaAlta = (atacant == "patadaAlta");
+        bool esPatadaAlCos = (atacant == "patadaAlCos");
+
+        // Només les patades fan aquests sons (l'empenta no)
+        if (!esPatadaAlta && !esPatadaAlCos) return;
+
+        bool bloquejadaOEsquivada =
+            (esPatadaAlta && defensor == "bloqueigAlt") ||
+            (esPatadaAlCos && defensor == "bloqueigAlCos") ||
+            defensor == "esquivar";
+
+        if (bloquejadaOEsquivada)
+        {
+            audioManager.PlaySFX(audioManager.Bloqueig);
+        }
+        else if (esPatadaAlta)
+        {
+            audioManager.PlaySFXDelayed(audioManager.Veus_Rebuts_Alts, 1f);
+        }
+        else
+        {
+            audioManager.PlaySFXDelayed(audioManager.Veus_Rebuts_Baixos, 1f);
         }
     }
 
