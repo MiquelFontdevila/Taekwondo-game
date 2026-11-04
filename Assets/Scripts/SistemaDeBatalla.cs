@@ -34,10 +34,15 @@ public class SistemaDeBatalla : MonoBehaviour
     private Animator animatorJugador;
     private Animator animatorRival;
 
-    // Temps que dura l'animació de l'acció (estats 1-6) abans de passar a l'estat 7 o a l'estat 0
-    public float duradaAnimacio = 1.5f;
-    // Temps que dura l'animació d'haver rebut un cop (estat 7)
-    public float duradaRebreCop = 1.0f;
+    // Temps que dura l'animació d'una acció (estats 1-6) abans de passar al següent estat
+    public float duradaAccio = 0.5f;
+
+    // Temps que dura l'animació de cop rebut (estat 7) abans de tornar a l'estat 0
+    public float duradaCop = 0.5f;
+
+    // Temps màxim d'espera per animació (seguretat): normalment l'script detecta quan acaba l'animació,
+    // però si alguna no acaba mai (per exemple, una transició mal posada) no es queda bloquejat
+    public float duradaAnimacio = 3f;
     private Coroutine resetAnimacio;
 
     private AudioManager audioManager;
@@ -185,8 +190,21 @@ public class SistemaDeBatalla : MonoBehaviour
             StopCoroutine(resetAnimacio);
             resetAnimacio = null;
         }
-        PosarEstatAnimator(animatorJugador, EstatAnimacio(accioJugador));
-        PosarEstatAnimator(animatorRival, EstatAnimacio(accioRival));
+        // Si l'altre esquiva, la patada (alta o al cos) no es fa: es queda a l'estat 0
+        int estatAnimJugador = EstatAnimacio(accioJugador);
+        int estatAnimRival = EstatAnimacio(accioRival);
+
+        if (accioRival == "esquivar" && (accioJugador == "patadaAlta" || accioJugador == "patadaAlCos"))
+        {
+            estatAnimJugador = 0;
+        }
+        if (accioJugador == "esquivar" && (accioRival == "patadaAlta" || accioRival == "patadaAlCos"))
+        {
+            estatAnimRival = 0;
+        }
+
+        PosarEstatAnimator(animatorJugador, estatAnimJugador);
+        PosarEstatAnimator(animatorRival, estatAnimRival);
 
         // Qui ha rebut una patada que no ha bloquejat ni esquivat (estat 7 després de l'animació de l'acció)
         bool jugadorRebCop = PatadaImpacta(accioRival, accioJugador);
@@ -438,7 +456,7 @@ public class SistemaDeBatalla : MonoBehaviour
             // Netejar l'acció del jugador per al proper torn (després d'avisar la UI)
             accioJugador = "";
 
-            // Inici del següent torn: quan acaba l'animació, es posa l'estat 7 a qui ha rebut cop
+            // Inici del següent torn: passats duradaAccio segons es posa l'estat 7 a qui ha rebut cop
             // i després els estats tornen a 0
             resetAnimacio = StartCoroutine(TornarAIdle(jugadorRebCop, rivalRebCop));
         }
@@ -490,23 +508,47 @@ public class SistemaDeBatalla : MonoBehaviour
         animator.SetInteger("estat", valor);
     }
 
-    // Espera que acabi l'animació de l'acció (1-6), posa l'estat 7 a qui ha rebut cop
-    // i finalment torna els dos lluitadors a l'estat 0 (inici de torn)
+    // Espera duradaAccio segons (animació de l'acció, estats 1-6), posa l'estat 7 a qui ha rebut cop,
+    // espera que acabi aquesta animació i finalment torna els dos lluitadors a l'estat 0
     System.Collections.IEnumerator TornarAIdle(bool jugadorRebCop, bool rivalRebCop)
     {
-        yield return new WaitForSeconds(duradaAnimacio);
+        // 1) Animació de l'acció (estats 1-6): dura un temps fix
+        yield return new WaitForSeconds(duradaAccio);
 
+        // 2) Animació de cop rebut (estat 7), només per a qui ha rebut la patada
         if (jugadorRebCop) PosarEstatAnimator(animatorJugador, 7);
         if (rivalRebCop) PosarEstatAnimator(animatorRival, 7);
 
-        if (jugadorRebCop || rivalRebCop)
-        {
-            yield return new WaitForSeconds(duradaRebreCop);
-        }
+        // L'estat 7 dura duradaCop segons abans de tornar a l'estat 0
+        if (jugadorRebCop || rivalRebCop) yield return new WaitForSeconds(duradaCop);
 
+        // 3) Tornem a l'estat 0 (idle)
         PosarEstatAnimator(animatorJugador, 0);
         PosarEstatAnimator(animatorRival, 0);
         resetAnimacio = null;
+    }
+
+    // Espera que l'animació que s'està reproduint acabi una vegada (normalizedTime >= 1)
+    System.Collections.IEnumerator EsperarFiAnimacio(Animator animator)
+    {
+        if (animator == null) yield break;
+
+        // Esperem un frame perquè l'Animator processi el canvi d'estat
+        yield return null;
+        float temps = Time.deltaTime;
+
+        while (temps < duradaAnimacio)
+        {
+            // Mentre hi ha transició entre animacions, seguim esperant
+            if (!animator.IsInTransition(0) &&
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            {
+                yield break;
+            }
+
+            temps += Time.deltaTime;
+            yield return null;
+        }
     }
 
     // SONS
