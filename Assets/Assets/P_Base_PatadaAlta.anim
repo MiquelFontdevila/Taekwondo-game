@@ -47,17 +47,26 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.41666666
         value: {x: 0, y: 0, z: -148.42}
-        inSlope: {x: 0, y: 0, z: 57.18408}
-        outSlope: {x: 0, y: 0, z: 57.18408}
+        inSlope: {x: 0, y: 0, z: 57.184074}
+        outSlope: {x: 0, y: 0, z: 57.184074}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.53333336
-        value: {x: 0, y: 0, z: -47.681}
+        value: {x: 0, y: 0, z: -33.417}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 0.6666667
+        value: {x: 0, y: 0, z: -53.913}
+        inSlope: {x: 0, y: 0, z: -213.87129}
+        outSlope: {x: 0, y: 0, z: -213.87129}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -1982,6 +1991,15 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
+        time: 0.6666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 0.9166667
         value: 0
         inSlope: 0
@@ -2066,6 +2084,15 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
+        time: 0.6666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 0.9166667
         value: 0
         inSlope: 0
@@ -2134,17 +2161,26 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.41666666
         value: -148.42
-        inSlope: 57.18408
-        outSlope: 57.18408
+        inSlope: 57.184074
+        outSlope: 57.184074
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.53333336
-        value: -47.681
+        value: -33.417
         inSlope: 0
         outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.6666667
+        value: -53.913
+        inSlope: -213.87129
+        outSlope: -213.87129
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -4380,7 +4416,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Base/PiernaSupIzq
+    path: Base/Cuerpo/brazoIzq/AntebrazoIzq
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4392,7 +4428,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Base/PiernaSupIzq
+    path: Base/Cuerpo/brazoIzq/AntebrazoIzq
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4404,7 +4440,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Base/PiernaSupIzq
+    path: Base/Cuerpo/brazoIzq/AntebrazoIzq
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4776,7 +4812,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Base/Cuerpo/brazoIzq/AntebrazoIzq
+    path: Base/PiernaSupIzq
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4788,7 +4824,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Base/Cuerpo/brazoIzq/AntebrazoIzq
+    path: Base/PiernaSupIzq
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -4800,7 +4836,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Base/Cuerpo/brazoIzq/AntebrazoIzq
+    path: Base/PiernaSupIzq
     classID: 4
     script: {fileID: 0}
     flags: 0
