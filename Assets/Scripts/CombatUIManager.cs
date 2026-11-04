@@ -21,7 +21,7 @@ public class CombatUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textEstamina;  // EstaminaText
     [SerializeField] private int estaminaMaxima = 10;
     [SerializeField] private float velocitatBarra = 1.5f;
-    
+
     [Header("Resultat del Torn")]
     [SerializeField] private SistemaDeBatalla sistemaBatalla;
 
@@ -107,7 +107,7 @@ public class CombatUIManager : MonoBehaviour
         panellAtac.SetActive(nou == panellAtac);
         panellDefensa.SetActive(nou == panellDefensa);
         panellActiu = nou;
-        
+
         ActualitzarBotonsDisponibles(nou);
         SeleccionarPrimerBoto(nou);
     }
@@ -168,7 +168,7 @@ public class CombatUIManager : MonoBehaviour
         {
             barraEstamina.fillAmount = omplirObjectiu;
         }
-        
+
         textEstamina.text = estaminaActual + " / " + estaminaMaxima;
     }
 
@@ -177,6 +177,12 @@ public class CombatUIManager : MonoBehaviour
         // Mou la barra suaument cap al valor objectiu
         barraEstamina.fillAmount = Mathf.MoveTowards(
             barraEstamina.fillAmount, omplirObjectiu, velocitatBarra * Time.deltaTime);
+
+        // Si es perd la selecció (clic fora d'un botó), la recuperem
+        if (!pausat && panellActiu != null && EventSystem.current.currentSelectedGameObject == null)
+        {
+            SeleccionarPrimerBoto(panellActiu);
+        }
     }
 
     // MARCADOR
@@ -189,11 +195,6 @@ public class CombatUIManager : MonoBehaviour
 
         int tornActual = Mathf.Min(sistemaBatalla.torn + 1, tornsTotals);
         textMarcadorTorn.text = tornActual.ToString("00") + "/" + tornsTotals.ToString("00");
-
-        if (tornsTotals == 11)
-        {
-            return;
-        }
     }
 
     // TORN
@@ -232,7 +233,7 @@ public class CombatUIManager : MonoBehaviour
         barraEstaminaGroup.SetActive(false);
 
         FormatMissatgeDestacat();
-        string missatgeTornRealitzat = "El jugador ha realitzat <b>" + NomAccio(accioJug) + "</b>!" + 
+        string missatgeTornRealitzat = "El jugador ha realitzat <b>" + NomAccio(accioJug) + "</b>!" +
                                         "\n\nEl rival ha realitzat <b>" + NomAccio(accioRiv) + "</b>!";
 
         yield return EscriureTextTypewriter(missatgeTornRealitzat);
@@ -241,6 +242,7 @@ public class CombatUIManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        // Primer es decideix l'estat (següent torn o final) i després la UI reacciona
         sistemaBatalla.AcabarMostrarResultatTorn();
 
         if (sistemaBatalla.estat == Estat.tornJugador)

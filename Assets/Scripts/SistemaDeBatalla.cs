@@ -33,12 +33,32 @@ public class SistemaDeBatalla : MonoBehaviour
 
     public CombatUIManager combatUI;
 
+    // Animators dels lluitadors
+    private Animator animatorJugador;
+    private Animator animatorRival;
+
+    // Temps que dura l'animació abans de tornar a l'estat 0 (inici del següent torn)
+    public float duradaAnimacio = 1.5f;
+    private Coroutine resetAnimacio;
+
+    private AudioManager audioManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject audioGO = GameObject.FindGameObjectWithTag("Audio");
+        if (audioGO != null)
+        {
+            audioManager = audioGO.GetComponent<AudioManager>();
+        }
+
+        animatorJugador = lluitadorJugador.GetComponentInChildren<Animator>();
+        animatorRival = lluitadorRival.GetComponentInChildren<Animator>();
+
         estat = Estat.inici;
         SetupBatalla();
     }
+
     void LateUpdate()
     {
         ActualitzarPosicions();
@@ -58,6 +78,10 @@ public class SistemaDeBatalla : MonoBehaviour
 
         torn = 0;
         estat = Estat.tornJugador;
+
+        // Inici de torn: animacions a l'estat 0
+        PosarEstatAnimator(animatorJugador, 0);
+        PosarEstatAnimator(animatorRival, 0);
 
         combatUI.Inicialitzar(lluitadorJugador);
 
@@ -156,6 +180,20 @@ public class SistemaDeBatalla : MonoBehaviour
         Debug.Log("Acció del jugador: " + accioJugador);
         Debug.Log("Acció del rival: " + accioRival);
 
+        // --- SONS ---
+        ReproduirSonsAccio(accioJugador);
+        ReproduirSonsAccio(accioRival);
+        ReproduirSonsResultatPatada(accioJugador, accioRival);
+        ReproduirSonsResultatPatada(accioRival, accioJugador);
+
+        // --- ANIMACIONS ---
+        if (resetAnimacio != null)
+        {
+            StopCoroutine(resetAnimacio);
+            resetAnimacio = null;
+        }
+        PosarEstatAnimator(animatorJugador, EstatAnimacio(accioJugador));
+        PosarEstatAnimator(animatorRival, EstatAnimacio(accioRival));
 
         switch (accioJugador)
         {
@@ -353,12 +391,17 @@ public class SistemaDeBatalla : MonoBehaviour
 
         torn++;
 
+        // Sempre es mostra el resultat del torn (també l'últim).
+        // El final del combat es decideix a AcabarMostrarResultatTorn().
         estat = Estat.resolucioTorn;
         combatUI.MostrarEstamina(lluitadorJugador.energia);
         combatUI.MostrarResultatTorn(accioJugador, accioRival);
-        
+
+        // Quan acaba l'animació, els dos lluitadors tornen a l'estat 0
+        resetAnimacio = StartCoroutine(TornarAIdle());
     }
 
+    // El crida CombatUIManager quan acaba de mostrar el missatge del torn
     public void AcabarMostrarResultatTorn()
     {
         if (estat != Estat.resolucioTorn)
@@ -368,6 +411,11 @@ public class SistemaDeBatalla : MonoBehaviour
 
         if (torn >= tornsMaxims)
         {
+            Debug.Log(" ");
+            Debug.Log("========== FINAL DEL COMBAT ==========");
+            Debug.Log("Puntuació final del jugador: " + lluitadorJugador.puntuacio);
+            Debug.Log("Puntuació final del rival: " + lluitadorRival.puntuacio);
+
             if (lluitadorJugador.puntuacio > lluitadorRival.puntuacio)
             {
                 estat = Estat.victoria;
@@ -381,12 +429,129 @@ public class SistemaDeBatalla : MonoBehaviour
                 estat = Estat.derrota;
             }
 
+            // Evita que el reset a idle trepitgi les animacions finals
+            if (resetAnimacio != null)
+            {
+                StopCoroutine(resetAnimacio);
+                resetAnimacio = null;
+            }
+
+            // Animacions finals (7 = victòria, 8 = derrota/empat)
+            switch (estat)
+            {
+                case Estat.victoria:
+                    PosarEstatAnimator(animatorJugador, 7);
+                    PosarEstatAnimator(animatorRival, 8);
+                    break;
+                case Estat.derrota:
+                    PosarEstatAnimator(animatorJugador, 8);
+                    PosarEstatAnimator(animatorRival, 7);
+                    break;
+                case Estat.empat:
+                    PosarEstatAnimator(animatorJugador, 8);
+                    PosarEstatAnimator(animatorRival, 8);
+                    break;
+            }
+
             combatUI.AcabarCombat(estat);
         }
         else
         {
             accioJugador = "";
             estat = Estat.tornJugador;
+        }
+    }
+
+    // ANIMACIONS
+
+    // Valor de l'int "estat" de l'Animator per a cada acció
+    int EstatAnimacio(string accio)
+    {
+        switch (accio)
+        {
+            case "patadaAlta":    return 1;
+            case "patadaAlCos":   return 2;
+            case "esquivar":      return 3;
+            case "bloqueigAlt":   return 4;
+            case "bloqueigAlCos": return 5;
+            case "empenta":       return 6;
+            default:              return 0;
+        }
+    }
+
+    void PosarEstatAnimator(Animator animator, int valor)
+    {
+        if (animator == null) return;
+        animator.SetInteger("estat", valor);
+    }
+
+    // Espera que acabi l'animació i posa els dos lluitadors a l'estat 0 (inici de torn)
+    System.Collections.IEnumerator TornarAIdle()
+    {
+        yield return new WaitForSeconds(duradaAnimacio);
+        PosarEstatAnimator(animatorJugador, 0);
+        PosarEstatAnimator(animatorRival, 0);
+        resetAnimacio = null;
+    }
+
+    // SONS
+
+    // So de cada acció (només depèn de l'acció feta)
+    void ReproduirSonsAccio(string accio)
+    {
+        if (audioManager == null) return;
+
+        switch (accio)
+        {
+            case "patadaAlta":
+                audioManager.PlaySFX(audioManager.Veus_Cops_Alts);
+                audioManager.PlaySFX(audioManager.Atac_1);
+                break;
+
+            case "patadaAlCos":
+            case "empenta":
+                audioManager.PlaySFX(audioManager.Veus_Cops_Baixos);
+                audioManager.PlaySFX(audioManager.Atac_2);
+                break;
+
+            case "bloqueigAlt":
+            case "bloqueigAlCos":
+                audioManager.PlaySFX(audioManager.Veus_Bloqueig);
+                break;
+
+            case "esquivar":
+                audioManager.PlaySFX(audioManager.Esquiva);
+                break;
+        }
+    }
+
+    // So del resultat d'una patada: bloquejada/esquivada o punt (amb 1 segon de retard)
+    void ReproduirSonsResultatPatada(string atacant, string defensor)
+    {
+        if (audioManager == null) return;
+
+        bool esPatadaAlta = (atacant == "patadaAlta");
+        bool esPatadaAlCos = (atacant == "patadaAlCos");
+
+        // Només les patades fan aquests sons (l'empenta no)
+        if (!esPatadaAlta && !esPatadaAlCos) return;
+
+        bool bloquejadaOEsquivada =
+            (esPatadaAlta && defensor == "bloqueigAlt") ||
+            (esPatadaAlCos && defensor == "bloqueigAlCos") ||
+            defensor == "esquivar";
+
+        if (bloquejadaOEsquivada)
+        {
+            audioManager.PlaySFX(audioManager.Bloqueig);
+        }
+        else if (esPatadaAlta)
+        {
+            audioManager.PlaySFXDelayed(audioManager.Veus_Rebuts_Alts, 1f);
+        }
+        else
+        {
+            audioManager.PlaySFXDelayed(audioManager.Veus_Rebuts_Baixos, 1f);
         }
     }
 
