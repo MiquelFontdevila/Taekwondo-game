@@ -917,7 +917,6 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-<<<<<<< HEAD
       m_Calls:
       - m_Target: {fileID: 1013688394}
         m_TargetAssemblyTypeName: SoundOptions, Assembly-CSharp
@@ -931,9 +930,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-=======
-      m_Calls: []
->>>>>>> parent of c713775 (Revert "Merge branch 'testing-merge' into menu")
 --- !u!1 &327837433
 GameObject:
   m_ObjectHideFlags: 0
