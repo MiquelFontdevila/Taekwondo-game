@@ -27,14 +27,26 @@ public class SistemaDeBatalla : MonoBehaviour
     public string accioRival;
 
     public CombatUIManager combatUI;
-    
+
     public int tornsMaxims = 10;
+
+    // Animators dels lluitadors
+    private Animator animatorJugador;
+    private Animator animatorRival;
+
+    // Temps que dura l'animació abans de tornar a l'estat 0 (inici del següent torn)
+    public float duradaAnimacio = 1.5f;
+    private Coroutine resetAnimacio;
 
     private AudioManager audioManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+        animatorJugador = lluitadorJugador.GetComponentInChildren<Animator>();
+        animatorRival = lluitadorRival.GetComponentInChildren<Animator>();
+
         estat = Estat.inici;
         SetupBatalla();
     }
@@ -57,6 +69,10 @@ public class SistemaDeBatalla : MonoBehaviour
 
         torn = 0;
         estat = Estat.tornJugador;
+
+        // Inici de torn: animacions a l'estat 0
+        PosarEstatAnimator(animatorJugador, 0);
+        PosarEstatAnimator(animatorRival, 0);
 
         combatUI.Inicialitzar(lluitadorJugador);
 
@@ -160,7 +176,16 @@ public class SistemaDeBatalla : MonoBehaviour
         ReproduirSonsAccio(accioRival);
         ReproduirSonsResultatPatada(accioJugador, accioRival);
         ReproduirSonsResultatPatada(accioRival, accioJugador);
-        
+
+        // --- ANIMACIONS ---
+        if (resetAnimacio != null)
+        {
+            StopCoroutine(resetAnimacio);
+            resetAnimacio = null;
+        }
+        PosarEstatAnimator(animatorJugador, EstatAnimacio(accioJugador));
+        PosarEstatAnimator(animatorRival, EstatAnimacio(accioRival));
+
         switch (accioJugador)
         {
             //Atac
@@ -380,6 +405,23 @@ public class SistemaDeBatalla : MonoBehaviour
                 estat = Estat.derrota;
             }
 
+            // Animacions finals (7 = victòria, 8 = derrota/empat)
+            switch (estat)
+            {
+                case Estat.victoria:
+                    PosarEstatAnimator(animatorJugador, 7);
+                    PosarEstatAnimator(animatorRival, 8);
+                    break;
+                case Estat.derrota:
+                    PosarEstatAnimator(animatorJugador, 8);
+                    PosarEstatAnimator(animatorRival, 7);
+                    break;
+                case Estat.empat:
+                    PosarEstatAnimator(animatorJugador, 8);
+                    PosarEstatAnimator(animatorRival, 8);
+                    break;
+            }
+
             combatUI.AcabarCombat(estat);
         }
         else
@@ -389,6 +431,9 @@ public class SistemaDeBatalla : MonoBehaviour
 
             // Netejar l'acció del jugador per al proper torn (després d'avisar la UI)
             accioJugador = "";
+
+            // Inici del següent torn: quan acaba l'animació, els estats tornen a 0
+            resetAnimacio = StartCoroutine(TornarAIdle());
         }
     }
 
@@ -400,7 +445,39 @@ public class SistemaDeBatalla : MonoBehaviour
             estat = Estat.tornJugador;
         }
     }
-    
+
+    // ANIMACIONS
+
+    // Valor de l'int "estat" de l'Animator per a cada acció
+    int EstatAnimacio(string accio)
+    {
+        switch (accio)
+        {
+            case "patadaAlta":    return 1;
+            case "patadaAlCos":   return 2;
+            case "esquivar":      return 3;
+            case "bloqueigAlt":   return 4;
+            case "bloqueigAlCos": return 5;
+            case "empenta":       return 6;
+            default:              return 0;
+        }
+    }
+
+    void PosarEstatAnimator(Animator animator, int valor)
+    {
+        if (animator == null) return;
+        animator.SetInteger("estat", valor);
+    }
+
+    // Espera que acabi l'animació i posa els dos lluitadors a l'estat 0 (inici de torn)
+    System.Collections.IEnumerator TornarAIdle()
+    {
+        yield return new WaitForSeconds(duradaAnimacio);
+        PosarEstatAnimator(animatorJugador, 0);
+        PosarEstatAnimator(animatorRival, 0);
+        resetAnimacio = null;
+    }
+
     // SONS
 
     // So de cada acció (només depèn de l'acció feta)
