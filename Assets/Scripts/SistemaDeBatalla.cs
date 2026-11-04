@@ -34,8 +34,10 @@ public class SistemaDeBatalla : MonoBehaviour
     private Animator animatorJugador;
     private Animator animatorRival;
 
-    // Temps que dura l'animació abans de tornar a l'estat 0 (inici del següent torn)
+    // Temps que dura l'animació de l'acció (estats 1-6) abans de passar a l'estat 7 o a l'estat 0
     public float duradaAnimacio = 1.5f;
+    // Temps que dura l'animació d'haver rebut un cop (estat 7)
+    public float duradaRebreCop = 1.0f;
     private Coroutine resetAnimacio;
 
     private AudioManager audioManager;
@@ -185,6 +187,10 @@ public class SistemaDeBatalla : MonoBehaviour
         }
         PosarEstatAnimator(animatorJugador, EstatAnimacio(accioJugador));
         PosarEstatAnimator(animatorRival, EstatAnimacio(accioRival));
+
+        // Qui ha rebut una patada que no ha bloquejat ni esquivat (estat 7 després de l'animació de l'acció)
+        bool jugadorRebCop = PatadaImpacta(accioRival, accioJugador);
+        bool rivalRebCop = PatadaImpacta(accioJugador, accioRival);
 
         switch (accioJugador)
         {
@@ -405,20 +411,20 @@ public class SistemaDeBatalla : MonoBehaviour
                 estat = Estat.derrota;
             }
 
-            // Animacions finals (7 = victòria, 8 = derrota/empat)
+            // Animacions finals (8 = victòria, 9 = derrota/empat)
             switch (estat)
             {
                 case Estat.victoria:
-                    PosarEstatAnimator(animatorJugador, 7);
-                    PosarEstatAnimator(animatorRival, 8);
+                    PosarEstatAnimator(animatorJugador, 8);
+                    PosarEstatAnimator(animatorRival, 9);
                     break;
                 case Estat.derrota:
-                    PosarEstatAnimator(animatorJugador, 8);
-                    PosarEstatAnimator(animatorRival, 7);
+                    PosarEstatAnimator(animatorJugador, 9);
+                    PosarEstatAnimator(animatorRival, 8);
                     break;
                 case Estat.empat:
-                    PosarEstatAnimator(animatorJugador, 8);
-                    PosarEstatAnimator(animatorRival, 8);
+                    PosarEstatAnimator(animatorJugador, 9);
+                    PosarEstatAnimator(animatorRival, 9);
                     break;
             }
 
@@ -432,8 +438,9 @@ public class SistemaDeBatalla : MonoBehaviour
             // Netejar l'acció del jugador per al proper torn (després d'avisar la UI)
             accioJugador = "";
 
-            // Inici del següent torn: quan acaba l'animació, els estats tornen a 0
-            resetAnimacio = StartCoroutine(TornarAIdle());
+            // Inici del següent torn: quan acaba l'animació, es posa l'estat 7 a qui ha rebut cop
+            // i després els estats tornen a 0
+            resetAnimacio = StartCoroutine(TornarAIdle(jugadorRebCop, rivalRebCop));
         }
     }
 
@@ -449,18 +456,32 @@ public class SistemaDeBatalla : MonoBehaviour
     // ANIMACIONS
 
     // Valor de l'int "estat" de l'Animator per a cada acció
+    // 1 = patada alta, 2 = patada al cos, 3 = empenta, 4 = bloqueig alt, 5 = bloqueig al cos, 6 = esquivar
+    // 7 = cop rebut, 8 = victòria, 9 = derrota/empat
     int EstatAnimacio(string accio)
     {
         switch (accio)
         {
             case "patadaAlta":    return 1;
             case "patadaAlCos":   return 2;
-            case "esquivar":      return 3;
+            case "empenta":       return 3;
             case "bloqueigAlt":   return 4;
             case "bloqueigAlCos": return 5;
-            case "empenta":       return 6;
+            case "esquivar":      return 6;
             default:              return 0;
         }
+    }
+
+    // Retorna true si la patada de l'atacant arriba al defensor (no bloquejada ni esquivada)
+    bool PatadaImpacta(string atacant, string defensor)
+    {
+        if (atacant == "patadaAlta")
+            return defensor != "bloqueigAlt" && defensor != "esquivar";
+
+        if (atacant == "patadaAlCos")
+            return defensor != "bloqueigAlCos" && defensor != "esquivar";
+
+        return false;
     }
 
     void PosarEstatAnimator(Animator animator, int valor)
@@ -469,10 +490,20 @@ public class SistemaDeBatalla : MonoBehaviour
         animator.SetInteger("estat", valor);
     }
 
-    // Espera que acabi l'animació i posa els dos lluitadors a l'estat 0 (inici de torn)
-    System.Collections.IEnumerator TornarAIdle()
+    // Espera que acabi l'animació de l'acció (1-6), posa l'estat 7 a qui ha rebut cop
+    // i finalment torna els dos lluitadors a l'estat 0 (inici de torn)
+    System.Collections.IEnumerator TornarAIdle(bool jugadorRebCop, bool rivalRebCop)
     {
         yield return new WaitForSeconds(duradaAnimacio);
+
+        if (jugadorRebCop) PosarEstatAnimator(animatorJugador, 7);
+        if (rivalRebCop) PosarEstatAnimator(animatorRival, 7);
+
+        if (jugadorRebCop || rivalRebCop)
+        {
+            yield return new WaitForSeconds(duradaRebreCop);
+        }
+
         PosarEstatAnimator(animatorJugador, 0);
         PosarEstatAnimator(animatorRival, 0);
         resetAnimacio = null;
