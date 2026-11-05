@@ -78,16 +78,18 @@ public class AudioManager : MonoBehaviour
         PlaySFX(clip);
     }
 
-    // Pausa la música actual a l'entrar al menú de pausa
-    public void PausarMusica()
+    // ---------- Sons segons el tag del lluitador ----------
+
+    // Reprodueix a l'instant el so d'un tipus per al lluitador amb aquest tag
+    public void PlaySFX(TipusSo tipus, string etiqueta)
     {
-        musicSource.Pause();
+        PlaySFX(ObtenirClip(tipus, etiqueta));
     }
 
-    // Reprèn la música des d'on s'havia quedat
-    public void ReprendreMusica()
+    // Reprodueix amb retard el so d'un tipus per al lluitador amb aquest tag
+    public void PlaySFXDelayed(TipusSo tipus, string etiqueta, float delay)
     {
-        musicSource.UnPause();
+        PlaySFXDelayed(ObtenirClip(tipus, etiqueta), delay);
     }
     
     // ---------- Sons segons el tag del lluitador ----------
