@@ -48,6 +48,14 @@ public class SistemaDeBatalla : MonoBehaviour
     public float duradaAnimacio = 3f;
     private Coroutine resetAnimacio;
 
+    // Canvis de posició pendents: es calculen a resolucioTorn però s'apliquen quan acaba l'animació
+    private bool posicionsPendents = false;
+    private int posPendentJugador;
+    private int posPendentRival;
+
+    // Reinici a les posicions 3 i 4 pendent: s'aplica quan acaba l'animació 10 (sortir del ring)
+    private bool resetForaPendent = false;
+
     private AudioManager audioManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -193,6 +201,11 @@ public class SistemaDeBatalla : MonoBehaviour
             StopCoroutine(resetAnimacio);
             resetAnimacio = null;
         }
+
+        // Si la corrutina anterior s'ha tallat abans d'acabar, apliquem ja els canvis que li quedaven
+        AplicarPosicionsPendents();
+        AplicarResetFora();
+
         // Si l'altre esquiva, la patada (alta o al cos) no es fa: es queda a l'estat 0
         int estatAnimJugador = EstatAnimacio(accioJugador);
         int estatAnimRival = EstatAnimacio(accioRival);
@@ -216,6 +229,10 @@ public class SistemaDeBatalla : MonoBehaviour
         // Qui ha sortit del ring en aquest torn (estat 10 després de les animacions anteriors)
         bool jugadorForaRing = false;
         bool rivalForaRing = false;
+
+        // Posicions abans d'aplicar els efectes del torn (les tornarem a posar després de calcular les noves)
+        int posIniciJugador = lluitadorJugador.posicio;
+        int posIniciRival = lluitadorRival.posicio;
 
         switch (accioJugador)
         {
@@ -355,30 +372,37 @@ public class SistemaDeBatalla : MonoBehaviour
                 break;
         }
 
-        // Comprovar si algun lluitador surt de la zona de combat
-        if (lluitadorJugador.posicio < 1)
+        // Guardem les posicions noves com a pendents i tornem les posicions visibles a les d'abans:
+        // el canvi es veurà quan acabi l'animació de l'acció (empenta / esquivar)
+        posPendentJugador = lluitadorJugador.posicio;
+        posPendentRival = lluitadorRival.posicio;
+        posicionsPendents = true;
+
+        lluitadorJugador.posicio = posIniciJugador;
+        lluitadorRival.posicio = posIniciRival;
+
+        // Comprovar si algun lluitador surt de la zona de combat (amb les posicions noves)
+        if (posPendentJugador < 1)
         {
             Debug.Log("El jugador ha sortit de la zona! Punt per al rival.");
 
             lluitadorRival.AugmentarPunts(1);
 
             // El jugador ha sortit del ring: després de les animacions anteriors anirà a l'estat 10
+            // i, quan acabi, es reiniciaran les posicions
             jugadorForaRing = true;
-
-            lluitadorJugador.posicio = 3;
-            lluitadorRival.posicio = 4;
+            resetForaPendent = true;
         }
-        else if (lluitadorRival.posicio > 6)
+        else if (posPendentRival > 6)
         {
             Debug.Log("El rival ha sortit de la zona! Punt per al jugador.");
 
             lluitadorJugador.AugmentarPunts(1);
 
             // El rival ha sortit del ring: després de les animacions anteriors anirà a l'estat 10
+            // i, quan acabi, es reiniciaran les posicions
             rivalForaRing = true;
-
-            lluitadorJugador.posicio = 3;
-            lluitadorRival.posicio = 4;
+            resetForaPendent = true;
         }
 
         ActualitzarPosicions();
@@ -414,8 +438,8 @@ public class SistemaDeBatalla : MonoBehaviour
         Debug.Log("Punts rival: " + lluitadorRival.puntuacio);
         Debug.Log("Energia jugador: " + lluitadorJugador.energia);
         Debug.Log("Energia rival: " + lluitadorRival.energia);
-        Debug.Log("Posicio Jugador: " + lluitadorJugador.posicio);
-        Debug.Log("Posicio Rival: " + lluitadorRival.posicio);
+        Debug.Log("Posicio Jugador (nova): " + (resetForaPendent ? 3 : posPendentJugador));
+        Debug.Log("Posicio Rival (nova): " + (resetForaPendent ? 4 : posPendentRival));
 
         torn++;
 
@@ -423,6 +447,9 @@ public class SistemaDeBatalla : MonoBehaviour
 
         if (torn >= tornsMaxims)
         {
+            // Últim torn: no hi ha corrutina, així que apliquem els canvis de posició directament
+            AplicarPosicionsPendents();
+            AplicarResetFora();
 
             Debug.Log(" ");
             Debug.Log("========== FINAL DEL COMBAT ==========");
@@ -469,8 +496,9 @@ public class SistemaDeBatalla : MonoBehaviour
             // Netejar l'acció del jugador per al proper torn (després d'avisar la UI)
             accioJugador = "";
 
-            // Inici del següent torn: passats duradaAccio segons es posa l'estat 7 a qui ha rebut cop,
-            // després l'estat 10 a qui ha sortit del ring, i finalment els estats tornen a 0
+            // Inici del següent torn: passats duradaAccio segons s'apliquen els canvis de posició,
+            // es posa l'estat 7 a qui ha rebut cop, l'estat 10 a qui ha sortit del ring
+            // (i després es reinicien les posicions) i finalment els estats tornen a 0
             resetAnimacio = StartCoroutine(TornarAIdle(jugadorRebCop, rivalRebCop, jugadorForaRing, rivalForaRing));
         }
     }
@@ -482,6 +510,39 @@ public class SistemaDeBatalla : MonoBehaviour
             accioJugador = "";
             estat = Estat.tornJugador;
         }
+    }
+
+    // POSICIONS PENDENTS
+
+    // Aplica el canvi de posició guardat a resolucioTorn (empenta / esquivar).
+    // Una posició fora de 1-6 no es pot mostrar al camp, així que aquell lluitador es queda on era
+    void AplicarPosicionsPendents()
+    {
+        if (!posicionsPendents) return;
+
+        if (posPendentJugador >= 1 && posPendentJugador <= 6)
+        {
+            lluitadorJugador.posicio = posPendentJugador;
+        }
+        if (posPendentRival >= 1 && posPendentRival <= 6)
+        {
+            lluitadorRival.posicio = posPendentRival;
+        }
+
+        posicionsPendents = false;
+        ActualitzarPosicions();
+    }
+
+    // Reinicia les posicions a 3 i 4 si algú ha sortit del ring (després de l'animació 10)
+    void AplicarResetFora()
+    {
+        if (!resetForaPendent) return;
+
+        lluitadorJugador.posicio = 3;
+        lluitadorRival.posicio = 4;
+
+        resetForaPendent = false;
+        ActualitzarPosicions();
     }
 
     // ANIMACIONS
@@ -521,29 +582,36 @@ public class SistemaDeBatalla : MonoBehaviour
         animator.SetInteger("estat", valor);
     }
 
-    // Espera duradaAccio segons (animació de l'acció, estats 1-6), posa l'estat 7 a qui ha rebut cop,
-    // després posa l'estat 10 a qui ha sortit del ring, i finalment torna els dos lluitadors a l'estat 0
+    // Espera duradaAccio segons (animació de l'acció, estats 1-6) i aplica el canvi de posició,
+    // posa l'estat 7 a qui ha rebut cop, després l'estat 10 a qui ha sortit del ring
+    // (i reinicia les posicions) i finalment torna els dos lluitadors a l'estat 0
     System.Collections.IEnumerator TornarAIdle(bool jugadorRebCop, bool rivalRebCop,
                                                bool jugadorForaRing, bool rivalForaRing)
     {
         // 1) Animació de l'acció (estats 1-6): dura un temps fix
         yield return new WaitForSeconds(duradaAccio);
 
-        // 2) Animació de cop rebut (estat 7), només per a qui ha rebut la patada
+        // 2) Acaba l'animació de l'acció (inclou empenta i esquivar): ara es veu el canvi de posició
+        AplicarPosicionsPendents();
+
+        // 3) Animació de cop rebut (estat 7), només per a qui ha rebut la patada
         if (jugadorRebCop) PosarEstatAnimator(animatorJugador, 7);
         if (rivalRebCop) PosarEstatAnimator(animatorRival, 7);
 
         // L'estat 7 dura duradaCop segons abans de continuar
         if (jugadorRebCop || rivalRebCop) yield return new WaitForSeconds(duradaCop);
 
-        // 3) Animació de sortir del ring (estat 10), només per a qui ha sortit de la zona
+        // 4) Animació de sortir del ring (estat 10), només per a qui ha sortit de la zona
         if (jugadorForaRing) PosarEstatAnimator(animatorJugador, 10);
         if (rivalForaRing) PosarEstatAnimator(animatorRival, 10);
 
-        // L'estat 10 dura duradaFora segons abans de tornar a l'estat 0
+        // L'estat 10 dura duradaFora segons abans de continuar
         if (jugadorForaRing || rivalForaRing) yield return new WaitForSeconds(duradaFora);
 
-        // 4) Tornem a l'estat 0 (idle)
+        // 5) Acaba l'animació 10: ara es reinicien les posicions a 3 i 4
+        AplicarResetFora();
+
+        // 6) Tornem a l'estat 0 (idle)
         PosarEstatAnimator(animatorJugador, 0);
         PosarEstatAnimator(animatorRival, 0);
         resetAnimacio = null;
