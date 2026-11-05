@@ -2,10 +2,6 @@ using UnityEngine;
 
 public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empat, derrota }
 
-//codi basat en // https://www.youtube.com/watch?v=_1pz_ohupPs
-
-//en la batalla, posar 6 "punts de spawn" per la posicio, en canviar la posicio puc spawnear el jugador i el rival en aquella posicio
-
 public class SistemaDeBatalla : MonoBehaviour
 {
     // Costos d'energia dels atacs
@@ -15,7 +11,6 @@ public class SistemaDeBatalla : MonoBehaviour
 
     public Estat estat;
     public int torn;
-    public int tornsMaxims = 10;
 
     public Transform Posicio1;
     public Transform Posicio2;
@@ -32,6 +27,8 @@ public class SistemaDeBatalla : MonoBehaviour
     public string accioRival;
 
     public CombatUIManager combatUI;
+
+    public int tornsMaxims = 10;
 
     // Animators dels lluitadors
     private Animator animatorJugador;
@@ -51,11 +48,6 @@ public class SistemaDeBatalla : MonoBehaviour
     public float duradaAnimacio = 3f;
     private Coroutine resetAnimacio;
 
-    // Resultats del torn que es fan servir quan la UI acaba de mostrar el missatge.
-    private bool jugadorRebCop;
-    private bool rivalRebCop;
-    private bool jugadorForaRing;
-    private bool rivalForaRing;
     // Posicions finals del torn: es calculen a resolucioTorn però NO es mostren fins que
     // acaben totes les animacions (si algú ha sortit del ring ja són 3 i 4)
     private bool posicionsPendents = false;
@@ -63,15 +55,10 @@ public class SistemaDeBatalla : MonoBehaviour
     private int posPendentRival;
 
     private AudioManager audioManager;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject audioGO = GameObject.FindGameObjectWithTag("Audio");
-        if (audioGO != null)
-        {
-            audioManager = audioGO.GetComponent<AudioManager>();
-        }
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         animatorJugador = lluitadorJugador.GetComponentInChildren<Animator>();
         animatorRival = lluitadorRival.GetComponentInChildren<Animator>();
@@ -79,7 +66,6 @@ public class SistemaDeBatalla : MonoBehaviour
         estat = Estat.inici;
         SetupBatalla();
     }
-
     void LateUpdate()
     {
         ActualitzarPosicions();
@@ -226,8 +212,8 @@ public class SistemaDeBatalla : MonoBehaviour
         PosarEstatAnimator(animatorRival, estatAnimRival);
 
         // Qui ha rebut una patada que no ha bloquejat ni esquivat (estat 7 després de l'animació de l'acció)
-        jugadorRebCop = PatadaImpacta(accioRival, accioJugador);
-        rivalRebCop = PatadaImpacta(accioJugador, accioRival);
+        bool jugadorRebCop = PatadaImpacta(accioRival, accioJugador);
+        bool rivalRebCop = PatadaImpacta(accioJugador, accioRival);
 
         // Qui ha sortit del ring en aquest torn (estat 10 després de les animacions anteriors)
         bool jugadorForaRing = false;
@@ -445,24 +431,7 @@ public class SistemaDeBatalla : MonoBehaviour
 
         torn++;
 
-        // Sempre es mostra el resultat del torn (també l'últim).
-        // El final del combat es decideix a AcabarMostrarResultatTorn().
-        estat = Estat.resolucioTorn;
         combatUI.MostrarEstamina(lluitadorJugador.energia);
-        combatUI.MostrarResultatTorn(accioJugador, accioRival);
-
-        // Les animacions posteriors (cop rebut / sortida del ring) s'inicien
-        // quan CombatUIManager acaba de mostrar el resultat del torn.
-    }
-
-    // El crida CombatUIManager quan acaba de mostrar el missatge del torn.
-    // Només hi ha una implementació per evitar l'error de mètode duplicat.
-    public void AcabarMostrarResultatTorn()
-    {
-        if (estat != Estat.resolucioTorn)
-        {
-            return;
-        }
 
         if (torn >= tornsMaxims)
         {
@@ -487,27 +456,20 @@ public class SistemaDeBatalla : MonoBehaviour
                 estat = Estat.derrota;
             }
 
-            // Evita que una coroutine d'animació trepitgi les animacions finals.
-            if (resetAnimacio != null)
-            {
-                StopCoroutine(resetAnimacio);
-                resetAnimacio = null;
-            }
-
-            // Animacions finals (7 = victòria, 8 = derrota/empat).
+            // Animacions finals (8 = victòria, 9 = derrota/empat)
             switch (estat)
             {
                 case Estat.victoria:
-                    PosarEstatAnimator(animatorJugador, 7);
-                    PosarEstatAnimator(animatorRival, 8);
+                    PosarEstatAnimator(animatorJugador, 8);
+                    PosarEstatAnimator(animatorRival, 9);
                     break;
                 case Estat.derrota:
-                    PosarEstatAnimator(animatorJugador, 8);
-                    PosarEstatAnimator(animatorRival, 7);
+                    PosarEstatAnimator(animatorJugador, 9);
+                    PosarEstatAnimator(animatorRival, 8);
                     break;
                 case Estat.empat:
-                    PosarEstatAnimator(animatorJugador, 8);
-                    PosarEstatAnimator(animatorRival, 8);
+                    PosarEstatAnimator(animatorJugador, 9);
+                    PosarEstatAnimator(animatorRival, 9);
                     break;
             }
 
@@ -515,15 +477,10 @@ public class SistemaDeBatalla : MonoBehaviour
         }
         else
         {
-            // Inicia la seqüència de cop rebut i/o sortida del ring.
-            if (resetAnimacio != null)
-            {
-                StopCoroutine(resetAnimacio);
-            }
+            estat = Estat.tornJugador;
+            combatUI.MostrarResultatTorn(accioJugador, accioRival);
 
-            resetAnimacio = StartCoroutine(
-                TornarAIdle(jugadorRebCop, rivalRebCop, jugadorForaRing, rivalForaRing));
-
+            // Netejar l'acció del jugador per al proper torn (després d'avisar la UI)
             accioJugador = "";
 
             // Animació de l'acció, després estat 7 (cop rebut), després estat 10 (sortir del ring),
@@ -532,21 +489,13 @@ public class SistemaDeBatalla : MonoBehaviour
         }
     }
 
-    // Determina si una patada ha impactat: només la bloqueja la defensa corresponent
-    // i qualsevol esquiva evita l'impacte.
-    bool PatadaImpacta(string accioAtacant, string accioDefensor)
+    public void AcabarMostrarResultatTorn()
     {
-        if (accioAtacant == "patadaAlta")
+        if (estat == Estat.resolucioTorn)
         {
-            return accioDefensor != "bloqueigAlt" && accioDefensor != "esquivar";
+            accioJugador = "";
+            estat = Estat.tornJugador;
         }
-
-        if (accioAtacant == "patadaAlCos")
-        {
-            return accioDefensor != "bloqueigAlCos" && accioDefensor != "esquivar";
-        }
-
-        return false;
     }
 
     // POSICIONS PENDENTS
@@ -575,12 +524,24 @@ public class SistemaDeBatalla : MonoBehaviour
         {
             case "patadaAlta":    return 1;
             case "patadaAlCos":   return 2;
-            case "esquivar":      return 3;
+            case "empenta":       return 3;
             case "bloqueigAlt":   return 4;
             case "bloqueigAlCos": return 5;
-            case "empenta":       return 6;
+            case "esquivar":      return 6;
             default:              return 0;
         }
+    }
+
+    // Retorna true si la patada de l'atacant arriba al defensor (no bloquejada ni esquivada)
+    bool PatadaImpacta(string atacant, string defensor)
+    {
+        if (atacant == "patadaAlta")
+            return defensor != "bloqueigAlt" && defensor != "esquivar";
+
+        if (atacant == "patadaAlCos")
+            return defensor != "bloqueigAlCos" && defensor != "esquivar";
+
+        return false;
     }
 
     void PosarEstatAnimator(Animator animator, int valor)
