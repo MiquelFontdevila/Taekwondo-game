@@ -50,4 +50,16 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         PlaySFX(clip);
     }
+
+    // Pausa la música actual a l'entrar al menú de pausa
+    public void PausarMusica()
+    {
+        musicSource.Pause();
+    }
+
+    // Reprèn la música des d'on s'havia quedat
+    public void ReprendreMusica()
+    {
+        musicSource.UnPause();
+    }
 }

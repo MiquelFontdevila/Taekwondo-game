@@ -130,11 +130,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 7
-        width: 540
-        height: 263
+        y: 0
+        width: 747
+        height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -147,149 +147,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
-        (1)_1
-      rect:
-        serializedVersion: 2
-        x: 539
-        y: 95
-        width: 186
-        height: 103
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 578d27b0e2f23c910800000000000000
-      internalID: 1856379346213853301
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
-        (1)_2
-      rect:
-        serializedVersion: 2
-        x: 635
-        y: 97
-        width: 105
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dca82453c03f3dbe0800000000000000
-      internalID: -1453551020951827763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
-        (1)_3
-      rect:
-        serializedVersion: 2
-        x: 184
-        y: 7
-        width: 18
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cca8880bf24444c80800000000000000
-      internalID: -8339465638367425844
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
-        (1)_4
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 3
-        width: 11
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: caf0e2730301d1130800000000000000
-      internalID: 3539002681453318060
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
-        (1)_5
-      rect:
-        serializedVersion: 2
-        x: 249
-        y: 0
-        width: 22
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: be3e75f9359f01000800000000000000
-      internalID: 4777737178309611
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
-        (1)_6
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 0
-        width: 24
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ce5838cbba6c662d0800000000000000
-      internalID: -3285720437215754772
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 51fa118f436544c459dca49b8d727691
     internalID: 0
     vertices: []
     indices: 

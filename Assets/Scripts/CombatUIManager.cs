@@ -29,6 +29,7 @@ public class CombatUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textMarcadorPunts;
     [SerializeField] private TextMeshProUGUI textMarcadorTorn;
     [SerializeField] private int tornsTotals = 10;
+    [SerializeField] private GameObject marcador;
 
     private GameObject panellActiu;
     private Lluitador jugador;
@@ -283,4 +284,5 @@ public class CombatUIManager : MonoBehaviour
                 break;
         }
     }
+    
 }
