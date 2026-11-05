@@ -179,10 +179,10 @@ public class SistemaDeBatalla : MonoBehaviour
         Debug.Log("Acció del rival: " + accioRival);
 
         // --- SONS ---
-        ReproduirSonsAccio(accioJugador);
-        ReproduirSonsAccio(accioRival);
-        ReproduirSonsResultatPatada(accioJugador, accioRival);
-        ReproduirSonsResultatPatada(accioRival, accioJugador);
+        ReproduirSonsAccio(accioJugador, lluitadorJugador);
+        ReproduirSonsAccio(accioRival, lluitadorRival);
+        ReproduirSonsResultatPatada(accioJugador, lluitadorJugador, accioRival, lluitadorRival);
+        ReproduirSonsResultatPatada(accioRival, lluitadorRival, accioJugador, lluitadorJugador);
 
         // --- ANIMACIONS ---
         if (resetAnimacio != null)
@@ -553,63 +553,59 @@ public class SistemaDeBatalla : MonoBehaviour
 
     // SONS
 
-    // So de cada acció (només depèn de l'acció feta)
-    void ReproduirSonsAccio(string accio)
+    // So de cada acció: depèn de l'acció i de qui la fa (segons el seu tag)
+    void ReproduirSonsAccio(string accio, Lluitador qui)
     {
         if (audioManager == null) return;
+
+        string tag = qui.gameObject.tag;
 
         switch (accio)
         {
             case "patadaAlta":
-                audioManager.PlaySFX(audioManager.Veus_Cops_Alts);
-                audioManager.PlaySFX(audioManager.Atac_1);
+                audioManager.PlaySFX(TipusSo.AtacAlt, tag);
                 break;
 
             case "patadaAlCos":
+                audioManager.PlaySFX(TipusSo.AtacCos, tag);
+                break;
+
             case "empenta":
-                audioManager.PlaySFX(audioManager.Veus_Cops_Baixos);
-                audioManager.PlaySFX(audioManager.Atac_2);
+                audioManager.PlaySFX(TipusSo.VeuEmpenta, tag);
                 break;
 
             case "bloqueigAlt":
             case "bloqueigAlCos":
-                audioManager.PlaySFX(audioManager.Veus_Bloqueig);
+                audioManager.PlaySFX(TipusSo.Bloqueig, tag);
                 break;
 
             case "esquivar":
-                audioManager.PlaySFX(audioManager.Esquiva);
+                audioManager.PlaySFX(TipusSo.Esquiva, tag);
                 break;
         }
     }
 
-    // So del resultat d'una patada: bloquejada/esquivada o punt (amb 1 segon de retard)
-    void ReproduirSonsResultatPatada(string atacant, string defensor)
+    // So del resultat d'una patada: si impacta, el defensor fa la veu de cop rebut (amb 1 segon de retard)
+    // Si la patada és bloquejada o esquivada no s'afegeix res: ja ha sonat Bloqueig/Esquiva a l'acció del defensor
+    void ReproduirSonsResultatPatada(string accioAtacant, Lluitador atacant,
+                                     string accioDefensor, Lluitador defensor)
     {
         if (audioManager == null) return;
 
-        bool esPatadaAlta = (atacant == "patadaAlta");
-        bool esPatadaAlCos = (atacant == "patadaAlCos");
+        bool esPatadaAlta = (accioAtacant == "patadaAlta");
+        bool esPatadaAlCos = (accioAtacant == "patadaAlCos");
 
-        // Només les patades fan aquests sons (l'empenta no)
+        // Només les patades fan aquest so (l'empenta no)
         if (!esPatadaAlta && !esPatadaAlCos) return;
 
         bool bloquejadaOEsquivada =
-            (esPatadaAlta && defensor == "bloqueigAlt") ||
-            (esPatadaAlCos && defensor == "bloqueigAlCos") ||
-            defensor == "esquivar";
+            (esPatadaAlta && accioDefensor == "bloqueigAlt") ||
+            (esPatadaAlCos && accioDefensor == "bloqueigAlCos") ||
+            accioDefensor == "esquivar";
 
-        if (bloquejadaOEsquivada)
-        {
-            audioManager.PlaySFX(audioManager.Bloqueig);
-        }
-        else if (esPatadaAlta)
-        {
-            audioManager.PlaySFXDelayed(audioManager.Veus_Rebuts_Alts, 1f);
-        }
-        else
-        {
-            audioManager.PlaySFXDelayed(audioManager.Veus_Rebuts_Baixos, 1f);
-        }
+        if (bloquejadaOEsquivada) return;
+
+        audioManager.PlaySFXDelayed(TipusSo.VeuRebutCop, defensor.gameObject.tag, 1f);
     }
 
     // BOTONS

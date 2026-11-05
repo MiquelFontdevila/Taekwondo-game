@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jugador 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
+      propertyPath: m_TagString
+      value: JugadorNoia
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.14

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rival 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
+      propertyPath: m_TagString
+      value: Rival
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
       propertyPath: m_LocalScale.x
       value: -0.14
