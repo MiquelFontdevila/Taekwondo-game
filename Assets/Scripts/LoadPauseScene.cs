@@ -23,7 +23,13 @@ public class LoadPauseScene : MonoBehaviour
         }
     }
 
-    public void Pause()
+    public void LoadMainMenu()
+    {
+        //audioManager.ReprendreMusica();
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+        public void Pause()
     {
         pauseMenuUI.SetActive(true);
         pausaButton.interactable = false;
@@ -31,12 +37,8 @@ public class LoadPauseScene : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(primerButton.gameObject);
         combatUI.pausat = true;
         marcador.SetActive(false);
-    }
 
-    public void LoadMainMenu()
-    {
-        //audioManager.ReprendreMusica();
-        SceneManager.LoadScene("MainMenuScene");
+        if (audioManager != null) audioManager.PausarMusica();
     }
 
     public void Resume()
@@ -45,10 +47,11 @@ public class LoadPauseScene : MonoBehaviour
         pauseMenuUI.SetActive(false);
         pausaButton.interactable = true;
         pauseMenuCanvasGroup.interactable = true;
-        
+
         combatUI.pausat = false;
         combatUI.RestaurarSeleccio();
-        
+
+        if (audioManager != null) audioManager.ReprendreMusica();
     }
 
     public void Restart()
