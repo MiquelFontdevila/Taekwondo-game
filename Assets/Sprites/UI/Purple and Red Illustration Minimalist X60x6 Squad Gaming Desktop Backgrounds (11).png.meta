@@ -1,0 +1,677 @@
+fileFormatVersion: 2
+guid: e0ff702959f8a304e9746b7d0ae15d84
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -807165325552362650
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_0
+  - first:
+      213: -766122884708325019
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_1
+  - first:
+      213: 5878654707273945533
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_2
+  - first:
+      213: 3894938428370826916
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_3
+  - first:
+      213: 7610049222542066632
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_4
+  - first:
+      213: 8045089888866237206
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_5
+  - first:
+      213: -5148584831768953352
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_6
+  - first:
+      213: -2408698115778562835
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_7
+  - first:
+      213: 4908965173335776769
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_8
+  - first:
+      213: -2671757346646365175
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_9
+  - first:
+      213: 1343752731991166797
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_10
+  - first:
+      213: -1113372339198826235
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_11
+  - first:
+      213: 364926321995427396
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_12
+  - first:
+      213: 7756680593026947462
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_13
+  - first:
+      213: 7558946797363753902
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_14
+  - first:
+      213: 1453521068144072148
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_15
+  - first:
+      213: 3306845040301140296
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_16
+  - first:
+      213: 8663405276765065591
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_17
+  - first:
+      213: 7768089058838543848
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_18
+  - first:
+      213: -3021340760241110097
+    second: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+      (11)_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 427
+        width: 57
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66b5077b96f5cc4f0800000000000000
+      internalID: -807165325552362650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_1
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 427
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 569a9a2ab4f2e55f0800000000000000
+      internalID: -766122884708325019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 427
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db1dd305f4d259150800000000000000
+      internalID: 5878654707273945533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_3
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 427
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a6bf054dd99d0630800000000000000
+      internalID: 3894938428370826916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_4
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 427
+        width: 56
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c38bd8b2735c9960800000000000000
+      internalID: 7610049222542066632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_5
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 230
+        width: 486
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61b75f311a6e5af60800000000000000
+      internalID: 8045089888866237206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_6
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 434
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fd7276bf5d8c88b0800000000000000
+      internalID: -5148584831768953352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_7
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 438
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de4bdd553d5929ed0800000000000000
+      internalID: -2408698115778562835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_8
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 339
+        width: 296
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10e517bf0d5202440800000000000000
+      internalID: 4908965173335776769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_9
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 339
+        width: 139
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90c6a1b49d20cead0800000000000000
+      internalID: -2671757346646365175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_10
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 330
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4f4b408df7f5a210800000000000000
+      internalID: 1343752731991166797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_11
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 239
+        width: 153
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 509ee43a1c18c80f0800000000000000
+      internalID: -1113372339198826235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_12
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 239
+        width: 251
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44e2abf6e8a701500800000000000000
+      internalID: 364926321995427396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_13
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 272
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 689998717e345ab60800000000000000
+      internalID: 7756680593026947462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_14
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 139
+        width: 161
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea371fc2016c6e860800000000000000
+      internalID: 7558946797363753902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_15
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 172
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d5164cd5b1fb2410800000000000000
+      internalID: 1453521068144072148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_16
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 139
+        width: 68
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84969623b0644ed20800000000000000
+      internalID: 3306845040301140296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_17
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 39
+        width: 105
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77193d2d2399a3870800000000000000
+      internalID: 8663405276765065591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_18
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 39
+        width: 52
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ed7ba787dbcdcb60800000000000000
+      internalID: 7768089058838543848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds
+        (11)_19
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 39
+        width: 60
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa38b68169a0216d0800000000000000
+      internalID: -3021340760241110097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_0: -807165325552362650
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_1: -766122884708325019
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_10: 1343752731991166797
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_11: -1113372339198826235
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_12: 364926321995427396
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_13: 7756680593026947462
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_14: 7558946797363753902
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_15: 1453521068144072148
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_16: 3306845040301140296
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_17: 8663405276765065591
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_18: 7768089058838543848
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_19: -3021340760241110097
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_2: 5878654707273945533
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_3: 3894938428370826916
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_4: 7610049222542066632
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_5: 8045089888866237206
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_6: -5148584831768953352
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_7: -2408698115778562835
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_8: 4908965173335776769
+      Purple and Red Illustration Minimalist X60x6 Squad Gaming Desktop Backgrounds (11)_9: -2671757346646365175
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
