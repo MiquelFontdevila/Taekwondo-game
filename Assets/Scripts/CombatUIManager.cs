@@ -21,14 +21,9 @@ public class CombatUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textEstamina;  // EstaminaText
     [SerializeField] private int estaminaMaxima = 10;
     [SerializeField] private float velocitatBarra = 1.5f;
-
+    
     [Header("Resultat del Torn")]
     [SerializeField] private SistemaDeBatalla sistemaBatalla;
-
-    [Header("Marcador")]
-    [SerializeField] private TextMeshProUGUI textMarcadorPunts;
-    [SerializeField] private TextMeshProUGUI textMarcadorTorn;
-    [SerializeField] private int tornsTotals = 10;
 
     private GameObject panellActiu;
     private Lluitador jugador;
@@ -39,7 +34,12 @@ public class CombatUIManager : MonoBehaviour
     {
         jugador = j;
         MostrarEstamina(jugador.energia, true);
-        ActualitzarMarcador();
+        MostrarPanellPrincipal();
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
         MostrarPanellPrincipal();
     }
 
@@ -52,13 +52,13 @@ public class CombatUIManager : MonoBehaviour
 
     private void FormatMissatgeDestacat()
     {
-        textInfoTorn.fontSizeMax = 30;
+        textInfoTorn.fontSizeMax = 34;
         textInfoTorn.alignment = TextAlignmentOptions.Left;
     }
 
     private void FormatMissatgeInfoTecnica()
     {
-        textInfoTorn.fontSizeMax = 26;
+        textInfoTorn.fontSizeMax = 28;
         textInfoTorn.alignment = TextAlignmentOptions.TopLeft;
     }
 
@@ -107,7 +107,7 @@ public class CombatUIManager : MonoBehaviour
         panellAtac.SetActive(nou == panellAtac);
         panellDefensa.SetActive(nou == panellDefensa);
         panellActiu = nou;
-
+        
         ActualitzarBotonsDisponibles(nou);
         SeleccionarPrimerBoto(nou);
     }
@@ -168,7 +168,7 @@ public class CombatUIManager : MonoBehaviour
         {
             barraEstamina.fillAmount = omplirObjectiu;
         }
-
+        
         textEstamina.text = estaminaActual + " / " + estaminaMaxima;
     }
 
@@ -178,23 +178,10 @@ public class CombatUIManager : MonoBehaviour
         barraEstamina.fillAmount = Mathf.MoveTowards(
             barraEstamina.fillAmount, omplirObjectiu, velocitatBarra * Time.deltaTime);
 
-        // Si es perd la selecció (clic fora d'un botó), la recuperem
         if (!pausat && panellActiu != null && EventSystem.current.currentSelectedGameObject == null)
         {
             SeleccionarPrimerBoto(panellActiu);
         }
-    }
-
-    // MARCADOR
-    public void ActualitzarMarcador()
-    {
-        int puntsJug = sistemaBatalla.lluitadorJugador.puntuacio;
-        int puntsRiv = sistemaBatalla.lluitadorRival.puntuacio;
-
-        textMarcadorPunts.text = puntsJug.ToString("00") + " - " + puntsRiv.ToString("00");
-
-        int tornActual = Mathf.Min(sistemaBatalla.torn + 1, tornsTotals);
-        textMarcadorTorn.text = tornActual.ToString("00") + "/" + tornsTotals.ToString("00");
     }
 
     // TORN
@@ -204,13 +191,13 @@ public class CombatUIManager : MonoBehaviour
         {
             case "patadaAlta":
                 return "Patada Alta";
-            case "patadaAlCos":
+            case "patadaBaixa":
                 return "Patada Baixa";
             case "empenta":
                 return "Empenta";
             case "bloqueigAlt":
                 return "Bloqueig Alt";
-            case "bloqueigAlCos":
+            case "bloqueigBaix":
                 return "Bloqueig Baix";
             case "esquivar":
                 return "Esquivar";
@@ -233,29 +220,21 @@ public class CombatUIManager : MonoBehaviour
         barraEstaminaGroup.SetActive(false);
 
         FormatMissatgeDestacat();
-        string missatgeTornRealitzat = "El jugador ha realitzat <b>" + NomAccio(accioJug) + "</b>!" +
+        string missatgeTornRealitzat = "El jugador ha realitzat <b>" + NomAccio(accioJug) + "</b>!" + 
                                         "\n\nEl rival ha realitzat <b>" + NomAccio(accioRiv) + "</b>!";
 
         yield return EscriureTextTypewriter(missatgeTornRealitzat);
 
-        ActualitzarMarcador();
-
         yield return new WaitForSeconds(2f);
 
-        // Primer es decideix l'estat (següent torn o final) i després la UI reacciona
+        barraEstaminaGroup.SetActive(true);
+        MostrarPanellPrincipal();
         sistemaBatalla.AcabarMostrarResultatTorn();
-
-        if (sistemaBatalla.estat == Estat.tornJugador)
-        {
-            barraEstaminaGroup.SetActive(true);
-            MostrarPanellPrincipal();
-        }
     }
 
     // FINAL DEL COMBAT
     public void AcabarCombat(Estat resultat)
     {
-        ActualitzarMarcador();
         panellPrincipal.SetActive(false);
         panellAtac.SetActive(false);
         panellDefensa.SetActive(false);
