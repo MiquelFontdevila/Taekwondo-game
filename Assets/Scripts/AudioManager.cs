@@ -77,20 +77,6 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         PlaySFX(clip);
     }
-
-    // ---------- Sons segons el tag del lluitador ----------
-
-    // Reprodueix a l'instant el so d'un tipus per al lluitador amb aquest tag
-    public void PlaySFX(TipusSo tipus, string etiqueta)
-    {
-        PlaySFX(ObtenirClip(tipus, etiqueta));
-    }
-
-    // Reprodueix amb retard el so d'un tipus per al lluitador amb aquest tag
-    public void PlaySFXDelayed(TipusSo tipus, string etiqueta, float delay)
-    {
-        PlaySFXDelayed(ObtenirClip(tipus, etiqueta), delay);
-    }
     
     // ---------- Sons segons el tag del lluitador ----------
 
@@ -152,4 +138,15 @@ public class AudioManager : MonoBehaviour
         TipusSo.VeuRebutCop => Veus_Rebuts_cop_rival,
         _ => null
     };
+
+    public void PausarMusica()
+    {
+        musicSource.Pause();
+    }
+
+    // Reprèn la música des d'on s'havia quedat
+    public void ReprendreMusica()
+    {
+        musicSource.UnPause();
+    }
 }

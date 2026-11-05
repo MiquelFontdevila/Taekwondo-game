@@ -51,6 +51,11 @@ public class SistemaDeBatalla : MonoBehaviour
     public float duradaAnimacio = 3f;
     private Coroutine resetAnimacio;
 
+    // Resultats del torn que es fan servir quan la UI acaba de mostrar el missatge.
+    private bool jugadorRebCop;
+    private bool rivalRebCop;
+    private bool jugadorForaRing;
+    private bool rivalForaRing;
     // Posicions finals del torn: es calculen a resolucioTorn però NO es mostren fins que
     // acaben totes les animacions (si algú ha sortit del ring ja són 3 i 4)
     private bool posicionsPendents = false;
@@ -223,10 +228,6 @@ public class SistemaDeBatalla : MonoBehaviour
         // Qui ha rebut una patada que no ha bloquejat ni esquivat (estat 7 després de l'animació de l'acció)
         jugadorRebCop = PatadaImpacta(accioRival, accioJugador);
         rivalRebCop = PatadaImpacta(accioJugador, accioRival);
-
-        // Qui ha sortit del ring en aquest torn (estat 10 després de les animacions anteriors)
-        jugadorForaRing = false;
-        rivalForaRing = false;
 
         // Qui ha sortit del ring en aquest torn (estat 10 després de les animacions anteriors)
         bool jugadorForaRing = false;
