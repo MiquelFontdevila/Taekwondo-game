@@ -2,6 +2,10 @@ using UnityEngine;
 
 public enum Estat { inici, tornJugador, tornRival, resolucioTorn, victoria, empat, derrota }
 
+//codi basat en // https://www.youtube.com/watch?v=_1pz_ohupPs
+
+//en la batalla, posar 6 "punts de spawn" per la posicio, en canviar la posicio puc spawnear el jugador i el rival en aquella posicio
+
 public class SistemaDeBatalla : MonoBehaviour
 {
     // Costos d'energia dels atacs
@@ -11,6 +15,7 @@ public class SistemaDeBatalla : MonoBehaviour
 
     public Estat estat;
     public int torn;
+    public int tornsMaxims = 10;
 
     public Transform Posicio1;
     public Transform Posicio2;
@@ -27,8 +32,6 @@ public class SistemaDeBatalla : MonoBehaviour
     public string accioRival;
 
     public CombatUIManager combatUI;
-
-    public int tornsMaxims = 10;
 
     // Animators dels lluitadors
     private Animator animatorJugador;
@@ -49,10 +52,15 @@ public class SistemaDeBatalla : MonoBehaviour
     private Coroutine resetAnimacio;
 
     private AudioManager audioManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        GameObject audioGO = GameObject.FindGameObjectWithTag("Audio");
+        if (audioGO != null)
+        {
+            audioManager = audioGO.GetComponent<AudioManager>();
+        }
 
         animatorJugador = lluitadorJugador.GetComponentInChildren<Animator>();
         animatorRival = lluitadorRival.GetComponentInChildren<Animator>();
@@ -60,6 +68,7 @@ public class SistemaDeBatalla : MonoBehaviour
         estat = Estat.inici;
         SetupBatalla();
     }
+
     void LateUpdate()
     {
         ActualitzarPosicions();
@@ -419,11 +428,26 @@ public class SistemaDeBatalla : MonoBehaviour
 
         torn++;
 
+        // Sempre es mostra el resultat del torn (també l'últim).
+        // El final del combat es decideix a AcabarMostrarResultatTorn().
+        estat = Estat.resolucioTorn;
         combatUI.MostrarEstamina(lluitadorJugador.energia);
+        combatUI.MostrarResultatTorn(accioJugador, accioRival);
+
+        // Quan acaba l'animació, els dos lluitadors tornen a l'estat 0
+        resetAnimacio = StartCoroutine(TornarAIdle());
+    }
+
+    // El crida CombatUIManager quan acaba de mostrar el missatge del torn
+    public void AcabarMostrarResultatTorn()
+    {
+        if (estat != Estat.resolucioTorn)
+        {
+            return;
+        }
 
         if (torn >= tornsMaxims)
         {
-
             Debug.Log(" ");
             Debug.Log("========== FINAL DEL COMBAT ==========");
             Debug.Log("Puntuació final del jugador: " + lluitadorJugador.puntuacio);
@@ -442,20 +466,27 @@ public class SistemaDeBatalla : MonoBehaviour
                 estat = Estat.derrota;
             }
 
-            // Animacions finals (8 = victòria, 9 = derrota/empat)
+            // Evita que el reset a idle trepitgi les animacions finals
+            if (resetAnimacio != null)
+            {
+                StopCoroutine(resetAnimacio);
+                resetAnimacio = null;
+            }
+
+            // Animacions finals (7 = victòria, 8 = derrota/empat)
             switch (estat)
             {
                 case Estat.victoria:
-                    PosarEstatAnimator(animatorJugador, 8);
-                    PosarEstatAnimator(animatorRival, 9);
-                    break;
-                case Estat.derrota:
-                    PosarEstatAnimator(animatorJugador, 9);
+                    PosarEstatAnimator(animatorJugador, 7);
                     PosarEstatAnimator(animatorRival, 8);
                     break;
+                case Estat.derrota:
+                    PosarEstatAnimator(animatorJugador, 8);
+                    PosarEstatAnimator(animatorRival, 7);
+                    break;
                 case Estat.empat:
-                    PosarEstatAnimator(animatorJugador, 9);
-                    PosarEstatAnimator(animatorRival, 9);
+                    PosarEstatAnimator(animatorJugador, 8);
+                    PosarEstatAnimator(animatorRival, 8);
                     break;
             }
 
@@ -495,24 +526,12 @@ public class SistemaDeBatalla : MonoBehaviour
         {
             case "patadaAlta":    return 1;
             case "patadaAlCos":   return 2;
-            case "empenta":       return 3;
+            case "esquivar":      return 3;
             case "bloqueigAlt":   return 4;
             case "bloqueigAlCos": return 5;
-            case "esquivar":      return 6;
+            case "empenta":       return 6;
             default:              return 0;
         }
-    }
-
-    // Retorna true si la patada de l'atacant arriba al defensor (no bloquejada ni esquivada)
-    bool PatadaImpacta(string atacant, string defensor)
-    {
-        if (atacant == "patadaAlta")
-            return defensor != "bloqueigAlt" && defensor != "esquivar";
-
-        if (atacant == "patadaAlCos")
-            return defensor != "bloqueigAlCos" && defensor != "esquivar";
-
-        return false;
     }
 
     void PosarEstatAnimator(Animator animator, int valor)
