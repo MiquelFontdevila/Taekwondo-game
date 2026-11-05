@@ -40,6 +40,9 @@ public class SistemaDeBatalla : MonoBehaviour
     // Temps que dura l'animació de cop rebut (estat 7) abans de tornar a l'estat 0
     public float duradaCop = 0.5f;
 
+    // Temps que dura l'animació de sortir del ring (estat 10) abans de tornar a l'estat 0
+    public float duradaFora = 0.5f;
+
     // Temps màxim d'espera per animació (seguretat): normalment l'script detecta quan acaba l'animació,
     // però si alguna no acaba mai (per exemple, una transició mal posada) no es queda bloquejat
     public float duradaAnimacio = 3f;
@@ -210,6 +213,10 @@ public class SistemaDeBatalla : MonoBehaviour
         bool jugadorRebCop = PatadaImpacta(accioRival, accioJugador);
         bool rivalRebCop = PatadaImpacta(accioJugador, accioRival);
 
+        // Qui ha sortit del ring en aquest torn (estat 10 després de les animacions anteriors)
+        bool jugadorForaRing = false;
+        bool rivalForaRing = false;
+
         switch (accioJugador)
         {
             //Atac
@@ -355,6 +362,9 @@ public class SistemaDeBatalla : MonoBehaviour
 
             lluitadorRival.AugmentarPunts(1);
 
+            // El jugador ha sortit del ring: després de les animacions anteriors anirà a l'estat 10
+            jugadorForaRing = true;
+
             lluitadorJugador.posicio = 3;
             lluitadorRival.posicio = 4;
         }
@@ -363,6 +373,9 @@ public class SistemaDeBatalla : MonoBehaviour
             Debug.Log("El rival ha sortit de la zona! Punt per al jugador.");
 
             lluitadorJugador.AugmentarPunts(1);
+
+            // El rival ha sortit del ring: després de les animacions anteriors anirà a l'estat 10
+            rivalForaRing = true;
 
             lluitadorJugador.posicio = 3;
             lluitadorRival.posicio = 4;
@@ -456,9 +469,9 @@ public class SistemaDeBatalla : MonoBehaviour
             // Netejar l'acció del jugador per al proper torn (després d'avisar la UI)
             accioJugador = "";
 
-            // Inici del següent torn: passats duradaAccio segons es posa l'estat 7 a qui ha rebut cop
-            // i després els estats tornen a 0
-            resetAnimacio = StartCoroutine(TornarAIdle(jugadorRebCop, rivalRebCop));
+            // Inici del següent torn: passats duradaAccio segons es posa l'estat 7 a qui ha rebut cop,
+            // després l'estat 10 a qui ha sortit del ring, i finalment els estats tornen a 0
+            resetAnimacio = StartCoroutine(TornarAIdle(jugadorRebCop, rivalRebCop, jugadorForaRing, rivalForaRing));
         }
     }
 
@@ -475,7 +488,7 @@ public class SistemaDeBatalla : MonoBehaviour
 
     // Valor de l'int "estat" de l'Animator per a cada acció
     // 1 = patada alta, 2 = patada al cos, 3 = empenta, 4 = bloqueig alt, 5 = bloqueig al cos, 6 = esquivar
-    // 7 = cop rebut, 8 = victòria, 9 = derrota/empat
+    // 7 = cop rebut, 8 = victòria, 9 = derrota/empat, 10 = sortir del ring
     int EstatAnimacio(string accio)
     {
         switch (accio)
@@ -509,8 +522,9 @@ public class SistemaDeBatalla : MonoBehaviour
     }
 
     // Espera duradaAccio segons (animació de l'acció, estats 1-6), posa l'estat 7 a qui ha rebut cop,
-    // espera que acabi aquesta animació i finalment torna els dos lluitadors a l'estat 0
-    System.Collections.IEnumerator TornarAIdle(bool jugadorRebCop, bool rivalRebCop)
+    // després posa l'estat 10 a qui ha sortit del ring, i finalment torna els dos lluitadors a l'estat 0
+    System.Collections.IEnumerator TornarAIdle(bool jugadorRebCop, bool rivalRebCop,
+                                               bool jugadorForaRing, bool rivalForaRing)
     {
         // 1) Animació de l'acció (estats 1-6): dura un temps fix
         yield return new WaitForSeconds(duradaAccio);
@@ -519,10 +533,17 @@ public class SistemaDeBatalla : MonoBehaviour
         if (jugadorRebCop) PosarEstatAnimator(animatorJugador, 7);
         if (rivalRebCop) PosarEstatAnimator(animatorRival, 7);
 
-        // L'estat 7 dura duradaCop segons abans de tornar a l'estat 0
+        // L'estat 7 dura duradaCop segons abans de continuar
         if (jugadorRebCop || rivalRebCop) yield return new WaitForSeconds(duradaCop);
 
-        // 3) Tornem a l'estat 0 (idle)
+        // 3) Animació de sortir del ring (estat 10), només per a qui ha sortit de la zona
+        if (jugadorForaRing) PosarEstatAnimator(animatorJugador, 10);
+        if (rivalForaRing) PosarEstatAnimator(animatorRival, 10);
+
+        // L'estat 10 dura duradaFora segons abans de tornar a l'estat 0
+        if (jugadorForaRing || rivalForaRing) yield return new WaitForSeconds(duradaFora);
+
+        // 4) Tornem a l'estat 0 (idle)
         PosarEstatAnimator(animatorJugador, 0);
         PosarEstatAnimator(animatorRival, 0);
         resetAnimacio = null;
