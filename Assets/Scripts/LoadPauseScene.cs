@@ -10,6 +10,18 @@ public class LoadPauseScene : MonoBehaviour
     [SerializeField] private CanvasGroup pauseMenuCanvasGroup;
     [SerializeField] private Button primerButton;
     [SerializeField] private CombatUIManager combatUI;
+    [SerializeField] private GameObject marcador;
+    AudioManager audioManager;
+
+
+    void Start()
+    {
+        GameObject audioGO = GameObject.FindGameObjectWithTag("Audio");
+        if (audioGO != null)
+        {
+            audioManager = audioGO.GetComponent<AudioManager>();
+        }
+    }
 
     public void Pause()
     {
@@ -18,15 +30,18 @@ public class LoadPauseScene : MonoBehaviour
         pauseMenuCanvasGroup.interactable = false;
         EventSystem.current.SetSelectedGameObject(primerButton.gameObject);
         combatUI.pausat = true;
+        marcador.SetActive(false);
     }
 
     public void LoadMainMenu()
     {
+        //audioManager.ReprendreMusica();
         SceneManager.LoadScene("MainMenuScene");
     }
 
     public void Resume()
     {
+        marcador.SetActive(true);
         pauseMenuUI.SetActive(false);
         pausaButton.interactable = true;
         pauseMenuCanvasGroup.interactable = true;
@@ -38,6 +53,7 @@ public class LoadPauseScene : MonoBehaviour
 
     public void Restart()
     {
+        //audioManager.ReprendreMusica();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
