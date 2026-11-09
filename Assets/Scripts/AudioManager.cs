@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Tipus de so que pot demanar el sistema de batalla.
 // L'AudioManager tria el clip concret segons el tag del lluitador.
@@ -52,11 +53,22 @@ public class AudioManager : MonoBehaviour
     public AudioClip Veus_Empendra_rival;
     public AudioClip Veus_Rebuts_cop_rival;
 
+    [Header("Transicions de música")]
+    [SerializeField] private float duradaFadeIn = 1f;
+    [SerializeField] private float duradaFadeOut = 0.8f;
+
+    private float volumMusica = 1f;
+    private bool canviantEscena;
+
     private void Start()
     {
+        // La música entra pujant el volum de 0 fins al valor que té l'AudioSource
+        volumMusica = musicSource.volume;
         musicSource.clip = background;
+        musicSource.volume = 0f;
         // musicSource.loop = true;
         musicSource.Play();
+        StartCoroutine(FadeMusica(0f, volumMusica, duradaFadeIn));
     }
 
     // Reprodueix un so d'efecte a l'instant
@@ -148,5 +160,57 @@ public class AudioManager : MonoBehaviour
     public void ReprendreMusica()
     {
         musicSource.UnPause();
+    }
+
+    // ---------- Transició de música entre escenes ----------
+
+    private IEnumerator FadeMusica(float de, float a, float durada)
+    {
+        if (durada <= 0f)
+        {
+            musicSource.volume = a;
+            yield break;
+        }
+
+        float t = 0f;
+        while (t < durada)
+        {
+            t += Time.unscaledDeltaTime;
+            musicSource.volume = Mathf.Lerp(de, a, t / durada);
+            yield return null;
+        }
+        musicSource.volume = a;
+    }
+
+    // Baixa la música i, quan ja no se sent, carrega l'escena
+    public void CarregarEscena(string nomEscena)
+    {
+        if (canviantEscena)
+        {
+            return;
+        }
+        StartCoroutine(FadeOutICarregar(nomEscena));
+    }
+
+    private IEnumerator FadeOutICarregar(string nomEscena)
+    {
+        canviantEscena = true;
+        yield return FadeMusica(musicSource.volume, 0f, duradaFadeOut);
+        SceneManager.LoadScene(nomEscena);
+    }
+
+    public static void CanviarEscena(string nomEscena)
+    {
+        GameObject audioGO = GameObject.FindGameObjectWithTag("Audio");
+        AudioManager audio = audioGO != null ? audioGO.GetComponent<AudioManager>() : null;
+
+        if (audio != null)
+        {
+            audio.CarregarEscena(nomEscena);
+        }
+        else
+        {
+            SceneManager.LoadScene(nomEscena);
+        }
     }
 }

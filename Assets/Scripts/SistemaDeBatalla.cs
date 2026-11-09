@@ -56,19 +56,49 @@ public class SistemaDeBatalla : MonoBehaviour
 
     private AudioManager audioManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Si és true, el combat comença sol a Start (escenes sense selector de lluitador).
+    // A Level1Scene es posa a false: el SeleccioLluitador crida IniciarBatalla quan el jugador confirma.
+    public bool iniciarAutomaticament = true;
+
     void Start()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-
-        animatorJugador = lluitadorJugador.GetComponentInChildren<Animator>();
-        animatorRival = lluitadorRival.GetComponentInChildren<Animator>();
+        GameObject audioGO = GameObject.FindGameObjectWithTag("Audio");
+        if (audioGO != null)
+        {
+            audioManager = audioGO.GetComponent<AudioManager>();
+        }
 
         estat = Estat.inici;
-        SetupBatalla();
+
+        if (iniciarAutomaticament)
+        {
+            IniciarBatalla(lluitadorJugador);
+        }
     }
+
     void LateUpdate()
     {
+        // Mentre no ha començat el combat (selecció de lluitador) no cal moure ningú
+        if (estat == Estat.inici || lluitadorJugador == null || lluitadorRival == null)
+        {
+            return;
+        }
         ActualitzarPosicions();
+    }
+
+    // Comença el combat amb el lluitador triat pel jugador
+    public void IniciarBatalla(Lluitador jugadorTriat)
+    {
+        if (estat != Estat.inici)
+        {
+            return;   // evita iniciar-lo dos cops
+        }
+
+        lluitadorJugador = jugadorTriat;
+        animatorJugador = lluitadorJugador.GetComponentInChildren<Animator>(true);
+        animatorRival = lluitadorRival.GetComponentInChildren<Animator>(true);
+
+        SetupBatalla();
     }
 
     // CONFIGURACIÓ DE LA BATALLA
@@ -433,9 +463,32 @@ public class SistemaDeBatalla : MonoBehaviour
 
         combatUI.MostrarEstamina(lluitadorJugador.energia);
 
+        // Sempre es mostra el resultat del torn (també l'últim).
+        // El final del combat es decideix a AcabarMostrarResultatTorn(), quan la UI ja ha acabat el missatge.
+        estat = Estat.resolucioTorn;
+        combatUI.MostrarResultatTorn(accioJugador, accioRival);
+
+        // Animació de l'acció, després estat 7 (cop rebut), després estat 10 (sortir del ring),
+        // i quan han acabat totes s'actualitzen les posicions i els estats tornen a 0
+        resetAnimacio = StartCoroutine(TornarAIdle(jugadorRebCop, rivalRebCop, jugadorForaRing, rivalForaRing));
+    }
+
+    // El crida CombatUIManager quan acaba de mostrar el missatge del torn
+    public void AcabarMostrarResultatTorn()
+    {
+        if (estat != Estat.resolucioTorn)
+        {
+            return;
+        }
+
         if (torn >= tornsMaxims)
         {
-            // Últim torn: no hi ha corrutina, així que apliquem les posicions directament
+            // Si l'animació encara no havia acabat, la tallem i apliquem les posicions que quedaven
+            if (resetAnimacio != null)
+            {
+                StopCoroutine(resetAnimacio);
+                resetAnimacio = null;
+            }
             AplicarPosicionsPendents();
 
             Debug.Log(" ");
@@ -476,22 +529,6 @@ public class SistemaDeBatalla : MonoBehaviour
             combatUI.AcabarCombat(estat);
         }
         else
-        {
-            estat = Estat.tornJugador;
-            combatUI.MostrarResultatTorn(accioJugador, accioRival);
-
-            // Netejar l'acció del jugador per al proper torn (després d'avisar la UI)
-            accioJugador = "";
-
-            // Animació de l'acció, després estat 7 (cop rebut), després estat 10 (sortir del ring),
-            // i quan han acabat totes s'actualitzen les posicions i els estats tornen a 0
-            resetAnimacio = StartCoroutine(TornarAIdle(jugadorRebCop, rivalRebCop, jugadorForaRing, rivalForaRing));
-        }
-    }
-
-    public void AcabarMostrarResultatTorn()
-    {
-        if (estat == Estat.resolucioTorn)
         {
             accioJugador = "";
             estat = Estat.tornJugador;

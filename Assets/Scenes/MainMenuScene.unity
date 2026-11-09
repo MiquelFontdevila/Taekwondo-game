@@ -2706,6 +2706,7 @@ MonoBehaviour:
   text: {fileID: 849368268}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &738637929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2730,6 +2731,10 @@ PrefabInstance:
       propertyPath: background
       value: 
       objectReference: {fileID: 8300000, guid: da068bcd90bb58b4aabf88c1f9c3ce34, type: 3}
+    - target: {fileID: 4772269496892529517, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7257394369780882221, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 795.16455
@@ -2768,6 +2773,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7257394369780882221, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8452467112045313169, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8886570748582541256, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
@@ -4578,6 +4587,7 @@ MonoBehaviour:
   text: {fileID: 2088275250}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &1132468879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4967,6 +4977,7 @@ MonoBehaviour:
   text: {fileID: 786874783}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &1257332028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5167,6 +5178,7 @@ MonoBehaviour:
   text: {fileID: 1587285881}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &1363639635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5679,6 +5691,7 @@ MonoBehaviour:
   text: {fileID: 1929030567}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &1463275432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6052,6 +6065,7 @@ MonoBehaviour:
   text: {fileID: 7024443}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &1554455204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6603,6 +6617,7 @@ MonoBehaviour:
   text: {fileID: 194872037}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &1713747343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7434,6 +7449,7 @@ MonoBehaviour:
   text: {fileID: 484246322}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &1942628155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7734,6 +7750,7 @@ MonoBehaviour:
   text: {fileID: 1407547787}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &2007835316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8346,6 +8363,7 @@ MonoBehaviour:
   text: {fileID: 917131044}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &2103979400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8510,6 +8528,7 @@ MonoBehaviour:
   text: {fileID: 155590193}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &2108698630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8525,6 +8544,7 @@ MonoBehaviour:
   text: {fileID: 155590193}
   scaleSeleccionat: 1.25
   velocitat: 15
+  colorDesactivat: {r: 0.45, g: 0.45, b: 0.45, a: 1}
 --- !u!114 &2108698631
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,6 +31,11 @@ public class CombatUIManager : MonoBehaviour
     [SerializeField] private int tornsTotals = 10;
     [SerializeField] private GameObject marcador;
 
+    [Header("Final del combat")]
+    [SerializeField] private GameObject panellFinal;   // FinalCombatPanel (botons reiniciar / tornar)
+    [SerializeField] private GameObject botoPausa;     // PauseButton (s'amaga quan acaba el combat)
+    [SerializeField] private float esperaAbansPanellFinal = 1.5f;
+
     private GameObject panellActiu;
     private Lluitador jugador;
     public bool pausat;
@@ -41,12 +46,6 @@ public class CombatUIManager : MonoBehaviour
         jugador = j;
         MostrarEstamina(jugador.energia, true);
         ActualitzarMarcador();
-        MostrarPanellPrincipal();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
         MostrarPanellPrincipal();
     }
 
@@ -248,41 +247,59 @@ public class CombatUIManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        barraEstaminaGroup.SetActive(true);
-        MostrarPanellPrincipal();
+        // Primer es decideix l'estat (següent torn o final) i després la UI reacciona
         sistemaBatalla.AcabarMostrarResultatTorn();
+
+        if (sistemaBatalla.estat == Estat.tornJugador)
+        {
+            barraEstaminaGroup.SetActive(true);
+            MostrarPanellPrincipal();
+        }
     }
 
     // FINAL DEL COMBAT
     public void AcabarCombat(Estat resultat)
     {
-        //ActualitzarMarcador();
         panellPrincipal.SetActive(false);
         panellAtac.SetActive(false);
         panellDefensa.SetActive(false);
         panellActiu = null;
+        barraEstaminaGroup.SetActive(false);
 
+        string missatge;
         switch (resultat)
         {
             case Estat.victoria:
-                FormatMissatgeDestacat();
-                string missatgeVictoria = "Guanya el jugador!";
-                StartCoroutine(EscriureTextTypewriter(missatgeVictoria));
-                barraEstaminaGroup.SetActive(false);
+                missatge = "Guanya el jugador!";
                 break;
             case Estat.derrota:
-                FormatMissatgeDestacat();
-                string missatgeDerrota = "Has perdut! Guanya el rival!";
-                StartCoroutine(EscriureTextTypewriter(missatgeDerrota));
-                barraEstaminaGroup.SetActive(false);
+                missatge = "Has perdut! Guanya el rival!";
                 break;
-            case Estat.empat:
-                FormatMissatgeDestacat();
-                string missatgeEmpat = "Empat!";
-                StartCoroutine(EscriureTextTypewriter(missatgeEmpat));
-                barraEstaminaGroup.SetActive(false);
+            default:
+                missatge = "Empat!";
                 break;
         }
+
+        FormatMissatgeDestacat();
+        StartCoroutine(SequenciaFinal(missatge));
     }
-    
+
+    // Escriu el missatge final i, passat un moment, mostra els botons de reiniciar / tornar
+    private IEnumerator SequenciaFinal(string missatge)
+    {
+        yield return EscriureTextTypewriter(missatge);
+        yield return new WaitForSeconds(esperaAbansPanellFinal);
+
+        if (botoPausa != null)
+        {
+            botoPausa.SetActive(false);
+        }
+
+        if (panellFinal != null)
+        {
+            panellFinal.SetActive(true);
+            panellActiu = panellFinal;   // perquè Update() recuperi la selecció si es perd
+            SeleccionarPrimerBoto(panellFinal);
+        }
+    }
 }

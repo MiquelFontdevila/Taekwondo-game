@@ -97,7 +97,7 @@ public class MenuNavigator : MonoBehaviour
 
     public void ToLevelSelection()
     {
-        SceneManager.LoadScene("LevelSelectionScene");
+        AudioManager.CanviarEscena("LevelSelectionScene");
     }
 
     public void Quit()

@@ -104,6 +104,10 @@ PrefabInstance:
       value: Jugador 1
       objectReference: {fileID: 0}
     - target: {fileID: -8653719598885068355, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
       propertyPath: m_TagString
       value: JugadorNoia
       objectReference: {fileID: 0}
@@ -121,11 +125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.28
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
       propertyPath: m_LocalPosition.z
@@ -279,8 +283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lluitador
   puntuacio: 0
-  energia: 0
-  posicio: 0
+  energia: 5
+  posicio: 3
 --- !u!95 &7603848806163242306
 Animator:
   serializedVersion: 7

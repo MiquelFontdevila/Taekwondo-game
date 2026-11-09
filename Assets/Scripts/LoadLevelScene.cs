@@ -23,7 +23,7 @@ public class LoadLevelScene : MonoBehaviour
 
     public void ToLevel(int levelIndex)
     {
-        SceneManager.LoadScene("Level" + levelIndex + "Scene");
+        AudioManager.CanviarEscena("Level" + levelIndex + "Scene");
     }
 
     public void ButtonsToArray()
@@ -38,6 +38,6 @@ public class LoadLevelScene : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenuScene");
+        AudioManager.CanviarEscena("MainMenuScene");
     }
 }
