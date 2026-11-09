@@ -11,18 +11,20 @@ public enum TipusSo
     Bloqueig,
     Esquiva,
     VeuEmpenta,
-    VeuRebutCop
+    VeuRebutCop,
 }
 
 public class AudioManager : MonoBehaviour
 {
-
     //Per trobar rapidament el comoponent de audioManager podem fer aixo:
     //AudioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
     [Header("Audio Sorce")]
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
+    [SerializeField]
+    AudioSource musicSource;
+
+    [SerializeField]
+    AudioSource SFXSource;
 
     [Header("Audio Clip")]
     public AudioClip background;
@@ -54,27 +56,57 @@ public class AudioManager : MonoBehaviour
     public AudioClip Veus_Rebuts_cop_rival;
 
     [Header("Transicions de música")]
-    [SerializeField] private float duradaFadeIn = 1f;
-    [SerializeField] private float duradaFadeOut = 0.8f;
+    [SerializeField]
+    private float duradaFadeIn = 1f;
+
+    [SerializeField]
+    private float duradaFadeOut = 0.8f;
+
+    [Header("Inici de música")]
+    [SerializeField]
+    private bool reproduirMusicaInici = true;
 
     private float volumMusica = 1f;
     private bool canviantEscena;
 
     private void Start()
     {
-        // La música entra pujant el volum de 0 fins al valor que té l'AudioSource
         volumMusica = musicSource.volume;
+
+        musicSource.playOnAwake = false;
+        musicSource.clip = background;
+
+        if (reproduirMusicaInici)
+        {
+            IniciarMusicaCombat();
+        }
+        else
+        {
+            musicSource.Stop();
+            musicSource.volume = volumMusica;
+        }
+    }
+
+    public void IniciarMusicaCombat()
+    {
+        if (musicSource.isPlaying)
+            return;
+
+        if (background == null)
+            return;
+
         musicSource.clip = background;
         musicSource.volume = 0f;
-        // musicSource.loop = true;
         musicSource.Play();
+
         StartCoroutine(FadeMusica(0f, volumMusica, duradaFadeIn));
     }
 
     // Reprodueix un so d'efecte a l'instant
     public void PlaySFX(AudioClip clip)
     {
-        if (clip == null) return;
+        if (clip == null)
+            return;
         SFXSource.PlayOneShot(clip);
     }
 
@@ -89,7 +121,7 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         PlaySFX(clip);
     }
-    
+
     // ---------- Sons segons el tag del lluitador ----------
 
     // Reprodueix a l'instant el so d'un tipus per al lluitador amb aquest tag
@@ -109,47 +141,53 @@ public class AudioManager : MonoBehaviour
     {
         switch (etiqueta)
         {
-            case "JugadorNoi":  return ClipNoi(tipus);
-            case "JugadorNoia": return ClipNoia(tipus);
-            case "Rival":       return ClipRival(tipus);
+            case "JugadorNoi":
+                return ClipNoi(tipus);
+            case "JugadorNoia":
+                return ClipNoia(tipus);
+            case "Rival":
+                return ClipRival(tipus);
             default:
                 Debug.LogWarning("AudioManager: tag desconegut '" + etiqueta + "'");
                 return null;
         }
     }
 
-    private AudioClip ClipNoi(TipusSo tipus) => tipus switch
-    {
-        TipusSo.AtacAlt     => Atac_alt_noi,
-        TipusSo.AtacCos     => Atac_cos_noi,
-        TipusSo.Bloqueig    => Bloqueig_noi,
-        TipusSo.Esquiva     => Esquiva_noi,
-        TipusSo.VeuEmpenta  => Veus_Empendra_noi,
-        TipusSo.VeuRebutCop => Veus_Rebuts_cop_noi,
-        _ => null
-    };
+    private AudioClip ClipNoi(TipusSo tipus) =>
+        tipus switch
+        {
+            TipusSo.AtacAlt => Atac_alt_noi,
+            TipusSo.AtacCos => Atac_cos_noi,
+            TipusSo.Bloqueig => Bloqueig_noi,
+            TipusSo.Esquiva => Esquiva_noi,
+            TipusSo.VeuEmpenta => Veus_Empendra_noi,
+            TipusSo.VeuRebutCop => Veus_Rebuts_cop_noi,
+            _ => null,
+        };
 
-    private AudioClip ClipNoia(TipusSo tipus) => tipus switch
-    {
-        TipusSo.AtacAlt     => Atac_alt_noia,
-        TipusSo.AtacCos     => Atac_cos_noia,
-        TipusSo.Bloqueig    => Bloqueig_noia,
-        TipusSo.Esquiva     => Esquiva_noia,
-        TipusSo.VeuEmpenta  => Veus_Empendra_noia,
-        TipusSo.VeuRebutCop => Veus_Rebuts_cop_noia,
-        _ => null
-    };
+    private AudioClip ClipNoia(TipusSo tipus) =>
+        tipus switch
+        {
+            TipusSo.AtacAlt => Atac_alt_noia,
+            TipusSo.AtacCos => Atac_cos_noia,
+            TipusSo.Bloqueig => Bloqueig_noia,
+            TipusSo.Esquiva => Esquiva_noia,
+            TipusSo.VeuEmpenta => Veus_Empendra_noia,
+            TipusSo.VeuRebutCop => Veus_Rebuts_cop_noia,
+            _ => null,
+        };
 
-    private AudioClip ClipRival(TipusSo tipus) => tipus switch
-    {
-        TipusSo.AtacAlt     => Atac_alt_rival,
-        TipusSo.AtacCos     => Atac_cos_rival,
-        TipusSo.Bloqueig    => Bloqueig_rival,
-        TipusSo.Esquiva     => Esquiva_rival,
-        TipusSo.VeuEmpenta  => Veus_Empendra_rival,
-        TipusSo.VeuRebutCop => Veus_Rebuts_cop_rival,
-        _ => null
-    };
+    private AudioClip ClipRival(TipusSo tipus) =>
+        tipus switch
+        {
+            TipusSo.AtacAlt => Atac_alt_rival,
+            TipusSo.AtacCos => Atac_cos_rival,
+            TipusSo.Bloqueig => Bloqueig_rival,
+            TipusSo.Esquiva => Esquiva_rival,
+            TipusSo.VeuEmpenta => Veus_Empendra_rival,
+            TipusSo.VeuRebutCop => Veus_Rebuts_cop_rival,
+            _ => null,
+        };
 
     public void PausarMusica()
     {
