@@ -40,6 +40,7 @@ public class CombatUIManager : MonoBehaviour
     {
         jugador = j;
         MostrarEstamina(jugador.energia, true);
+        ActualitzarMarcador();
         MostrarPanellPrincipal();
     }
 
@@ -190,6 +191,18 @@ public class CombatUIManager : MonoBehaviour
         }
     }
 
+    // MARCADOR
+    public void ActualitzarMarcador()
+    {
+        int puntsJug = sistemaBatalla.lluitadorJugador.puntuacio;
+        int puntsRiv = sistemaBatalla.lluitadorRival.puntuacio;
+
+        textMarcadorPunts.text = puntsJug.ToString("00") + " - " + puntsRiv.ToString("00");
+
+        int tornActual = Mathf.Min(sistemaBatalla.torn + 1, tornsTotals);
+        textMarcadorTorn.text = tornActual.ToString("00") + "/" + tornsTotals.ToString("00");
+    }
+
     // TORN
     private string NomAccio(string accio)
     {
@@ -231,6 +244,8 @@ public class CombatUIManager : MonoBehaviour
 
         yield return EscriureTextTypewriter(missatgeTornRealitzat);
 
+        ActualitzarMarcador();
+
         yield return new WaitForSeconds(2f);
 
         barraEstaminaGroup.SetActive(true);
@@ -241,6 +256,7 @@ public class CombatUIManager : MonoBehaviour
     // FINAL DEL COMBAT
     public void AcabarCombat(Estat resultat)
     {
+        //ActualitzarMarcador();
         panellPrincipal.SetActive(false);
         panellAtac.SetActive(false);
         panellDefensa.SetActive(false);
