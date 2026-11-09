@@ -59,7 +59,7 @@ public class CombatUIManager : MonoBehaviour
 
     private void FormatMissatgeDestacat()
     {
-        textInfoTorn.fontSizeMax = 34;
+        textInfoTorn.fontSizeMax = 32;
         textInfoTorn.alignment = TextAlignmentOptions.Left;
     }
 
@@ -210,13 +210,13 @@ public class CombatUIManager : MonoBehaviour
         {
             case "patadaAlta":
                 return "Patada Alta";
-            case "patadaBaixa":
+            case "patadaAlCos":
                 return "Patada Baixa";
             case "empenta":
                 return "Empenta";
             case "bloqueigAlt":
                 return "Bloqueig Alt";
-            case "bloqueigBaix":
+            case "bloqueigAlCos":
                 return "Bloqueig Baix";
             case "esquivar":
                 return "Esquivar";

@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 21718201}
   - component: {fileID: 21718200}
   - component: {fileID: 21718199}
+  - component: {fileID: 21718203}
   m_Layer: 5
   m_Name: PatadaAltaButton
   m_TagString: Untagged
@@ -270,6 +271,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21718197}
   m_CullTransparentMesh: 1
+--- !u!114 &21718203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21718197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &88103459
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,7 +829,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -962,6 +975,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 418454142}
+  - component: {fileID: 418454143}
   m_Layer: 5
   m_Name: ChooseDef_AtkButtons
   m_TagString: Untagged
@@ -985,11 +999,35 @@ RectTransform:
   - {fileID: 667596635}
   m_Father: {fileID: 1717319108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 950, y: 280}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: 4}
+  m_SizeDelta: {x: 940, y: 252}
+  m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &418454143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418454141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 350, y: 150}
+  m_Spacing: {x: 85, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &427734152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,8 +1064,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
-  m_SizeDelta: {x: 900, y: 250}
+  m_AnchoredPosition: {x: 71, y: 0}
+  m_SizeDelta: {x: 853.0534, y: 200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &427734154
 MonoBehaviour:
@@ -1080,6 +1118,7 @@ GameObject:
   - component: {fileID: 437697230}
   - component: {fileID: 437697229}
   - component: {fileID: 437697228}
+  - component: {fileID: 437697232}
   m_Layer: 5
   m_Name: BloqueigAltButton
   m_TagString: Untagged
@@ -1218,6 +1257,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437697226}
   m_CullTransparentMesh: 1
+--- !u!114 &437697232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437697226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &441976596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,6 +1282,7 @@ GameObject:
   - component: {fileID: 441976600}
   - component: {fileID: 441976599}
   - component: {fileID: 441976598}
+  - component: {fileID: 441976602}
   m_Layer: 5
   m_Name: EsquivaButton
   m_TagString: Untagged
@@ -1369,6 +1421,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441976596}
   m_CullTransparentMesh: 1
+--- !u!114 &441976602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441976596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &443788700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1499,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2032,7 +2096,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2170,6 +2234,7 @@ GameObject:
   - component: {fileID: 593790709}
   - component: {fileID: 593790708}
   - component: {fileID: 593790707}
+  - component: {fileID: 593790711}
   m_Layer: 5
   m_Name: PatadaBaixaButton
   m_TagString: Untagged
@@ -2308,6 +2373,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593790705}
   m_CullTransparentMesh: 1
+--- !u!114 &593790711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593790705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &608732870
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,6 +2398,7 @@ GameObject:
   - component: {fileID: 608732874}
   - component: {fileID: 608732873}
   - component: {fileID: 608732872}
+  - component: {fileID: 608732876}
   m_Layer: 5
   m_Name: EmpentaButton
   m_TagString: Untagged
@@ -2459,6 +2537,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608732870}
   m_CullTransparentMesh: 1
+--- !u!114 &608732876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608732870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,6 +2650,7 @@ GameObject:
   - component: {fileID: 667596638}
   - component: {fileID: 667596637}
   - component: {fileID: 667596636}
+  - component: {fileID: 667596639}
   m_Layer: 5
   m_Name: DefensaButton
   m_TagString: Untagged
@@ -2582,11 +2673,11 @@ RectTransform:
   - {fileID: 538902183}
   m_Father: {fileID: 418454142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 350, y: 120}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &667596636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2681,6 +2772,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667596634}
   m_CullTransparentMesh: 1
+--- !u!114 &667596639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667596634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &670265179
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,8 +2955,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -25}
-  m_SizeDelta: {x: 780, y: 130}
+  m_AnchoredPosition: {x: 0.003418, y: 0}
+  m_SizeDelta: {x: 853.05, y: 158.03}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &678569662
 MonoBehaviour:
@@ -2988,8 +3091,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 55.65979, y: 0}
-  m_SizeDelta: {x: 955.6598, y: 250}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 853.05, y: 64.5585}
   m_Pivot: {x: 1, y: 0}
 --- !u!4 &691011996 stripped
 Transform:
@@ -3281,6 +3384,7 @@ GameObject:
   - component: {fileID: 836765339}
   - component: {fileID: 836765338}
   - component: {fileID: 836765337}
+  - component: {fileID: 836765340}
   m_Layer: 5
   m_Name: AtacButton
   m_TagString: Untagged
@@ -3303,10 +3407,10 @@ RectTransform:
   - {fileID: 1800710533}
   m_Father: {fileID: 418454142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 350, y: 120}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &836765337
 MonoBehaviour:
@@ -3402,6 +3506,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836765335}
   m_CullTransparentMesh: 1
+--- !u!114 &836765340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836765335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!114 &861617864 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7698350866188589517, guid: 761a65c7daa03d4408b5f5b183f361c8, type: 3}
@@ -3700,6 +3816,7 @@ GameObject:
   - component: {fileID: 958557862}
   - component: {fileID: 958557861}
   - component: {fileID: 958557860}
+  - component: {fileID: 958557864}
   m_Layer: 5
   m_Name: ContinuarLvlButton
   m_TagString: Untagged
@@ -3836,6 +3953,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958557858}
   m_CullTransparentMesh: 1
+--- !u!114 &958557864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958557858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &1021053800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3871,7 +4000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -120, y: 50}
+  m_AnchoredPosition: {x: -60, y: 20}
   m_SizeDelta: {x: 500, y: 20}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1021053802
@@ -3925,6 +4054,7 @@ GameObject:
   - component: {fileID: 1062561004}
   - component: {fileID: 1062561003}
   - component: {fileID: 1062561006}
+  - component: {fileID: 1062561007}
   m_Layer: 5
   m_Name: BackToModeAtkButton
   m_TagString: Untagged
@@ -4063,6 +4193,18 @@ MonoBehaviour:
   cost: 0
   resultat: 0
   descripcio: Tornar per seleccionar tipus de moviment
+--- !u!114 &1062561007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062561001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &1085039980
 GameObject:
   m_ObjectHideFlags: 0
@@ -4129,7 +4271,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4251,6 +4393,7 @@ GameObject:
   - component: {fileID: 1187683921}
   - component: {fileID: 1187683920}
   - component: {fileID: 1187683923}
+  - component: {fileID: 1187683924}
   m_Layer: 5
   m_Name: ReiniciarLvlButton
   m_TagString: Untagged
@@ -4387,6 +4530,18 @@ MonoBehaviour:
   text: {fileID: 88103460}
   scaleSeleccionat: 1.25
   velocitat: 15
+--- !u!114 &1187683924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187683918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &1194606427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4400,6 +4555,7 @@ GameObject:
   - component: {fileID: 1194606431}
   - component: {fileID: 1194606430}
   - component: {fileID: 1194606429}
+  - component: {fileID: 1194606433}
   m_Layer: 5
   m_Name: BloqueigBaixButton
   m_TagString: Untagged
@@ -4538,6 +4694,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194606427}
   m_CullTransparentMesh: 1
+--- !u!114 &1194606433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194606427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &1264789348
 GameObject:
   m_ObjectHideFlags: 0
@@ -4588,6 +4756,7 @@ GameObject:
   - component: {fileID: 1295622727}
   - component: {fileID: 1295622726}
   - component: {fileID: 1295622729}
+  - component: {fileID: 1295622730}
   m_Layer: 5
   m_Name: BackToModeDefButton
   m_TagString: Untagged
@@ -4726,6 +4895,18 @@ MonoBehaviour:
   cost: 0
   resultat: 0
   descripcio: Tornar per seleccionar tipus de moviment
+--- !u!114 &1295622730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295622724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &1310823337
 GameObject:
   m_ObjectHideFlags: 0
@@ -4816,11 +4997,11 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 10
   m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -4929,7 +5110,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -5013,6 +5194,7 @@ GameObject:
   - component: {fileID: 1464471468}
   - component: {fileID: 1464471467}
   - component: {fileID: 1464471470}
+  - component: {fileID: 1464471471}
   m_Layer: 5
   m_Name: TornarLvlButton
   m_TagString: Untagged
@@ -5149,6 +5331,18 @@ MonoBehaviour:
   text: {fileID: 941756176}
   scaleSeleccionat: 1.25
   velocitat: 15
+--- !u!114 &1464471471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464471465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &1475901519
 GameObject:
   m_ObjectHideFlags: 0
@@ -5431,6 +5625,7 @@ GameObject:
   - component: {fileID: 1602617398}
   - component: {fileID: 1602617397}
   - component: {fileID: 1602617396}
+  - component: {fileID: 1602617399}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -5551,6 +5746,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602617394}
   m_CullTransparentMesh: 1
+--- !u!114 &1602617399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602617394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!4 &1610536423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8512681258607496693, guid: 4362814a33574e949892f1b0bb3bc180, type: 3}
@@ -6008,6 +6215,7 @@ GameObject:
   - component: {fileID: 1762186953}
   - component: {fileID: 1762186952}
   - component: {fileID: 1762186955}
+  - component: {fileID: 1762186956}
   m_Layer: 5
   m_Name: ContinuarLvlButton
   m_TagString: Untagged
@@ -6144,6 +6352,18 @@ MonoBehaviour:
   text: {fileID: 1849207792}
   scaleSeleccionat: 1.25
   velocitat: 15
+--- !u!114 &1762186956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762186950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1001 &1767563060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6291,7 +6511,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -6731,11 +6951,11 @@ RectTransform:
   - {fileID: 1062561002}
   m_Father: {fileID: 1717319108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1057, y: 280}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: 4}
+  m_SizeDelta: {x: 940, y: 252}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!4 &2015491126 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 266110085313609122, guid: d415dbb64bc784b47961564395aaf8cc, type: 3}
@@ -6990,11 +7210,11 @@ RectTransform:
   - {fileID: 1295622725}
   m_Father: {fileID: 1717319108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1057, y: 280}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: 4}
+  m_SizeDelta: {x: 940, y: 252}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &2083836917
 GameObject:
   m_ObjectHideFlags: 0
