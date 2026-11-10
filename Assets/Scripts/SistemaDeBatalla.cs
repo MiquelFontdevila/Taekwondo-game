@@ -56,6 +56,8 @@ public class SistemaDeBatalla : MonoBehaviour
     // però si alguna no acaba mai (per exemple, una transició mal posada) no es queda bloquejat
     public float duradaAnimacio = 3f;
     private Coroutine resetAnimacio;
+    private bool animacionsAcabades;
+    private bool missatgeAcabat;
 
     // Posicions finals del torn: es calculen a resolucioTorn però NO es mostren fins que
     // acaben totes les animacions (si algú ha sortit del ring ja són 3 i 4)
@@ -227,11 +229,12 @@ public class SistemaDeBatalla : MonoBehaviour
         Debug.Log("Acció del jugador: " + accioJugador);
         Debug.Log("Acció del rival: " + accioRival);
 
+        animacionsAcabades = false;
+        missatgeAcabat = false;
+
         // --- SONS ---
         ReproduirSonsAccio(accioJugador, lluitadorJugador);
         ReproduirSonsAccio(accioRival, lluitadorRival);
-        ReproduirSonsResultatPatada(accioJugador, lluitadorJugador, accioRival, lluitadorRival);
-        ReproduirSonsResultatPatada(accioRival, lluitadorRival, accioJugador, lluitadorJugador);
 
         // --- ANIMACIONS ---
         if (resetAnimacio != null)
@@ -252,8 +255,8 @@ public class SistemaDeBatalla : MonoBehaviour
         PosarEstatAnimator(animatorRival, estatAnimRival);
 
         // Qui ha rebut una patada que no ha bloquejat ni esquivat (estat 7 després de l'animació de l'acció)
-        bool jugadorRebCop = PatadaImpacta(accioRival, accioJugador);
-        bool rivalRebCop = PatadaImpacta(accioJugador, accioRival);
+        bool jugadorRebCop = PatadaImpacta(accioRival, accioJugador) || EmpentaImpacta(accioRival, accioJugador);
+        bool rivalRebCop = PatadaImpacta(accioJugador, accioRival) || EmpentaImpacta(accioJugador, accioRival);
 
         // Qui ha sortit del ring en aquest torn (estat 10 després de les animacions anteriors)
         bool jugadorForaRing = false;
@@ -408,7 +411,7 @@ public class SistemaDeBatalla : MonoBehaviour
         lluitadorRival.posicio = posIniciRival;
 
         // Comprovar si algun lluitador surt de la zona de combat (amb les posicions noves)
-        if (posPendentJugador < 1)
+        if (posPendentJugador < 1 || posPendentJugador > 6)
         {
             Debug.Log("El jugador ha sortit de la zona! Punt per al rival.");
 
@@ -419,7 +422,7 @@ public class SistemaDeBatalla : MonoBehaviour
             posPendentJugador = 3;
             posPendentRival = 4;
         }
-        else if (posPendentRival > 6)
+        else if (posPendentRival < 1 || posPendentRival > 6)
         {
             Debug.Log("El rival ha sortit de la zona! Punt per al jugador.");
 
@@ -490,59 +493,39 @@ public class SistemaDeBatalla : MonoBehaviour
         );
     }
 
-    // El crida CombatUIManager quan acaba de mostrar el missatge del torn
+    // La UI i les animacions han d'acabar abans de canviar de torn.
     public void AcabarMostrarResultatTorn()
     {
-        if (estat != Estat.resolucioTorn)
-        {
+        if (estat != Estat.resolucioTorn) return;
+        missatgeAcabat = true;
+        IntentarFinalitzarTorn();
+    }
+
+    private void IntentarFinalitzarTorn()
+    {
+        if (estat != Estat.resolucioTorn || !missatgeAcabat || !animacionsAcabades)
             return;
-        }
 
         if (torn >= tornsMaxims)
         {
-            // Si l'animació encara no havia acabat, la tallem i apliquem les posicions que quedaven
-            if (resetAnimacio != null)
-            {
-                StopCoroutine(resetAnimacio);
-                resetAnimacio = null;
-            }
-            AplicarPosicionsPendents();
-
-            Debug.Log(" ");
-            Debug.Log("========== FINAL DEL COMBAT ==========");
-            Debug.Log("Puntuació final del jugador: " + lluitadorJugador.puntuacio);
-            Debug.Log("Puntuació final del rival: " + lluitadorRival.puntuacio);
-
             if (lluitadorJugador.puntuacio > lluitadorRival.puntuacio)
             {
                 estat = Estat.victoria;
+                PosarEstatAnimator(animatorJugador, 8);
+                PosarEstatAnimator(animatorRival, 9);
             }
-            else if (lluitadorJugador.puntuacio == lluitadorRival.puntuacio)
+            else if (lluitadorJugador.puntuacio < lluitadorRival.puntuacio)
             {
-                estat = Estat.empat;
+                estat = Estat.derrota;
+                PosarEstatAnimator(animatorJugador, 9);
+                PosarEstatAnimator(animatorRival, 8);
             }
             else
             {
-                estat = Estat.derrota;
+                estat = Estat.empat;
+                PosarEstatAnimator(animatorJugador, 9);
+                PosarEstatAnimator(animatorRival, 9);
             }
-
-            // Animacions finals (8 = victòria, 9 = derrota/empat)
-            switch (estat)
-            {
-                case Estat.victoria:
-                    PosarEstatAnimator(animatorJugador, 8);
-                    PosarEstatAnimator(animatorRival, 9);
-                    break;
-                case Estat.derrota:
-                    PosarEstatAnimator(animatorJugador, 9);
-                    PosarEstatAnimator(animatorRival, 8);
-                    break;
-                case Estat.empat:
-                    PosarEstatAnimator(animatorJugador, 9);
-                    PosarEstatAnimator(animatorRival, 9);
-                    break;
-            }
-
             combatUI.AcabarCombat(estat);
         }
         else
@@ -552,7 +535,7 @@ public class SistemaDeBatalla : MonoBehaviour
         }
     }
 
-    // POSICIONS PENDENTS
+        // POSICIONS PENDENTS
 
     // Aplica les posicions guardades a resolucioTorn (empenta / esquivar / reinici per sortir del ring).
     // Es crida quan han acabat totes les animacions del torn.
@@ -606,6 +589,12 @@ public class SistemaDeBatalla : MonoBehaviour
         return false;
     }
 
+    // L'empenta impacta si el defensor no l'ha contrarestat amb una patada.
+    bool EmpentaImpacta(string atacant, string defensor)
+    {
+        return atacant == "empenta" && defensor != "patadaAlta" && defensor != "patadaAlCos";
+    }
+
     private void MostrarFeedbackPatada(string atac, string defensa, Lluitador defensor)
     {
         bool atacAlt = atac == "patadaAlta";
@@ -631,57 +620,122 @@ public class SistemaDeBatalla : MonoBehaviour
         }
     }
 
+    // El paràmetre enter controla les transicions configurades a Unity.
+    // No fem servir Animator.Play ni noms d'estats.
     void PosarEstatAnimator(Animator animator, int valor)
     {
         if (animator == null)
+        {
+            Debug.LogError("Falta un Animator al SistemaDeBatalla.");
             return;
+        }
+
         animator.SetInteger("estat", valor);
+        Debug.Log($"{animator.name}: paràmetre estat = {valor}");
     }
 
-    // Espera duradaAccio segons (animació de l'acció, estats 1-6), posa l'estat 7 a qui ha rebut cop,
-    // després l'estat 10 a qui ha sortit del ring i, quan han acabat totes les animacions,
-    // actualitza les posicions i torna els dos lluitadors a l'estat 0
-    System.Collections.IEnumerator TornarAIdle(
-        bool jugadorRebCop,
-        bool rivalRebCop,
-        bool jugadorForaRing,
-        bool rivalForaRing
-    )
+    // Espera que Unity faci la transició i reprodueixi el clip.
+    // No necessita conèixer el nom de l'estat de l'Animator.
+    System.Collections.IEnumerator EsperarEstatEspecial(Animator animator, int valor, float minim)
     {
-        // 1) Animació de l'acció (estats 1-6): dura un temps fix
-        float tempsContacte = duradaAccio * 0.65f;
+        if (animator == null || !animator.isActiveAndEnabled)
+            yield break;
+
+        int hashAnterior = animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
+        float temps = 0f;
+        bool haEntrat = false;
+        float limit = Mathf.Max(duradaAnimacio, minim + 0.25f);
+
+        while (temps < limit)
+        {
+            if (!animator.isActiveAndEnabled)
+                yield break;
+
+            var info = animator.GetCurrentAnimatorStateInfo(0);
+            bool transicio = animator.IsInTransition(0);
+            if (info.fullPathHash != hashAnterior)
+                haEntrat = true;
+
+            // El clip no ha de tenir Loop Time activat.
+            if (haEntrat && !transicio && info.normalizedTime >= 1f && temps >= minim)
+                yield break;
+
+            temps += Time.deltaTime;
+            yield return null;
+        }
+
+        if (!haEntrat)
+            Debug.LogWarning($"{animator.name}: no s'ha detectat l'entrada a l'animació per estat={valor}. Revisa les transicions i les condicions de l'Animator.");
+    }
+
+    System.Collections.IEnumerator TornarAIdle(
+        bool jugadorRebCop, bool rivalRebCop, bool jugadorForaRing, bool rivalForaRing)
+    {
+        float tempsContacte = Mathf.Max(0f, duradaAccio * 0.65f);
         yield return new WaitForSeconds(tempsContacte);
         MostrarFeedbackPatada(accioJugador, accioRival, lluitadorRival);
         MostrarFeedbackPatada(accioRival, accioJugador, lluitadorJugador);
-        yield return new WaitForSeconds(duradaAccio - tempsContacte);
 
-        // 2) Animació de cop rebut (estat 7), només per a qui ha rebut la patada
+        yield return new WaitForSeconds(Mathf.Max(0f, duradaAccio - tempsContacte));
+        yield return StartCoroutine(EsperarAccions(animatorJugador, animatorRival));
+
+        Debug.Log($"Impactes: jugador={jugadorRebCop}, rival={rivalRebCop}");
         if (jugadorRebCop)
+        {
             PosarEstatAnimator(animatorJugador, 7);
+            if (audioManager != null)
+                audioManager.PlaySFX(TipusSo.VeuRebutCop, lluitadorJugador.gameObject.tag);
+        }
         if (rivalRebCop)
+        {
             PosarEstatAnimator(animatorRival, 7);
-
-        // L'estat 7 dura duradaCop segons abans de continuar
+            if (audioManager != null)
+                audioManager.PlaySFX(TipusSo.VeuRebutCop, lluitadorRival.gameObject.tag);
+        }
         if (jugadorRebCop || rivalRebCop)
-            yield return new WaitForSeconds(duradaCop);
+        {
+            if (jugadorRebCop)
+                yield return StartCoroutine(EsperarEstatEspecial(animatorJugador, 7, duradaCop));
+            if (rivalRebCop)
+                yield return StartCoroutine(EsperarEstatEspecial(animatorRival, 7, duradaCop));
+        }
 
-        // 3) Animació de sortir del ring (estat 10), només per a qui ha sortit de la zona
+        if (jugadorForaRing) PosarEstatAnimator(animatorJugador, 10);
+        if (rivalForaRing) PosarEstatAnimator(animatorRival, 10);
         if (jugadorForaRing)
-            PosarEstatAnimator(animatorJugador, 10);
+            yield return StartCoroutine(EsperarEstatEspecial(animatorJugador, 10, duradaFora));
         if (rivalForaRing)
-            PosarEstatAnimator(animatorRival, 10);
+            yield return StartCoroutine(EsperarEstatEspecial(animatorRival, 10, duradaFora));
 
-        // L'estat 10 dura duradaFora segons abans de continuar
-        if (jugadorForaRing || rivalForaRing)
-            yield return new WaitForSeconds(duradaFora);
-
-        // 4) Han acabat totes les animacions: ara s'actualitzen les posicions
         AplicarPosicionsPendents();
-
-        // 5) Tornem a l'estat 0 (idle)
         PosarEstatAnimator(animatorJugador, 0);
         PosarEstatAnimator(animatorRival, 0);
         resetAnimacio = null;
+        animacionsAcabades = true;
+        IntentarFinalitzarTorn();
+    }
+
+    // Espera a que tots dos Animator acabin el clip actual, amb un timeout.
+    // Cal que les transicions de l'Animator estiguin ben configurades.
+    System.Collections.IEnumerator EsperarAccions(Animator primer, Animator segon)
+    {
+        yield return null; // Deixar que Unity processi el canvi d'estat.
+        float temps = 0f;
+        while (temps < duradaAnimacio)
+        {
+            bool primerAcabat = AnimacioAcabada(primer);
+            bool segonAcabat = AnimacioAcabada(segon);
+            if (primerAcabat && segonAcabat) yield break;
+            temps += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    bool AnimacioAcabada(Animator animator)
+    {
+        if (animator == null || !animator.isActiveAndEnabled) return true;
+        if (animator.IsInTransition(0)) return false;
+        return animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
     }
 
     // Espera que l'animació que s'està reproduint acabi una vegada (normalizedTime >= 1)
@@ -743,36 +797,6 @@ public class SistemaDeBatalla : MonoBehaviour
                 audioManager.PlaySFX(TipusSo.Esquiva, tag);
                 break;
         }
-    }
-
-    // So del resultat d'una patada: si impacta, el defensor fa la veu de cop rebut (amb 1 segon de retard)
-    // Si la patada és bloquejada o esquivada no s'afegeix res: ja ha sonat Bloqueig/Esquiva a l'acció del defensor
-    void ReproduirSonsResultatPatada(
-        string accioAtacant,
-        Lluitador atacant,
-        string accioDefensor,
-        Lluitador defensor
-    )
-    {
-        if (audioManager == null)
-            return;
-
-        bool esPatadaAlta = (accioAtacant == "patadaAlta");
-        bool esPatadaAlCos = (accioAtacant == "patadaAlCos");
-
-        // Només les patades fan aquest so (l'empenta no)
-        if (!esPatadaAlta && !esPatadaAlCos)
-            return;
-
-        bool bloquejadaOEsquivada =
-            (esPatadaAlta && accioDefensor == "bloqueigAlt")
-            || (esPatadaAlCos && accioDefensor == "bloqueigAlCos")
-            || accioDefensor == "esquivar";
-
-        if (bloquejadaOEsquivada)
-            return;
-
-        audioManager.PlaySFXDelayed(TipusSo.VeuRebutCop, defensor.gameObject.tag, 1f);
     }
 
     // BOTONS
