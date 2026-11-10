@@ -328,15 +328,15 @@ public class AudioManager : MonoBehaviour
     }
 
     private void AplicarVolumGuardat(
-        string parametroMixer,
-        string claveGuardada,
-        float valorDefecto
+        string parametreMixer,
+        string clauGuardada,
+        float valorDefecte
     )
     {
-        float valor = PlayerPrefs.GetFloat(claveGuardada, valorDefecto);
+        float valor = PlayerPrefs.GetFloat(clauGuardada, valorDefecte);
 
         float db = valor <= 0.0001f ? -80f : 20f * Mathf.Log10(valor);
 
-        mainAudioMixer.SetFloat(parametroMixer, db);
+        mainAudioMixer.SetFloat(parametreMixer, db);
     }
 }
