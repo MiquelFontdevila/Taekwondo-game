@@ -66,6 +66,31 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private bool reproduirMusicaInici = true;
 
+    [Header("Música de resultats combat")]
+    [SerializeField]
+    private AudioSource introSource;
+
+    [SerializeField]
+    private AudioSource loopSource;
+
+    [SerializeField]
+    private AudioClip victoriaIntro;
+
+    [SerializeField]
+    private AudioClip victoriaLoop;
+
+    [SerializeField]
+    private AudioClip derrotaIntro;
+
+    [SerializeField]
+    private AudioClip derrotaLoop;
+
+    [SerializeField]
+    private AudioClip empatIntro;
+
+    [SerializeField]
+    private AudioClip empatLoop;
+
     private float volumMusica = 1f;
     private bool canviantEscena;
 
@@ -249,6 +274,46 @@ public class AudioManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(nomEscena);
+        }
+    }
+
+    private void ReproduirMusicaResultat(AudioClip intro, AudioClip bucle)
+    {
+        if (intro == null || bucle == null)
+            return;
+
+        musicSource.Stop();
+        introSource.Stop();
+        loopSource.Stop();
+
+        introSource.clip = intro;
+        introSource.loop = false;
+
+        loopSource.clip = bucle;
+        loopSource.loop = true;
+
+        double inici = AudioSettings.dspTime + 0.1;
+
+        introSource.PlayScheduled(inici);
+
+        loopSource.PlayScheduled(inici + intro.length);
+    }
+
+    public void MusicaFinalCombat(Estat resultat)
+    {
+        switch (resultat)
+        {
+            case Estat.victoria:
+                ReproduirMusicaResultat(victoriaIntro, victoriaLoop);
+                break;
+
+            case Estat.derrota:
+                ReproduirMusicaResultat(derrotaIntro, derrotaLoop);
+                break;
+
+            default:
+                ReproduirMusicaResultat(empatIntro, empatLoop);
+                break;
         }
     }
 }

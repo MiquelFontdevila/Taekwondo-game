@@ -40,6 +40,9 @@ public class CombatUIManager : MonoBehaviour
     private Lluitador jugador;
     public bool pausat;
 
+    [Header("Audio Manager")]
+    [SerializeField] private AudioManager audioManager;
+
     // INICI
     public void Inicialitzar(Lluitador j)
     {
@@ -260,6 +263,10 @@ public class CombatUIManager : MonoBehaviour
     // FINAL DEL COMBAT
     public void AcabarCombat(Estat resultat)
     {
+        if (audioManager != null)
+        {
+            audioManager.MusicaFinalCombat(resultat);
+        }
         panellPrincipal.SetActive(false);
         panellAtac.SetActive(false);
         panellDefensa.SetActive(false);
