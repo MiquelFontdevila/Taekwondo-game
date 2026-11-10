@@ -373,7 +373,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3681,7 +3681,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 800, y: 85}
+  m_SizeDelta: {x: 850, y: 85}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &811983506
 MonoBehaviour:
@@ -3736,7 +3736,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -4392,7 +4392,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -7000,12 +7000,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0f272a7f13ab648aced8996094d842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadPauseScene
-  pauseMenuUI: {fileID: 2050858357}
+  pauseMenuUI: {fileID: 1562627400}
   pausaButton: {fileID: 1602617396}
   pauseMenuCanvasGroup: {fileID: 1717319111}
   primerButton: {fileID: 1762186952}
   combatUI: {fileID: 341720631}
   marcador: {fileID: 1154778320}
+  backgroundPausa: {fileID: 2018392092}
 --- !u!114 &1692276205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7758,7 +7759,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -8554,7 +8555,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 750}
+  m_SizeDelta: {x: 650, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2052707321
 GameObject:
@@ -8805,8 +8806,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 500, y: 85}
+  m_AnchoredPosition: {x: 0, y: -40}
+  m_SizeDelta: {x: 600, y: 85}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2083836919
 MonoBehaviour:
@@ -8861,7 +8862,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535

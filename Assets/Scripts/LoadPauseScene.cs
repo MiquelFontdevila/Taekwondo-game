@@ -11,6 +11,7 @@ public class LoadPauseScene : MonoBehaviour
     [SerializeField] private Button primerButton;
     [SerializeField] private CombatUIManager combatUI;
     [SerializeField] private GameObject marcador;
+    [SerializeField] private GameObject backgroundPausa;
     AudioManager audioManager;
 
 
@@ -37,7 +38,7 @@ public class LoadPauseScene : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(primerButton.gameObject);
         combatUI.pausat = true;
         marcador.SetActive(false);
-
+        backgroundPausa.SetActive(true);
         if (audioManager != null) audioManager.PausarMusica();
     }
 
@@ -47,6 +48,7 @@ public class LoadPauseScene : MonoBehaviour
         pauseMenuUI.SetActive(false);
         pausaButton.interactable = true;
         pauseMenuCanvasGroup.interactable = true;
+        backgroundPausa.SetActive(false);
 
         combatUI.pausat = false;
         combatUI.RestaurarSeleccio();
