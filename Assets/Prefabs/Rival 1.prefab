@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1580232618825665083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5527726859590322594}
+  m_Layer: 0
+  m_Name: PuntImpacteCos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5527726859590322594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580232618825665083}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.54, y: 19.32, z: 0}
+  m_LocalScale: {x: -6.25, y: 6.25, z: 6.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1863744704290683144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5578467409661386450
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +122,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &7114366433763789660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707730195803869655}
+  m_Layer: 0
+  m_Name: PuntImpacteAlt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1707730195803869655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114366433763789660}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5, y: 26.8, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1863744704290683144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1077081470399873238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -169,6 +231,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8732063010711556027}
+    - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1707730195803869655}
+    - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5527726859590322594}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
       insertIndex: -1
@@ -182,6 +250,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4909850307065405849}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5523328690937926291}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
 --- !u!1 &654499946485621099 stripped
 GameObject:
@@ -298,6 +369,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5523328690937926291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654499946485621099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80052269fee8179428cc4987649f2095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FeedbackLluitador
+  fxImpacte: {fileID: 0}
+  fxBloqueig: {fileID: 0}
+  puntImpacteAlt: {fileID: 1707730195803869655}
+  puntImpacteCos: {fileID: 5527726859590322594}
+  colorFlash: {r: 1, g: 0.55, b: 0.35, a: 1}
+  duradaFlash: 0.1
 --- !u!4 &1863744704290683144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
