@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 // Tipus de so que pot demanar el sistema de batalla.
@@ -91,7 +92,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioClip empatLoop;
 
-    private float volumMusica = 1f;
+    [SerializeField]
+    private AudioMixer mainAudioMixer;
+
+    private float volumMusica = 0.5f;
     private bool canviantEscena;
 
     private void Start()
@@ -315,5 +319,24 @@ public class AudioManager : MonoBehaviour
                 ReproduirMusicaResultat(empatIntro, empatLoop);
                 break;
         }
+    }
+
+    private void Awake()
+    {
+        AplicarVolumGuardat("MusicVol", "MusicVolume", 0.65f);
+        AplicarVolumGuardat("SFXVol", "SFXVolume", 0.75f);
+    }
+
+    private void AplicarVolumGuardat(
+        string parametroMixer,
+        string claveGuardada,
+        float valorDefecto
+    )
+    {
+        float valor = PlayerPrefs.GetFloat(claveGuardada, valorDefecto);
+
+        float db = valor <= 0.0001f ? -80f : 20f * Mathf.Log10(valor);
+
+        mainAudioMixer.SetFloat(parametroMixer, db);
     }
 }
