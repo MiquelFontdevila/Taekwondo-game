@@ -1,47 +1,79 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using System.Collections;
 
 public class CombatUIManager : MonoBehaviour
 {
     [Header("Panells")]
-    [SerializeField] private GameObject panellPrincipal; //ChooseDef_AtkButtons
-    [SerializeField] private GameObject panellAtac; //AttackButtons
-    [SerializeField] private GameObject panellDefensa; //DeffenseButtons
+    [SerializeField]
+    private GameObject panellPrincipal; //ChooseDef_AtkButtons
+
+    [SerializeField]
+    private GameObject panellAtac; //AttackButtons
+
+    [SerializeField]
+    private GameObject panellDefensa; //DeffenseButtons
 
     [Header("Panell d'informació")]
-    [SerializeField] private TextMeshProUGUI textInfoTorn;   // TurnInfoTMP
-    [SerializeField] private string missatgePrincipal = "Què farà el jugador?";
+    [SerializeField]
+    private TextMeshProUGUI textInfoTorn; // TurnInfoTMP
+
+    [SerializeField]
+    private string missatgePrincipal = "Què farà el jugador?";
 
     [Header("Barra d'Estamina")]
-    [SerializeField] private GameObject barraEstaminaGroup; // EstaminaBar_Group
-    [SerializeField] private Image barraEstamina;           // EstaminaBar_Fill
-    [SerializeField] private TextMeshProUGUI textEstamina;  // EstaminaText
-    [SerializeField] private int estaminaMaxima = 10;
-    [SerializeField] private float velocitatBarra = 1.5f;
-    
+    [SerializeField]
+    private GameObject barraEstaminaGroup; // EstaminaBar_Group
+
+    [SerializeField]
+    private Image barraEstamina; // EstaminaBar_Fill
+
+    [SerializeField]
+    private TextMeshProUGUI textEstamina; // EstaminaText
+
+    [SerializeField]
+    private int estaminaMaxima = 10;
+
+    [SerializeField]
+    private float velocitatBarra = 1.5f;
+
     [Header("Resultat del Torn")]
-    [SerializeField] private SistemaDeBatalla sistemaBatalla;
+    [SerializeField]
+    private SistemaDeBatalla sistemaBatalla;
 
     [Header("Marcador")]
-    [SerializeField] private TextMeshProUGUI textMarcadorPunts;
-    [SerializeField] private TextMeshProUGUI textMarcadorTorn;
-    [SerializeField] private int tornsTotals = 10;
-    [SerializeField] private GameObject marcador;
+    [SerializeField]
+    private TextMeshProUGUI textMarcadorPunts;
+
+    [SerializeField]
+    private TextMeshProUGUI textMarcadorTorn;
+
+    [SerializeField]
+    private int tornsTotals = 10;
+
+    [SerializeField]
+    private GameObject marcador;
 
     [Header("Final del combat")]
-    [SerializeField] private GameObject panellFinal;   // FinalCombatPanel (botons reiniciar / tornar)
-    [SerializeField] private GameObject botoPausa;     // PauseButton (s'amaga quan acaba el combat)
-    [SerializeField] private float esperaAbansPanellFinal = 1.5f;
+    [SerializeField]
+    private GameObject panellFinal; // FinalCombatPanel (botons reiniciar / tornar)
+
+    [SerializeField]
+    private GameObject botoPausa; // PauseButton (s'amaga quan acaba el combat)
+
+    [SerializeField]
+    private float esperaAbansPanellFinal = 1.5f;
 
     private GameObject panellActiu;
     private Lluitador jugador;
     public bool pausat;
+    private Coroutine typewriterPrincipal;
 
     [Header("Audio Manager")]
-    [SerializeField] private AudioManager audioManager;
+    [SerializeField]
+    private AudioManager audioManager;
 
     // INICI
     public void Inicialitzar(Lluitador j)
@@ -72,7 +104,7 @@ public class CombatUIManager : MonoBehaviour
     }
 
     // Crear efecte d'escriptura de text (typewriter effect)
-    private IEnumerator EscriureTextTypewriter(string text, float segonsPerLletra = 0.05f)
+    private IEnumerator EscriureTextTypewriter(string text, float segonsPerLletra = 0.075f)
     {
         textInfoTorn.text = text;
         textInfoTorn.maxVisibleCharacters = 0;
@@ -97,17 +129,35 @@ public class CombatUIManager : MonoBehaviour
     //Mètodes public per poder cridar-los des de l'Inspector
     public void MostrarPanellPrincipal()
     {
+        AturarTypewriterPrincipal();
+
         CanviarPanell(panellPrincipal);
         FormatMissatgePanellPrincipal();
-        StartCoroutine(EscriureTextTypewriter(missatgePrincipal));
+
+        typewriterPrincipal = StartCoroutine(EscriureTextTypewriter(missatgePrincipal));
     }
+
     public void MostrarPanellAtac()
     {
+        AturarTypewriterPrincipal();
         CanviarPanell(panellAtac);
     }
+
     public void MostrarPanellDefensa()
     {
+        AturarTypewriterPrincipal();
         CanviarPanell(panellDefensa);
+    }
+
+    private void AturarTypewriterPrincipal()
+    {
+        if (typewriterPrincipal != null)
+        {
+            StopCoroutine(typewriterPrincipal);
+            typewriterPrincipal = null;
+        }
+
+        textInfoTorn.maxVisibleCharacters = int.MaxValue;
     }
 
     private void CanviarPanell(GameObject nou)
@@ -116,7 +166,7 @@ public class CombatUIManager : MonoBehaviour
         panellAtac.SetActive(nou == panellAtac);
         panellDefensa.SetActive(nou == panellDefensa);
         panellActiu = nou;
-        
+
         ActualitzarBotonsDisponibles(nou);
         SeleccionarPrimerBoto(nou);
     }
@@ -142,7 +192,7 @@ public class CombatUIManager : MonoBehaviour
 
     private void SeleccionarPrimerBoto(GameObject panell)
     {
-        if(pausat)
+        if (pausat)
         {
             return;
         }
@@ -157,12 +207,17 @@ public class CombatUIManager : MonoBehaviour
                 return;
             }
         }
-
     }
 
     // ESTAMINA I INFO
+
     public void MostrarInfoTecnica(TecnicaBoto tecnica)
     {
+        if (tecnica == null)
+            return;
+
+        AturarTypewriterPrincipal();
+
         FormatMissatgeInfoTecnica();
         MostrarTextInstantani(tecnica.GenerarText());
     }
@@ -177,7 +232,7 @@ public class CombatUIManager : MonoBehaviour
         {
             barraEstamina.fillAmount = omplirObjectiu;
         }
-        
+
         textEstamina.text = estaminaActual + " / " + estaminaMaxima;
     }
 
@@ -185,7 +240,10 @@ public class CombatUIManager : MonoBehaviour
     {
         // Mou la barra suaument cap al valor objectiu
         barraEstamina.fillAmount = Mathf.MoveTowards(
-            barraEstamina.fillAmount, omplirObjectiu, velocitatBarra * Time.deltaTime);
+            barraEstamina.fillAmount,
+            omplirObjectiu,
+            velocitatBarra * Time.deltaTime
+        );
 
         if (!pausat && panellActiu != null && EventSystem.current.currentSelectedGameObject == null)
         {
@@ -241,8 +299,13 @@ public class CombatUIManager : MonoBehaviour
         barraEstaminaGroup.SetActive(false);
 
         FormatMissatgeDestacat();
-        string missatgeTornRealitzat = "El jugador ha realitzat <b>" + NomAccio(accioJug) + "</b>!" + 
-                                        "\n\nEl rival ha realitzat <b>" + NomAccio(accioRiv) + "</b>!";
+        string missatgeTornRealitzat =
+            "El jugador ha realitzat <b>"
+            + NomAccio(accioJug)
+            + "</b>!"
+            + "\n\nEl rival ha realitzat <b>"
+            + NomAccio(accioRiv)
+            + "</b>!";
 
         yield return EscriureTextTypewriter(missatgeTornRealitzat);
 
@@ -305,7 +368,7 @@ public class CombatUIManager : MonoBehaviour
         if (panellFinal != null)
         {
             panellFinal.SetActive(true);
-            panellActiu = panellFinal;   // perquè Update() recuperi la selecció si es perd
+            panellActiu = panellFinal; // perquè Update() recuperi la selecció si es perd
             SeleccionarPrimerBoto(panellFinal);
         }
     }

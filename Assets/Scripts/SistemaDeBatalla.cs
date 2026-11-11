@@ -37,6 +37,10 @@ public class SistemaDeBatalla : MonoBehaviour
 
     public CombatUIManager combatUI;
 
+    [Header("Intencio visual del rival")]
+    [SerializeField]
+    private IntencioRivalVisual intencioRivalVisual;
+
     public int tornsMaxims = 10;
 
     // Animators dels lluitadors
@@ -134,6 +138,15 @@ public class SistemaDeBatalla : MonoBehaviour
 
         combatUI.Inicialitzar(lluitadorJugador);
 
+        accioRival = "";
+
+        PrepararAccioRival();
+
+        if (intencioRivalVisual != null)
+        {
+            intencioRivalVisual.Mostrar(lluitadorRival, accioRival);
+        }
+
         //Mira que el combat funciona__________________________________________________________________________________
         Debug.Log("=== COMENÇA EL COMBAT ===");
         Debug.Log("Jugador: " + lluitadorJugador.name);
@@ -145,7 +158,7 @@ public class SistemaDeBatalla : MonoBehaviour
 
     // GESTIÓ DELS TORNS
 
-    void TornRival()
+    void PrepararAccioRival()
     {
         bool energiaSuficient = false;
         while (energiaSuficient == false)
@@ -202,24 +215,27 @@ public class SistemaDeBatalla : MonoBehaviour
                     break;
             }
         }
-        estat = Estat.resolucioTorn;
-        resolucioTorn();
     }
 
     public void ConfirmarAccioJugador()
     {
         if (estat != Estat.tornJugador)
-        {
             return;
-        }
 
         if (string.IsNullOrEmpty(accioJugador))
+            return;
+
+        if (string.IsNullOrEmpty(accioRival))
         {
+            Debug.LogWarning("El rival no te cap accio preparada.");
             return;
         }
 
-        estat = Estat.tornRival;
-        TornRival();
+        if (intencioRivalVisual != null)
+            intencioRivalVisual.Ocultar();
+
+        estat = Estat.resolucioTorn;
+        resolucioTorn();
     }
 
     public void resolucioTorn()
@@ -530,12 +546,23 @@ public class SistemaDeBatalla : MonoBehaviour
                 PosarEstatAnimator(animatorJugador, 9);
                 PosarEstatAnimator(animatorRival, 9);
             }
+            if (intencioRivalVisual != null)
+                intencioRivalVisual.Ocultar();
             combatUI.AcabarCombat(estat);
         }
         else
         {
             accioJugador = "";
+            accioRival = "";
+
+            PrepararAccioRival();
+
             estat = Estat.tornJugador;
+
+            if (intencioRivalVisual != null)
+            {
+                intencioRivalVisual.Mostrar(lluitadorRival, accioRival);
+            }
         }
     }
 

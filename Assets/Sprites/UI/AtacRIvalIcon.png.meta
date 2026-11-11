@@ -1,0 +1,2392 @@
+fileFormatVersion: 2
+guid: ed4ff99a3ad806d4288d1f891eabe217
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8938040149784878528
+    second: AtacRIvalIcon_0
+  - first:
+      213: 9181352325362474978
+    second: AtacRIvalIcon_1
+  - first:
+      213: -8086398491335376707
+    second: AtacRIvalIcon_2
+  - first:
+      213: 5957522966733446487
+    second: AtacRIvalIcon_3
+  - first:
+      213: 4964897838087766026
+    second: AtacRIvalIcon_4
+  - first:
+      213: -4325009691491289056
+    second: AtacRIvalIcon_5
+  - first:
+      213: -6710491544985403729
+    second: AtacRIvalIcon_6
+  - first:
+      213: 4099830176066763996
+    second: AtacRIvalIcon_7
+  - first:
+      213: -5072988260011611502
+    second: AtacRIvalIcon_8
+  - first:
+      213: -8304003506062254633
+    second: AtacRIvalIcon_9
+  - first:
+      213: 6431574885983303286
+    second: AtacRIvalIcon_10
+  - first:
+      213: -8519476853579357027
+    second: AtacRIvalIcon_11
+  - first:
+      213: 5210264066494304806
+    second: AtacRIvalIcon_12
+  - first:
+      213: 1612271299079764514
+    second: AtacRIvalIcon_13
+  - first:
+      213: -8317122768439795578
+    second: AtacRIvalIcon_14
+  - first:
+      213: 3739307389075825813
+    second: AtacRIvalIcon_15
+  - first:
+      213: 1066163396421775206
+    second: AtacRIvalIcon_16
+  - first:
+      213: 5677707326167880017
+    second: AtacRIvalIcon_17
+  - first:
+      213: -2508852527813486493
+    second: AtacRIvalIcon_18
+  - first:
+      213: 6939219946604424442
+    second: AtacRIvalIcon_19
+  - first:
+      213: -2264159056052918014
+    second: AtacRIvalIcon_20
+  - first:
+      213: 3698120349098993175
+    second: AtacRIvalIcon_21
+  - first:
+      213: -6742145240736832423
+    second: AtacRIvalIcon_22
+  - first:
+      213: -8530762044978616909
+    second: AtacRIvalIcon_23
+  - first:
+      213: 6983908924810613042
+    second: AtacRIvalIcon_24
+  - first:
+      213: 5197051183759345290
+    second: AtacRIvalIcon_25
+  - first:
+      213: 8800627308497628075
+    second: AtacRIvalIcon_26
+  - first:
+      213: 7538048255629431141
+    second: AtacRIvalIcon_27
+  - first:
+      213: 8659821893270525311
+    second: AtacRIvalIcon_28
+  - first:
+      213: 2562397497929868687
+    second: AtacRIvalIcon_29
+  - first:
+      213: 1468477010732803673
+    second: AtacRIvalIcon_30
+  - first:
+      213: 6241990374126759369
+    second: AtacRIvalIcon_31
+  - first:
+      213: -7634709340713877918
+    second: AtacRIvalIcon_32
+  - first:
+      213: 6421809561856131817
+    second: AtacRIvalIcon_33
+  - first:
+      213: 6397057944170877123
+    second: AtacRIvalIcon_34
+  - first:
+      213: 1658956948209592641
+    second: AtacRIvalIcon_35
+  - first:
+      213: -8355900953275531366
+    second: AtacRIvalIcon_36
+  - first:
+      213: 5652466347861483673
+    second: AtacRIvalIcon_37
+  - first:
+      213: 4095202424082570882
+    second: AtacRIvalIcon_38
+  - first:
+      213: -3381277653945090863
+    second: AtacRIvalIcon_39
+  - first:
+      213: 7054029572335092026
+    second: AtacRIvalIcon_40
+  - first:
+      213: 2948059040829913432
+    second: AtacRIvalIcon_41
+  - first:
+      213: -668768232201503797
+    second: AtacRIvalIcon_42
+  - first:
+      213: -3568229416732417650
+    second: AtacRIvalIcon_43
+  - first:
+      213: -8473267404280344628
+    second: AtacRIvalIcon_44
+  - first:
+      213: -8636612627093341170
+    second: AtacRIvalIcon_45
+  - first:
+      213: 1636988159773307254
+    second: AtacRIvalIcon_46
+  - first:
+      213: 4548590206838415813
+    second: AtacRIvalIcon_47
+  - first:
+      213: -4565413522326267587
+    second: AtacRIvalIcon_48
+  - first:
+      213: -3539496928094326832
+    second: AtacRIvalIcon_49
+  - first:
+      213: -5041074769708093677
+    second: AtacRIvalIcon_50
+  - first:
+      213: 7764284874222455757
+    second: AtacRIvalIcon_51
+  - first:
+      213: 477451442704206208
+    second: AtacRIvalIcon_52
+  - first:
+      213: 8611253099186173927
+    second: AtacRIvalIcon_53
+  - first:
+      213: -5884173624689904704
+    second: AtacRIvalIcon_54
+  - first:
+      213: 8119276763004551406
+    second: AtacRIvalIcon_55
+  - first:
+      213: -5505492323322977431
+    second: AtacRIvalIcon_56
+  - first:
+      213: 1354470510257032417
+    second: AtacRIvalIcon_57
+  - first:
+      213: 3143082063874142649
+    second: AtacRIvalIcon_58
+  - first:
+      213: -3434364815541143766
+    second: AtacRIvalIcon_59
+  - first:
+      213: -8286532780316603084
+    second: AtacRIvalIcon_60
+  - first:
+      213: 3461802057557489494
+    second: AtacRIvalIcon_61
+  - first:
+      213: -8888674161856706857
+    second: AtacRIvalIcon_62
+  - first:
+      213: 5888325929651933057
+    second: AtacRIvalIcon_63
+  - first:
+      213: 4093029817246484019
+    second: AtacRIvalIcon_64
+  - first:
+      213: -7341444096636072579
+    second: AtacRIvalIcon_65
+  - first:
+      213: 6009552965648497012
+    second: AtacRIvalIcon_66
+  - first:
+      213: -4625304722934301562
+    second: AtacRIvalIcon_67
+  - first:
+      213: -3950253644128657567
+    second: AtacRIvalIcon_68
+  - first:
+      213: 8455835818107573306
+    second: AtacRIvalIcon_69
+  - first:
+      213: 2123717316232135223
+    second: AtacRIvalIcon_70
+  - first:
+      213: 6446115173324720279
+    second: AtacRIvalIcon_71
+  - first:
+      213: -1851214655876247892
+    second: AtacRIvalIcon_72
+  - first:
+      213: 9155434274088788975
+    second: AtacRIvalIcon_73
+  - first:
+      213: 8825560670128266768
+    second: AtacRIvalIcon_74
+  - first:
+      213: -5850350246101389163
+    second: AtacRIvalIcon_75
+  - first:
+      213: -7188510447316712022
+    second: AtacRIvalIcon_76
+  - first:
+      213: -4717459356251749454
+    second: AtacRIvalIcon_77
+  - first:
+      213: 3591009042643209973
+    second: AtacRIvalIcon_78
+  - first:
+      213: -5943181581888176575
+    second: AtacRIvalIcon_79
+  - first:
+      213: -7580945315062467225
+    second: AtacRIvalIcon_80
+  - first:
+      213: 1555426913060793866
+    second: AtacRIvalIcon_81
+  - first:
+      213: -568223888618354914
+    second: AtacRIvalIcon_82
+  - first:
+      213: 2248163936143279843
+    second: AtacRIvalIcon_83
+  - first:
+      213: 3199326351273923112
+    second: AtacRIvalIcon_84
+  - first:
+      213: -466797323444126351
+    second: AtacRIvalIcon_85
+  - first:
+      213: 7833518557780571086
+    second: AtacRIvalIcon_86
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AtacRIvalIcon_0
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 1044
+        width: 61
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 042a4ebe6d3b5f380800000000000000
+      internalID: -8938040149784878528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_1
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 1020
+        width: 156
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2efdfe68b47ba6f70800000000000000
+      internalID: 9181352325362474978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_2
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 1072
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db043bb6a6757cf80800000000000000
+      internalID: -8086398491335376707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_3
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 1028
+        width: 57
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75dd06de29f5da250800000000000000
+      internalID: 5957522966733446487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_4
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1076
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a008351574cd6e440800000000000000
+      internalID: 4964897838087766026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_5
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 1078
+        width: 110
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0283a88b99a7af3c0800000000000000
+      internalID: -4325009691491289056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_6
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 1098
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faef1e85e7b8fd2a0800000000000000
+      internalID: -6710491544985403729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_7
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 1082
+        width: 7
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdcf2e3c2d585e830800000000000000
+      internalID: 4099830176066763996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_8
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1092
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29ae74c2e002999b0800000000000000
+      internalID: -5072988260011611502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_9
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 1094
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dd9f87cec042cc80800000000000000
+      internalID: -8304003506062254633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_10
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 1092
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 676bb59684b814950800000000000000
+      internalID: 6431574885983303286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_11
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 1083
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d946d3690fcb4c980800000000000000
+      internalID: -8519476853579357027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_12
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 907
+        width: 144
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 622106530939e4840800000000000000
+      internalID: 5210264066494304806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_13
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 1060
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22af43f4430ff5610800000000000000
+      internalID: 1612271299079764514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_14
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 1062
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68025d978e4a39c80800000000000000
+      internalID: -8317122768439795578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_15
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 1028
+        width: 27
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 594abd73240b4e330800000000000000
+      internalID: 3739307389075825813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_16
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 1046
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66f6e34d5f5cbce00800000000000000
+      internalID: 1066163396421775206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_17
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 1044
+        width: 36
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1519eda3bb44bce40800000000000000
+      internalID: 5677707326167880017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 811
+        width: 92
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36816dd1be3ce2dd0800000000000000
+      internalID: -2508852527813486493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_19
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 17
+        width: 1113
+        height: 1006
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afc69af96cf0d4060800000000000000
+      internalID: 6939219946604424442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_20
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 962
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2096bf4a5571490e0800000000000000
+      internalID: -2264159056052918014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_21
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 953
+        width: 9
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71660b03ddc525330800000000000000
+      internalID: 3698120349098993175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_22
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 951
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9546acdff961f62a0800000000000000
+      internalID: -6742145240736832423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_23
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 948
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b52aa53e15ac9980800000000000000
+      internalID: -8530762044978616909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_24
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 942
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 231540f2a24dbe060800000000000000
+      internalID: 6983908924810613042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_25
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 915
+        width: 19
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a86cf773482af1840800000000000000
+      internalID: 5197051183759345290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_26
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 757
+        width: 56
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bab6a9bc8eb122a70800000000000000
+      internalID: 8800627308497628075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_27
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 923
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5619b8043f68c9860800000000000000
+      internalID: 7538048255629431141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_28
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 883
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f755a86512edd2870800000000000000
+      internalID: 8659821893270525311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_29
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 857
+        width: 39
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f85a57db2f67f8320800000000000000
+      internalID: 2562397497929868687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_30
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 883
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9566e899f04116410800000000000000
+      internalID: 1468477010732803673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_31
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 882
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cdab3d7c2100a650800000000000000
+      internalID: 6241990374126759369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_32
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 835
+        width: 40
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26e74671e401c0690800000000000000
+      internalID: -7634709340713877918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_33
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 787
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e244a5b5c9de1950800000000000000
+      internalID: 6421809561856131817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_34
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 781
+        width: 11
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c055e1ae4ae6c850800000000000000
+      internalID: 6397057944170877123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_35
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 740
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 149e2bb0e8cc50710800000000000000
+      internalID: 1658956948209592641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_36
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 745
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9ff9adba50e90c80800000000000000
+      internalID: -8355900953275531366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_37
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 660
+        width: 9
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99022210238917e40800000000000000
+      internalID: 5652466347861483673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_38
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 580
+        width: 35
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28e92ca48e415d830800000000000000
+      internalID: 4095202424082570882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_39
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 595
+        width: 31
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dcf2a573e94311d0800000000000000
+      internalID: -3381277653945090863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 435
+        width: 108
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a31422ea582f4e160800000000000000
+      internalID: 7054029572335092026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_41
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 513
+        width: 29
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 859bb81041c99e820800000000000000
+      internalID: 2948059040829913432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_42
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 569
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcb309a06de08b6f0800000000000000
+      internalID: -668768232201503797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_43
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 546
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e81a092304a1b7ec0800000000000000
+      internalID: -3568229416732417650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_44
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 536
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccf49f86038e86a80800000000000000
+      internalID: -8473267404280344628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_45
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 409
+        width: 83
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0cb27b0396942880800000000000000
+      internalID: -8636612627093341170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_46
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 465
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 671fec4ee00c7b610800000000000000
+      internalID: 1636988159773307254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_47
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 314
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c1ac6391b6df1f30800000000000000
+      internalID: 4548590206838415813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_48
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 352
+        width: 59
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d395afc079464a0c0800000000000000
+      internalID: -4565413522326267587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_49
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 355
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dfe9550c4e21eec0800000000000000
+      internalID: -3539496928094326832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_50
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 347
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31f6d59a4318a0ab0800000000000000
+      internalID: -5041074769708093677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 291
+        width: 85
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcbc7f6c4f740cb60800000000000000
+      internalID: 7764284874222455757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_52
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 326
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 089c1e7be8f30a600800000000000000
+      internalID: 477451442704206208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_53
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 312
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e739ffb111518770800000000000000
+      internalID: 8611253099186173927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_54
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 311
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c3b2a79347375ea0800000000000000
+      internalID: -5884173624689904704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_55
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 311
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee048fbb2377da070800000000000000
+      internalID: 8119276763004551406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_56
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 296
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 963a1bab6ef8893b0800000000000000
+      internalID: -5505492323322977431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_57
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 296
+        width: 22
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eccc96b0cb0cc210800000000000000
+      internalID: 1354470510257032417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_58
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 276
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b1be1dfb787e9b20800000000000000
+      internalID: 3143082063874142649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_59
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 206
+        width: 28
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a27f194756fa650d0800000000000000
+      internalID: -3434364815541143766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_60
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 238
+        width: 48
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43d49991752500d80800000000000000
+      internalID: -8286532780316603084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_61
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 242
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6573e6341aaca0030800000000000000
+      internalID: 3461802057557489494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_62
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 168
+        width: 68
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d6865aa1f515a480800000000000000
+      internalID: -8888674161856706857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_63
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 230
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18f00ae3c3987b150800000000000000
+      internalID: 5888325929651933057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_64
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 152
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3360f08deec5dc830800000000000000
+      internalID: 4093029817246484019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_65
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 194
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d4e91ad73fd1a90800000000000000
+      internalID: -7341444096636072579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_66
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 190
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 479bf501598366350800000000000000
+      internalID: 6009552965648497012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_67
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 144
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68c70934cdd9fcfb0800000000000000
+      internalID: -4625304722934301562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_68
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 144
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16fd4017d31ed29c0800000000000000
+      internalID: -3950253644128657567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_69
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 160
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a34935920e9295570800000000000000
+      internalID: 8455835818107573306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_70
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 154
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 732cc5da5a5f87d10800000000000000
+      internalID: 2123717316232135223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_71
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 144
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 798864fd893357950800000000000000
+      internalID: 6446115173324720279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_72
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 142
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caecf71241a2f46e0800000000000000
+      internalID: -1851214655876247892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_73
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 128
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe3af77f6f2ae0f70800000000000000
+      internalID: 9155434274088788975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_74
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 129
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e57ae6ba0ba7a70800000000000000
+      internalID: 8825560670128266768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_75
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 128
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 590f18992716fcea0800000000000000
+      internalID: -5850350246101389163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_76
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 119
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa5c083a5d74d3c90800000000000000
+      internalID: -7188510447316712022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_77
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 79
+        width: 17
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b3854ca5b7388eb0800000000000000
+      internalID: -4717459356251749454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_78
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 113
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fec6f3c2b3d5d130800000000000000
+      internalID: 3591009042643209973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_79
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 112
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14e39efe6d3958da0800000000000000
+      internalID: -5943181581888176575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_80
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 87
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7653a0ac6621bc690800000000000000
+      internalID: -7580945315062467225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_81
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 47
+        width: 15
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0e2213598cf59510800000000000000
+      internalID: 1555426913060793866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_82
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 52
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e17030642634d18f0800000000000000
+      internalID: -568223888618354914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_83
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 33
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e60aaa4035133f10800000000000000
+      internalID: 2248163936143279843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_84
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 33
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8229a30ad5a466c20800000000000000
+      internalID: 3199326351273923112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_85
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 22
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17d720abe4a9589f0800000000000000
+      internalID: -466797323444126351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AtacRIvalIcon_86
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 17
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec3f0f1ef9f36bc60800000000000000
+      internalID: 7833518557780571086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AtacRIvalIcon_0: -8938040149784878528
+      AtacRIvalIcon_1: 9181352325362474978
+      AtacRIvalIcon_10: 6431574885983303286
+      AtacRIvalIcon_11: -8519476853579357027
+      AtacRIvalIcon_12: 5210264066494304806
+      AtacRIvalIcon_13: 1612271299079764514
+      AtacRIvalIcon_14: -8317122768439795578
+      AtacRIvalIcon_15: 3739307389075825813
+      AtacRIvalIcon_16: 1066163396421775206
+      AtacRIvalIcon_17: 5677707326167880017
+      AtacRIvalIcon_18: -2508852527813486493
+      AtacRIvalIcon_19: 6939219946604424442
+      AtacRIvalIcon_2: -8086398491335376707
+      AtacRIvalIcon_20: -2264159056052918014
+      AtacRIvalIcon_21: 3698120349098993175
+      AtacRIvalIcon_22: -6742145240736832423
+      AtacRIvalIcon_23: -8530762044978616909
+      AtacRIvalIcon_24: 6983908924810613042
+      AtacRIvalIcon_25: 5197051183759345290
+      AtacRIvalIcon_26: 8800627308497628075
+      AtacRIvalIcon_27: 7538048255629431141
+      AtacRIvalIcon_28: 8659821893270525311
+      AtacRIvalIcon_29: 2562397497929868687
+      AtacRIvalIcon_3: 5957522966733446487
+      AtacRIvalIcon_30: 1468477010732803673
+      AtacRIvalIcon_31: 6241990374126759369
+      AtacRIvalIcon_32: -7634709340713877918
+      AtacRIvalIcon_33: 6421809561856131817
+      AtacRIvalIcon_34: 6397057944170877123
+      AtacRIvalIcon_35: 1658956948209592641
+      AtacRIvalIcon_36: -8355900953275531366
+      AtacRIvalIcon_37: 5652466347861483673
+      AtacRIvalIcon_38: 4095202424082570882
+      AtacRIvalIcon_39: -3381277653945090863
+      AtacRIvalIcon_4: 4964897838087766026
+      AtacRIvalIcon_40: 7054029572335092026
+      AtacRIvalIcon_41: 2948059040829913432
+      AtacRIvalIcon_42: -668768232201503797
+      AtacRIvalIcon_43: -3568229416732417650
+      AtacRIvalIcon_44: -8473267404280344628
+      AtacRIvalIcon_45: -8636612627093341170
+      AtacRIvalIcon_46: 1636988159773307254
+      AtacRIvalIcon_47: 4548590206838415813
+      AtacRIvalIcon_48: -4565413522326267587
+      AtacRIvalIcon_49: -3539496928094326832
+      AtacRIvalIcon_5: -4325009691491289056
+      AtacRIvalIcon_50: -5041074769708093677
+      AtacRIvalIcon_51: 7764284874222455757
+      AtacRIvalIcon_52: 477451442704206208
+      AtacRIvalIcon_53: 8611253099186173927
+      AtacRIvalIcon_54: -5884173624689904704
+      AtacRIvalIcon_55: 8119276763004551406
+      AtacRIvalIcon_56: -5505492323322977431
+      AtacRIvalIcon_57: 1354470510257032417
+      AtacRIvalIcon_58: 3143082063874142649
+      AtacRIvalIcon_59: -3434364815541143766
+      AtacRIvalIcon_6: -6710491544985403729
+      AtacRIvalIcon_60: -8286532780316603084
+      AtacRIvalIcon_61: 3461802057557489494
+      AtacRIvalIcon_62: -8888674161856706857
+      AtacRIvalIcon_63: 5888325929651933057
+      AtacRIvalIcon_64: 4093029817246484019
+      AtacRIvalIcon_65: -7341444096636072579
+      AtacRIvalIcon_66: 6009552965648497012
+      AtacRIvalIcon_67: -4625304722934301562
+      AtacRIvalIcon_68: -3950253644128657567
+      AtacRIvalIcon_69: 8455835818107573306
+      AtacRIvalIcon_7: 4099830176066763996
+      AtacRIvalIcon_70: 2123717316232135223
+      AtacRIvalIcon_71: 6446115173324720279
+      AtacRIvalIcon_72: -1851214655876247892
+      AtacRIvalIcon_73: 9155434274088788975
+      AtacRIvalIcon_74: 8825560670128266768
+      AtacRIvalIcon_75: -5850350246101389163
+      AtacRIvalIcon_76: -7188510447316712022
+      AtacRIvalIcon_77: -4717459356251749454
+      AtacRIvalIcon_78: 3591009042643209973
+      AtacRIvalIcon_79: -5943181581888176575
+      AtacRIvalIcon_8: -5072988260011611502
+      AtacRIvalIcon_80: -7580945315062467225
+      AtacRIvalIcon_81: 1555426913060793866
+      AtacRIvalIcon_82: -568223888618354914
+      AtacRIvalIcon_83: 2248163936143279843
+      AtacRIvalIcon_84: 3199326351273923112
+      AtacRIvalIcon_85: -466797323444126351
+      AtacRIvalIcon_86: 7833518557780571086
+      AtacRIvalIcon_9: -8304003506062254633
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -38,6 +38,14 @@ public class FeedbackLluitador : MonoBehaviour
     [SerializeField]
     private float duradaFlash = 0.10f;
 
+    [Header("Colors de la intencio")]
+    [SerializeField]
+    private Color colorIntencioAtac = new Color(1f, 0.45f, 0.35f, 1f);
+
+    [SerializeField]
+    private Color colorIntencioDefensa = new Color(0.40f, 0.75f, 1f, 1f);
+    private Color colorIntencioActual = Color.white;
+
     private SpriteRenderer[] sprites;
     private Color[] colorsOriginals;
     private Coroutine flashActual;
@@ -52,6 +60,48 @@ public class FeedbackLluitador : MonoBehaviour
         {
             colorsOriginals[i] = sprites[i].color;
         }
+    }
+
+    public void MostrarIntencio(bool atacara)
+    {
+        if (flashActual != null)
+        {
+            StopCoroutine(flashActual);
+            flashActual = null;
+        }
+
+        // Restaurar el color inicial abans de tenyir
+        RestaurarColors();
+
+        colorIntencioActual = atacara ? colorIntencioAtac : colorIntencioDefensa;
+
+        ActualitzarIntencio(1f);
+    }
+
+    public void ActualitzarIntencio(float intensitat)
+    {
+        intensitat = Mathf.Clamp01(intensitat);
+
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            if (sprites[i] == null)
+                continue;
+
+            Color colorTenit = colorsOriginals[i] * colorIntencioActual;
+
+            sprites[i].color = Color.Lerp(colorsOriginals[i], colorTenit, intensitat);
+        }
+    }
+
+    public void OcultarIntencio()
+    {
+        if (flashActual != null)
+        {
+            StopCoroutine(flashActual);
+            flashActual = null;
+        }
+
+        RestaurarColors();
     }
 
     public void MostrarImpacte(bool bloquejat, bool atacAlt)
