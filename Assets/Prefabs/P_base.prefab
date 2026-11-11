@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 6619948604646472276}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.65080905, w: 0.75924146}
-  m_LocalPosition: {x: -0.6262012, y: -4.0546293, z: 0}
+  m_LocalPosition: {x: -0, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -500,9 +500,11 @@ MonoBehaviour:
   puntImpacteCos: {fileID: 2150778983312747551}
   puntBloqueigAlt: {fileID: 6061229859720043973}
   puntBloqueigCos: {fileID: 1219444564632575649}
-  puntEsquiva: {fileID: 0}
+  puntEsquiva: {fileID: 5204502106773396901}
   colorFlash: {r: 1, g: 0.55, b: 0.35, a: 1}
   duradaFlash: 0.1
+  colorIntencioAtac: {r: 1, g: 0.45, b: 0.35, a: 1}
+  colorIntencioDefensa: {r: 0.4, g: 0.75, b: 1, a: 1}
 --- !u!4 &6714167797433514420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}

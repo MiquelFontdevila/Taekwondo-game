@@ -50,6 +50,15 @@ public class FeedbackLluitador : MonoBehaviour
     private Color[] colorsOriginals;
     private Coroutine flashActual;
 
+    [Header("Punt de la icona d'intencio")]
+    [SerializeField]
+    private Transform puntIntencio;
+
+    public Transform PuntIntencio
+    {
+        get { return puntIntencio != null ? puntIntencio : transform; }
+    }
+
     private void Awake()
     {
         sprites = GetComponentsInChildren<SpriteRenderer>(true);
@@ -70,7 +79,6 @@ public class FeedbackLluitador : MonoBehaviour
             flashActual = null;
         }
 
-        // Restaurar el color inicial abans de tenyir
         RestaurarColors();
 
         colorIntencioActual = atacara ? colorIntencioAtac : colorIntencioDefensa;

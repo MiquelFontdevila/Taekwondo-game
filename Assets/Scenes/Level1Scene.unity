@@ -2549,30 +2549,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialManager
   pagines:
-  - descripcio: "El combat dura 10 torns. Guanya qui aconsegueix m\xE9s punts!\n\n\u2022
+  - titol: OBJECTIU DEL COMBAT
+    descripcio: "El combat dura 10 torns. Guanya qui aconsegueix mes punts!\n\n\u2022
       Patada alta: 3 punts.\n\u2022 Patada al cos: 1 punt.\n\u2022 Fer sortir el
       rival del tatami: 1 punt.\n\nLes accions dels dos lluitadors es resolen en
       cada torn."
-    titol: OBJECTIU DEL COMBAT
     captura: {fileID: 2520569050414759820, guid: fc839ed5703fa4044b07b6ef38e1c5aa, type: 3}
-  - descripcio: "Tria una t\xE8cnica d'atac o una acci\xF3 defensiva.\n\n\u2022 Els
-      bloquejos aturen les patades corresponents.\n\u2022 Esquivar evita les patades.\n\u2022
-      L'empenta permet despla\xE7ar el rival.\n\nNo totes les defenses s\xF3n igual
-      d'efectives contra tots els atacs!"
-    titol: ATACAR I DEFENSAR
+    alturaImatge: 340
+  - titol: ATACAR I DEFENSAR
+    descripcio: "Tria una tecnica d'atac o una accio defensiva.\n\n\u2022 Els bloquejos
+      aturen les patades corresponents.\n\u2022 Esquivar evita les patades.\n\u2022
+      L'empenta permet despla\xE7ar el rival.\n\nNo totes les defenses serveixen
+      contra tots els atacs!"
     captura: {fileID: -498630244734350574, guid: c65c5a9643b217e4487852f0e4283d45, type: 3}
-  - descripcio: "El llamp verd representa la teva estamina.\n\n\u2022 Patada alta:
+    alturaImatge: 180
+  - titol: GESTIONA L'ESTAMINA
+    descripcio: "El llamp verd representa la teva estamina.\n\n\u2022 Patada alta:
       consumeix 3 punts.\n\u2022 Patada al cos: consumeix 1 punt.\n\u2022 Empenta:
       consumeix 2 punts.\n\u2022 Bloquejar: recupera estamina.\n\u2022 Esquivar:
-      recupera 2 punts.\n\nLa teva estamina m\xE0xima \xE9s de 10."
-    titol: GESTIONA L'ESTAMINA
+      recupera 2 punts.\n\nLa teva estamina maxima es de 10."
     captura: {fileID: 749453094132031444, guid: 03d7a4cc23929b24fa9721e40c486798, type: 3}
-  - descripcio: "Abans de decidir, observa la intenci\xF3 del rival!\n\n\u2022 Espasa
+    alturaImatge: 180
+  - titol: OBSERVA EL RIVAL
+    descripcio: "Abans de decidir, observa el que prepara el rival!\n\n\u2022 Espasa
       vermella: prepara un atac.\n\u2022 Escut blau: prepara una defensa.\n\nEl color
-      del rival tamb\xE9 indica la seva intenci\xF3.\n\nLa pista desapareix al cap
-      de 2 segons, per\xF2 pots continuar pensant la teva acci\xF3."
-    titol: OBSERVA EL RIVAL
+      del rival tambe indica la seva intencio.\n\nLa pista desapareix al cap de 2
+      segons, pero pots continuar pensant la teva accio."
     captura: {fileID: 1406272678773584270, guid: 530e02563f335fa4b9c8c6ff01938260, type: 3}
+    alturaImatge: 340
   textTitol: {fileID: 376498827}
   textDescripcio: {fileID: 1518587335}
   imatgeCaptura: {fileID: 675876073}
@@ -2580,6 +2584,9 @@ MonoBehaviour:
   botoAnterior: {fileID: 114513731}
   botoSeguent: {fileID: 2003266321}
   chooseCharacterObject: {fileID: 295038285}
+  tutorialContent: {fileID: 1353504538}
+  layoutImatge: {fileID: 675876076}
+  ampladaMaximaImatge: 0.7
 --- !u!1 &473209718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3943,6 +3950,7 @@ GameObject:
   - component: {fileID: 675876075}
   - component: {fileID: 675876074}
   - component: {fileID: 675876073}
+  - component: {fileID: 675876076}
   m_Layer: 5
   m_Name: TutorialImage
   m_TagString: Untagged
@@ -3995,18 +4003,38 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675876072}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 786610376}
+  m_Father: {fileID: 1353504538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: 0}
-  m_SizeDelta: {x: 650, y: 340}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &675876076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675876072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &678569660
 GameObject:
   m_ObjectHideFlags: 0
@@ -4310,8 +4338,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 376498829}
-  - {fileID: 675876075}
-  - {fileID: 1518587337}
+  - {fileID: 1353504538}
   - {fileID: 1783346614}
   m_Father: {fileID: 465882447}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4423,14 +4450,6 @@ PrefabInstance:
     - target: {fileID: 1863744704290683144, guid: 7d178b886230f2140adacd3905c77f21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5162111655071190691, guid: 7d178b886230f2140adacd3905c77f21, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5162111655071190691, guid: 7d178b886230f2140adacd3905c77f21, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.7
       objectReference: {fileID: 0}
     - target: {fileID: 5523328690937926291, guid: 7d178b886230f2140adacd3905c77f21, type: 3}
       propertyPath: fxEsquiva
@@ -5714,11 +5733,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021053800}
   m_CullTransparentMesh: 1
---- !u!4 &1026540921 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5204502106773396901, guid: ca8280a33029e8d4297c75417f5845d7, type: 3}
-  m_PrefabInstance: {fileID: 6535761282811513022}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1062561001
 GameObject:
   m_ObjectHideFlags: 0
@@ -6933,6 +6947,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310823337}
   m_CullTransparentMesh: 1
+--- !u!1 &1353504537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353504538}
+  - component: {fileID: 1353504539}
+  m_Layer: 5
+  m_Name: TutorialContent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1353504538
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353504537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 675876075}
+  - {fileID: 1518587337}
+  m_Father: {fileID: 786610376}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: 0}
+  m_SizeDelta: {x: 1270, y: 340}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1353504539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353504537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 25
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1395901876
 GameObject:
   m_ObjectHideFlags: 0
@@ -7399,6 +7477,7 @@ GameObject:
   - component: {fileID: 1518587337}
   - component: {fileID: 1518587336}
   - component: {fileID: 1518587335}
+  - component: {fileID: 1518587338}
   m_Layer: 5
   m_Name: TutorialDescriptionTMP
   m_TagString: Untagged
@@ -7513,18 +7592,38 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518587334}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 786610376}
+  m_Father: {fileID: 1353504538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: 3.661}
-  m_SizeDelta: {x: 600, y: 340}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &1518587338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518587334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 0
+  m_MinWidth: 700
+  m_MinHeight: 340
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: 1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1528877288
 GameObject:
   m_ObjectHideFlags: 0
@@ -8498,7 +8597,7 @@ MonoBehaviour:
   spriteAtac: {fileID: 21300000, guid: ed4ff99a3ad806d4288d1f891eabe217, type: 3}
   spriteDefensa: {fileID: 21300000, guid: 5e39588f18bb2c94798a4f806c0d971b, type: 3}
   cameraCombat: {fileID: 519420031}
-  alturaIcona: 3.5
+  alturaIcona: -2
   desplacamentHoritzontal: 0.5
   midaIcona: 80
   duradaDesaparicio: 2
@@ -9122,11 +9221,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800710532}
   m_CullTransparentMesh: 1
---- !u!4 &1815240686 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1197935937915008736, guid: 761a65c7daa03d4408b5f5b183f361c8, type: 3}
-  m_PrefabInstance: {fileID: 1863240603}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1849207791
 GameObject:
   m_ObjectHideFlags: 0
@@ -9335,14 +9429,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1197935937915008736, guid: 761a65c7daa03d4408b5f5b183f361c8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1197935937915008736, guid: 761a65c7daa03d4408b5f5b183f361c8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.9
-      objectReference: {fileID: 0}
     - target: {fileID: 3182319111638378678, guid: 761a65c7daa03d4408b5f5b183f361c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.32
@@ -9387,10 +9473,6 @@ PrefabInstance:
       propertyPath: fxEsquiva
       value: 
       objectReference: {fileID: 1735053191}
-    - target: {fileID: 4180563783491135104, guid: 761a65c7daa03d4408b5f5b183f361c8, type: 3}
-      propertyPath: puntEsquiva
-      value: 
-      objectReference: {fileID: 1815240686}
     - target: {fileID: 4387006915200102613, guid: 761a65c7daa03d4408b5f5b183f361c8, type: 3}
       propertyPath: m_Name
       value: Jugador 1
@@ -11290,25 +11372,13 @@ PrefabInstance:
       propertyPath: fxEsquiva
       value: 
       objectReference: {fileID: 1735053191}
-    - target: {fileID: 4695775266718284138, guid: ca8280a33029e8d4297c75417f5845d7, type: 3}
-      propertyPath: puntEsquiva
-      value: 
-      objectReference: {fileID: 1026540921}
-    - target: {fileID: 5204502106773396901, guid: ca8280a33029e8d4297c75417f5845d7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5204502106773396901, guid: ca8280a33029e8d4297c75417f5845d7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5613066083988627927, guid: ca8280a33029e8d4297c75417f5845d7, type: 3}
       propertyPath: m_Name
       value: P_base
       objectReference: {fileID: 0}
     - target: {fileID: 5613066083988627927, guid: ca8280a33029e8d4297c75417f5845d7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6714167797433514420, guid: ca8280a33029e8d4297c75417f5845d7, type: 3}
       propertyPath: m_LocalPosition.x
