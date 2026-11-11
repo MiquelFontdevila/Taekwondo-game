@@ -253,10 +253,13 @@ public class SistemaDeBatalla : MonoBehaviour
 
         PosarEstatAnimator(animatorJugador, estatAnimJugador);
         PosarEstatAnimator(animatorRival, estatAnimRival);
+        IniciarFeedbackEsquives();
 
         // Qui ha rebut una patada que no ha bloquejat ni esquivat (estat 7 després de l'animació de l'acció)
-        bool jugadorRebCop = PatadaImpacta(accioRival, accioJugador) || EmpentaImpacta(accioRival, accioJugador);
-        bool rivalRebCop = PatadaImpacta(accioJugador, accioRival) || EmpentaImpacta(accioJugador, accioRival);
+        bool jugadorRebCop =
+            PatadaImpacta(accioRival, accioJugador) || EmpentaImpacta(accioRival, accioJugador);
+        bool rivalRebCop =
+            PatadaImpacta(accioJugador, accioRival) || EmpentaImpacta(accioJugador, accioRival);
 
         // Qui ha sortit del ring en aquest torn (estat 10 després de les animacions anteriors)
         bool jugadorForaRing = false;
@@ -496,7 +499,8 @@ public class SistemaDeBatalla : MonoBehaviour
     // La UI i les animacions han d'acabar abans de canviar de torn.
     public void AcabarMostrarResultatTorn()
     {
-        if (estat != Estat.resolucioTorn) return;
+        if (estat != Estat.resolucioTorn)
+            return;
         missatgeAcabat = true;
         IntentarFinalitzarTorn();
     }
@@ -535,7 +539,7 @@ public class SistemaDeBatalla : MonoBehaviour
         }
     }
 
-        // POSICIONS PENDENTS
+    // POSICIONS PENDENTS
 
     // Aplica les posicions guardades a resolucioTorn (empenta / esquivar / reinici per sortir del ring).
     // Es crida quan han acabat totes les animacions del torn.
@@ -603,20 +607,45 @@ public class SistemaDeBatalla : MonoBehaviour
         if (!atacAlt && !atacCos)
             return;
 
+        if (defensor == null)
+            return;
+
+        FeedbackLluitador feedback = defensor.GetComponent<FeedbackLluitador>();
+
+        if (feedback == null)
+            return;
+
         if (defensa == "esquivar")
             return;
 
         bool bloquejat =
             (atacAlt && defensa == "bloqueigAlt") || (atacCos && defensa == "bloqueigAlCos");
 
-        if (defensor == null)
-            return;
+        feedback.MostrarImpacte(bloquejat, atacAlt);
+    }
 
-        FeedbackLluitador feedback = defensor.GetComponent<FeedbackLluitador>();
-
-        if (feedback != null)
+    private void IniciarFeedbackEsquives()
+    {
+        if (
+            accioJugador == "esquivar"
+            && (accioRival == "patadaAlta" || accioRival == "patadaAlCos")
+        )
         {
-            feedback.MostrarImpacte(bloquejat, atacAlt);
+            var feedback = lluitadorJugador.GetComponent<FeedbackLluitador>();
+
+            if (feedback != null)
+                feedback.MostrarEsquiva(0.4f);
+        }
+
+        if (
+            accioRival == "esquivar"
+            && (accioJugador == "patadaAlta" || accioJugador == "patadaAlCos")
+        )
+        {
+            var feedback = lluitadorRival.GetComponent<FeedbackLluitador>();
+
+            if (feedback != null)
+                feedback.MostrarEsquiva(0.4f);
         }
     }
 
@@ -665,11 +694,17 @@ public class SistemaDeBatalla : MonoBehaviour
         }
 
         if (!haEntrat)
-            Debug.LogWarning($"{animator.name}: no s'ha detectat l'entrada a l'animació per estat={valor}. Revisa les transicions i les condicions de l'Animator.");
+            Debug.LogWarning(
+                $"{animator.name}: no s'ha detectat l'entrada a l'animació per estat={valor}. Revisa les transicions i les condicions de l'Animator."
+            );
     }
 
     System.Collections.IEnumerator TornarAIdle(
-        bool jugadorRebCop, bool rivalRebCop, bool jugadorForaRing, bool rivalForaRing)
+        bool jugadorRebCop,
+        bool rivalRebCop,
+        bool jugadorForaRing,
+        bool rivalForaRing
+    )
     {
         float tempsContacte = Mathf.Max(0f, duradaAccio * 0.65f);
         yield return new WaitForSeconds(tempsContacte);
@@ -700,8 +735,10 @@ public class SistemaDeBatalla : MonoBehaviour
                 yield return StartCoroutine(EsperarEstatEspecial(animatorRival, 7, duradaCop));
         }
 
-        if (jugadorForaRing) PosarEstatAnimator(animatorJugador, 10);
-        if (rivalForaRing) PosarEstatAnimator(animatorRival, 10);
+        if (jugadorForaRing)
+            PosarEstatAnimator(animatorJugador, 10);
+        if (rivalForaRing)
+            PosarEstatAnimator(animatorRival, 10);
         if (jugadorForaRing)
             yield return StartCoroutine(EsperarEstatEspecial(animatorJugador, 10, duradaFora));
         if (rivalForaRing)
@@ -725,7 +762,8 @@ public class SistemaDeBatalla : MonoBehaviour
         {
             bool primerAcabat = AnimacioAcabada(primer);
             bool segonAcabat = AnimacioAcabada(segon);
-            if (primerAcabat && segonAcabat) yield break;
+            if (primerAcabat && segonAcabat)
+                yield break;
             temps += Time.deltaTime;
             yield return null;
         }
@@ -733,8 +771,10 @@ public class SistemaDeBatalla : MonoBehaviour
 
     bool AnimacioAcabada(Animator animator)
     {
-        if (animator == null || !animator.isActiveAndEnabled) return true;
-        if (animator.IsInTransition(0)) return false;
+        if (animator == null || !animator.isActiveAndEnabled)
+            return true;
+        if (animator.IsInTransition(0))
+            return false;
         return animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
     }
 

@@ -122,6 +122,99 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3182319111638378678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5094194960428022987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1197935937915008736}
+  m_Layer: 0
+  m_Name: PuntEsquiva
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1197935937915008736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5094194960428022987}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.63017523, w: 0.776453}
+  m_LocalPosition: {x: -0.67388135, y: -4.1979175, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4603241226899749451}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5704113001638880879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1676315203999588450}
+  m_Layer: 0
+  m_Name: PuntBloqueigAlt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1676315203999588450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704113001638880879}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.63, y: 0.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7416894842470346072}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6135686387927869408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 754083714679100290}
+  m_Layer: 0
+  m_Name: PuntBloqueigCos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &754083714679100290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135686387927869408}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.26, y: -3.46, z: 0}
+  m_LocalScale: {x: 6.25, y: 6.25, z: 6.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7416894842470346072}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6811303345526720533
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +334,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8945187497719171121}
+    - targetCorrespondingSourceObject: {fileID: 6766679073565359152, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 754083714679100290}
+    - targetCorrespondingSourceObject: {fileID: 6766679073565359152, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1676315203999588450}
+    - targetCorrespondingSourceObject: {fileID: 353523593427774243, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1197935937915008736}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
       insertIndex: -1
@@ -392,7 +494,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FeedbackLluitador
   fxImpacte: {fileID: 7863242994300920170, guid: 3a399862d4661bc45b9079ff6016bb49, type: 3}
   fxBloqueig: {fileID: 7863242994300920170, guid: 8747dd29bcaf3e144bd080d0b405118a, type: 3}
+  fxEsquiva: {fileID: 0}
   puntImpacteAlt: {fileID: 1717192799572487068}
   puntImpacteCos: {fileID: 8945187497719171121}
+  puntBloqueigAlt: {fileID: 1676315203999588450}
+  puntBloqueigCos: {fileID: 754083714679100290}
+  puntEsquiva: {fileID: 0}
   colorFlash: {r: 1, g: 0.55, b: 0.35, a: 1}
   duradaFlash: 0.1
+--- !u!4 &4603241226899749451 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 353523593427774243, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
+  m_PrefabInstance: {fileID: 4253096055189639528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7416894842470346072 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6766679073565359152, guid: a44bdd0b10ebe3747bd4830acf150919, type: 3}
+  m_PrefabInstance: {fileID: 4253096055189639528}
+  m_PrefabAsset: {fileID: 0}

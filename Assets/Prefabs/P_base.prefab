@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4302367776632180189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1219444564632575649}
+  m_Layer: 0
+  m_Name: PuntBloqueigCos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1219444564632575649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302367776632180189}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.069999, y: -3.37, z: 0}
+  m_LocalScale: {x: 6.25, y: 6.25, z: 6.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2353397390737619728}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6619948604646472276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5204502106773396901}
+  m_Layer: 0
+  m_Name: PuntEsquiva
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5204502106773396901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6619948604646472276}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.65080905, w: 0.75924146}
+  m_LocalPosition: {x: -0.6262012, y: -4.0546293, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3724630086400197395}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6801554544546263781
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +92,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6714167797433514420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8158014339697163343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6061229859720043973}
+  m_Layer: 0
+  m_Name: PuntBloqueigAlt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6061229859720043973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158014339697163343}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.5799985, y: 2.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2353397390737619728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8239417908553930458
 GameObject:
@@ -237,6 +330,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2150778983312747551}
+    - targetCorrespondingSourceObject: {fileID: -1537239886672757894, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1219444564632575649}
+    - targetCorrespondingSourceObject: {fileID: -1537239886672757894, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6061229859720043973}
+    - targetCorrespondingSourceObject: {fileID: 8769310390483682169, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5204502106773396901}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
       insertIndex: -1
@@ -254,6 +356,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4695775266718284138}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
+--- !u!4 &2353397390737619728 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1537239886672757894, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
+  m_PrefabInstance: {fileID: 5332915081572368490}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3724630086400197395 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8769310390483682169, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
+  m_PrefabInstance: {fileID: 5332915081572368490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5613066083988627927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
@@ -383,8 +495,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FeedbackLluitador
   fxImpacte: {fileID: 7863242994300920170, guid: 3a399862d4661bc45b9079ff6016bb49, type: 3}
   fxBloqueig: {fileID: 7863242994300920170, guid: 8747dd29bcaf3e144bd080d0b405118a, type: 3}
+  fxEsquiva: {fileID: 0}
   puntImpacteAlt: {fileID: 1697343670060353571}
   puntImpacteCos: {fileID: 2150778983312747551}
+  puntBloqueigAlt: {fileID: 6061229859720043973}
+  puntBloqueigCos: {fileID: 1219444564632575649}
+  puntEsquiva: {fileID: 0}
   colorFlash: {r: 1, g: 0.55, b: 0.35, a: 1}
   duradaFlash: 0.1
 --- !u!4 &6714167797433514420 stripped

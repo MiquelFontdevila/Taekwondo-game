@@ -122,6 +122,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5623522608469777589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5162111655071190691}
+  m_Layer: 0
+  m_Name: PuntEsquiva
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5162111655071190691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623522608469777589}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.63364154, w: 0.77362686}
+  m_LocalPosition: {x: 0.55302525, y: -4.974851, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8592963414089466799}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7114366433763789660
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +183,68 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1863744704290683144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7822279714482584589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7987897286458535938}
+  m_Layer: 0
+  m_Name: PuntBloqueigAlt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7987897286458535938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7822279714482584589}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.37, y: 2.2, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1766834654134724128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7958296689859879699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4337573367532529771}
+  m_Layer: 0
+  m_Name: PuntBloqueigCos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4337573367532529771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7958296689859879699}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.2, y: -4.54, z: 0}
+  m_LocalScale: {x: -6.25, y: 6.25, z: 6.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1766834654134724128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1077081470399873238
 PrefabInstance:
@@ -237,6 +330,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5527726859590322594}
+    - targetCorrespondingSourceObject: {fileID: 1618904590296278774, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4337573367532529771}
+    - targetCorrespondingSourceObject: {fileID: 1618904590296278774, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7987897286458535938}
+    - targetCorrespondingSourceObject: {fileID: 8769310390483682169, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5162111655071190691}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
       insertIndex: -1
@@ -383,12 +485,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FeedbackLluitador
   fxImpacte: {fileID: 0}
   fxBloqueig: {fileID: 0}
+  fxEsquiva: {fileID: 0}
   puntImpacteAlt: {fileID: 1707730195803869655}
   puntImpacteCos: {fileID: 5527726859590322594}
+  puntBloqueigAlt: {fileID: 7987897286458535938}
+  puntBloqueigCos: {fileID: 4337573367532529771}
+  puntEsquiva: {fileID: 5162111655071190691}
   colorFlash: {r: 1, g: 0.55, b: 0.35, a: 1}
   duradaFlash: 0.1
+--- !u!4 &1766834654134724128 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1618904590296278774, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
+  m_PrefabInstance: {fileID: 1077081470399873238}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1863744704290683144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
+  m_PrefabInstance: {fileID: 1077081470399873238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8592963414089466799 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8769310390483682169, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
   m_PrefabInstance: {fileID: 1077081470399873238}
   m_PrefabAsset: {fileID: 0}
