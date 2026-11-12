@@ -39,7 +39,6 @@ public class SeleccioLluitador : MonoBehaviour
     private float duradaTransicio = 0.15f;
     private Coroutine transicioActual;
 
-
     [Header("Audio")]
     [SerializeField]
     private AudioManager audioManager;
@@ -51,21 +50,30 @@ public class SeleccioLluitador : MonoBehaviour
     void Start()
     {
         escalaOriginal = previsualitzacio.rectTransform.localScale;
+
         index = Mathf.Clamp(PlayerPrefs.GetInt(ClauPref, 0), 0, opcions.Length - 1);
 
+        OcultarElementsCombat();
+
+        MostrarOpcio();
+
+        EventSystem.current.SetSelectedGameObject(botoInicial);
+    }
+
+    // Oculta la interfície i els lluitadors abans del combat.
+    public void OcultarElementsCombat()
+    {
         foreach (GameObject g in elementsCombat)
         {
             if (g != null)
                 g.SetActive(false);
         }
+
         foreach (OpcioLluitador o in opcions)
         {
             if (o.lluitador != null)
                 o.lluitador.gameObject.SetActive(false);
         }
-
-        MostrarOpcio();
-        EventSystem.current.SetSelectedGameObject(botoInicial);
     }
 
     void Update()

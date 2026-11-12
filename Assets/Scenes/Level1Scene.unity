@@ -2598,6 +2598,7 @@ MonoBehaviour:
   botoAnterior: {fileID: 114513731}
   botoSeguent: {fileID: 2003266321}
   chooseCharacterObject: {fileID: 295038285}
+  seleccioLluitador: {fileID: 295038287}
   tutorialContent: {fileID: 1353504538}
   layoutImatge: {fileID: 675876076}
   ampladaMaximaImatge: 0.7

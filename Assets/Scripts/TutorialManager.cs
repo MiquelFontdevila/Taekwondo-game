@@ -50,6 +50,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     private GameObject chooseCharacterObject;
 
+    [SerializeField]
+    private SeleccioLluitador seleccioLluitador;
+
     [Header("Distribucio adaptable")]
     [SerializeField]
     private RectTransform tutorialContent;
@@ -66,8 +69,18 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        // Ocultar els elements del combat
+        // mentre es mostra el tutorial.
+        if (seleccioLluitador != null)
+        {
+            seleccioLluitador.OcultarElementsCombat();
+        }
+
+        // La selecció de personatge continua oculta.
         if (chooseCharacterObject != null)
+        {
             chooseCharacterObject.SetActive(false);
+        }
 
         paginaActual = 0;
         ActualitzarPagina();
