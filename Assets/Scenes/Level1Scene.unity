@@ -176,7 +176,6 @@ MonoBehaviour:
   esDefensa: 0
   cost: 3
   resultat: 3
-  descripcio: Falla si el rival realitza Bloqueig Alt o Esquiva
 --- !u!114 &21718200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +431,7 @@ GameObject:
   - component: {fileID: 114513733}
   - component: {fileID: 114513732}
   - component: {fileID: 114513731}
+  - component: {fileID: 114513735}
   m_Layer: 5
   m_Name: PreviousButton
   m_TagString: Untagged
@@ -553,6 +553,18 @@ RectTransform:
   m_AnchoredPosition: {x: 60, y: 40}
   m_SizeDelta: {x: 409, y: 175}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &114513735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114513730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &127841483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,7 +1427,7 @@ MonoBehaviour:
   panellAtac: {fileID: 1959213721}
   panellDefensa: {fileID: 2052707321}
   textInfoTorn: {fileID: 678569662}
-  missatgePrincipal: Que fara el jugador?
+  missatgePrincipal: Tria la teva accio!
   barraEstaminaGroup: {fileID: 682578171}
   barraEstamina: {fileID: 1714276133}
   textEstamina: {fileID: 2020158098}
@@ -2090,7 +2102,6 @@ MonoBehaviour:
   esDefensa: 1
   cost: 0
   resultat: 1
-  descripcio: +2 d'Estamina extra si el rival realitza Patada Alta
 --- !u!114 &437697229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2254,7 +2265,6 @@ MonoBehaviour:
   esDefensa: 1
   cost: 0
   resultat: 2
-  descripcio: Evita les patades, pero retrocedeix una posicio
 --- !u!114 &441976599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2556,6 +2566,7 @@ MonoBehaviour:
       cada torn."
     captura: {fileID: 2520569050414759820, guid: fc839ed5703fa4044b07b6ef38e1c5aa, type: 3}
     alturaImatge: 340
+    prioritzarMida: 1
   - titol: ATACAR I DEFENSAR
     descripcio: "Tria una tecnica d'atac o una accio defensiva.\n\n\u2022 Els bloquejos
       aturen les patades corresponents.\n\u2022 Esquivar evita les patades.\n\u2022
@@ -2563,6 +2574,7 @@ MonoBehaviour:
       contra tots els atacs!"
     captura: {fileID: -498630244734350574, guid: c65c5a9643b217e4487852f0e4283d45, type: 3}
     alturaImatge: 180
+    prioritzarMida: 0
   - titol: GESTIONA L'ESTAMINA
     descripcio: "El llamp verd representa la teva estamina.\n\n\u2022 Patada alta:
       consumeix 3 punts.\n\u2022 Patada al cos: consumeix 1 punt.\n\u2022 Empenta:
@@ -2570,6 +2582,7 @@ MonoBehaviour:
       recupera 2 punts.\n\nLa teva estamina maxima es de 10."
     captura: {fileID: 749453094132031444, guid: 03d7a4cc23929b24fa9721e40c486798, type: 3}
     alturaImatge: 180
+    prioritzarMida: 0
   - titol: OBSERVA EL RIVAL
     descripcio: "Abans de decidir, observa el que prepara el rival!\n\n\u2022 Espasa
       vermella: prepara un atac.\n\u2022 Escut blau: prepara una defensa.\n\nEl color
@@ -2577,6 +2590,7 @@ MonoBehaviour:
       segons, pero pots continuar pensant la teva accio."
     captura: {fileID: 1406272678773584270, guid: 530e02563f335fa4b9c8c6ff01938260, type: 3}
     alturaImatge: 340
+    prioritzarMida: 1
   textTitol: {fileID: 376498827}
   textDescripcio: {fileID: 1518587335}
   imatgeCaptura: {fileID: 675876073}
@@ -3296,7 +3310,6 @@ MonoBehaviour:
   esDefensa: 0
   cost: 1
   resultat: 1
-  descripcio: Falla si el rival realitza Bloqueig Baix o Esquiva
 --- !u!114 &593790708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3460,7 +3473,6 @@ MonoBehaviour:
   esDefensa: 0
   cost: 2
   resultat: 0
-  descripcio: Empenta al rival. Falla si el rival realitza qualsevol Patada
 --- !u!114 &608732873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5884,7 +5896,6 @@ MonoBehaviour:
   esDefensa: 0
   cost: 0
   resultat: 0
-  descripcio: Tornar per seleccionar tipus de moviment
 --- !u!114 &1062561007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6109,11 +6120,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085039980}
   m_CullTransparentMesh: 1
---- !u!82 &1137419172 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3458758420569011585, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
-  m_PrefabInstance: {fileID: 1767563060}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1154778320
 GameObject:
   m_ObjectHideFlags: 0
@@ -6391,7 +6397,6 @@ MonoBehaviour:
   esDefensa: 1
   cost: 0
   resultat: 1
-  descripcio: +2 d'Estamina extra si el rival realitza Patada Baixa
 --- !u!114 &1194606430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6551,7 +6556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1248219681
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6797,7 +6802,6 @@ MonoBehaviour:
   esDefensa: 0
   cost: 0
   resultat: 0
-  descripcio: Tornar per seleccionar tipus de moviment
 --- !u!114 &1295622730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7617,7 +7621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
   m_IgnoreLayout: 0
-  m_MinWidth: 700
+  m_MinWidth: 450
   m_MinHeight: 340
   m_PreferredWidth: -1
   m_PreferredHeight: -1
@@ -8593,15 +8597,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd4e086e27f294d4b97abb080e739fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntencioRivalVisual
-  imatgeIntencio: {fileID: 1248219682}
   spriteAtac: {fileID: 21300000, guid: ed4ff99a3ad806d4288d1f891eabe217, type: 3}
   spriteDefensa: {fileID: 21300000, guid: 5e39588f18bb2c94798a4f806c0d971b, type: 3}
-  cameraCombat: {fileID: 519420031}
-  alturaIcona: -2
-  desplacamentHoritzontal: 0.5
-  midaIcona: 80
+  alturaIcona: 0.8
+  desplacamentHoritzontal: 0
+  alturaSprite: 1
   duradaDesaparicio: 2
-  distanciaPujada: 65
+  distanciaPujada: 0.7
+  ordreAddicional: 100
 --- !u!114 &1701260232 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5074149660998642223, guid: ca1c7964a58b70c46bbbade33d845999, type: 3}
@@ -8959,41 +8962,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4435521105327480703, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
-      propertyPath: empatLoop
-      value: 
-      objectReference: {fileID: 8300000, guid: e989d6f91b4d2cf4682bdd993e2fd25a, type: 3}
-    - target: {fileID: 4435521105327480703, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
       propertyPath: background
       value: 
       objectReference: {fileID: 8300000, guid: bbe2cd3f34266924c8376906be58a114, type: 3}
-    - target: {fileID: 4435521105327480703, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
-      propertyPath: empatIntro
-      value: 
-      objectReference: {fileID: 8300000, guid: 77666ebb8e357844fbb5b980e76760be, type: 3}
-    - target: {fileID: 4435521105327480703, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
-      propertyPath: loopSource
-      value: 
-      objectReference: {fileID: 2027566024}
-    - target: {fileID: 4435521105327480703, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
-      propertyPath: derrotaLoop
-      value: 
-      objectReference: {fileID: 8300000, guid: 3d133f3968d20ce439067cf8b1831369, type: 3}
-    - target: {fileID: 4435521105327480703, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
-      propertyPath: introSource
-      value: 
-      objectReference: {fileID: 1137419172}
-    - target: {fileID: 4435521105327480703, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
-      propertyPath: derrotaIntro
-      value: 
-      objectReference: {fileID: 8300000, guid: 098cc137931572d4f9c3eab3557e3d44, type: 3}
-    - target: {fileID: 4435521105327480703, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
-      propertyPath: victoriaLoop
-      value: 
-      objectReference: {fileID: 8300000, guid: 1c7e200dd4ddbc046a76104aeebc5e18, type: 3}
-    - target: {fileID: 4435521105327480703, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
-      propertyPath: victoriaIntro
-      value: 
-      objectReference: {fileID: 8300000, guid: e5774a95a7146e94999a8bde6e692570, type: 3}
     - target: {fileID: 4435521105327480703, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
       propertyPath: reproduirMusicaInici
       value: 0
@@ -9689,6 +9660,7 @@ GameObject:
   - component: {fileID: 2003266323}
   - component: {fileID: 2003266322}
   - component: {fileID: 2003266321}
+  - component: {fileID: 2003266324}
   m_Layer: 5
   m_Name: NextButton
   m_TagString: Untagged
@@ -9810,6 +9782,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003266319}
   m_CullTransparentMesh: 1
+--- !u!114 &2003266324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003266319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b799e7ce57e8444990be82201f0704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
 --- !u!1 &2007551813
 GameObject:
   m_ObjectHideFlags: 0
@@ -10164,11 +10148,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020158096}
   m_CullTransparentMesh: 1
---- !u!82 &2027566024 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 2055900540138242349, guid: 923a11e5dd7dcff449767b9210f52b58, type: 3}
-  m_PrefabInstance: {fileID: 1767563060}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2050858357
 GameObject:
   m_ObjectHideFlags: 0
@@ -10950,6 +10929,10 @@ PrefabInstance:
       propertyPath: jugadorPrefab
       value: 
       objectReference: {fileID: 4387006915200102613, guid: 761a65c7daa03d4408b5f5b183f361c8, type: 3}
+    - target: {fileID: 5074149660998642223, guid: ca1c7964a58b70c46bbbade33d845999, type: 3}
+      propertyPath: personatgeNoi
+      value: 
+      objectReference: {fileID: 264175134}
     - target: {fileID: 5074149660998642223, guid: ca1c7964a58b70c46bbbade33d845999, type: 3}
       propertyPath: lluitadorRival
       value: 

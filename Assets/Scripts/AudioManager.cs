@@ -32,6 +32,19 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip buttons_UI;
 
+    [Header("SFX de contacte")]
+    [SerializeField]
+    private AudioClip sfxImpacteAlt;
+
+    [SerializeField]
+    private AudioClip sfxImpacteCos;
+
+    [SerializeField]
+    private AudioClip sfxImpacteBloquejat;
+
+    [SerializeField]
+    private AudioClip sfxEsquiva;
+
     [Header("Veus noi")]
     public AudioClip Atac_alt_noi;
     public AudioClip Atac_cos_noi;
@@ -137,6 +150,27 @@ public class AudioManager : MonoBehaviour
         if (clip == null)
             return;
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void ReproduirSoContacte(bool bloquejat, bool atacAlt)
+    {
+        AudioClip clip;
+
+        if (bloquejat)
+        {
+            clip = sfxImpacteBloquejat;
+        }
+        else
+        {
+            clip = atacAlt ? sfxImpacteAlt : sfxImpacteCos;
+        }
+
+        PlaySFX(clip);
+    }
+
+    public void ReproduirSoEsquiva()
+    {
+        PlaySFX(sfxEsquiva);
     }
 
     // Reprodueix un so d'efecte després d'uns segons
@@ -327,11 +361,7 @@ public class AudioManager : MonoBehaviour
         AplicarVolumGuardat("SFXVol", "SFXVolume", 0.75f);
     }
 
-    private void AplicarVolumGuardat(
-        string parametreMixer,
-        string clauGuardada,
-        float valorDefecte
-    )
+    private void AplicarVolumGuardat(string parametreMixer, string clauGuardada, float valorDefecte)
     {
         float valor = PlayerPrefs.GetFloat(clauGuardada, valorDefecte);
 

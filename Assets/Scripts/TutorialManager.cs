@@ -16,6 +16,8 @@ public class PaginaTutorial
     [Header("Mida de la captura")]
     [Range(100f, 340f)]
     public float alturaImatge = 340f;
+
+    public bool prioritzarMida = false;
 }
 
 public class TutorialManager : MonoBehaviour
@@ -77,21 +79,24 @@ public class TutorialManager : MonoBehaviour
             tutorialContent == null
             || layoutImatge == null
             || imatgeCaptura == null
-            || imatgeCaptura.sprite == null
             || pagines == null
             || pagines.Length == 0
         )
             return;
 
+        Sprite captura = imatgeCaptura.sprite;
+
+        if (captura == null)
+            return;
+
         float ampladaDisponible = tutorialContent.rect.width;
+
         float alturaDisponible = tutorialContent.rect.height;
 
         if (ampladaDisponible <= 0f || alturaDisponible <= 0f)
             return;
 
         PaginaTutorial pagina = pagines[paginaActual];
-
-        Sprite captura = imatgeCaptura.sprite;
 
         float proporcio = captura.rect.width / captura.rect.height;
 
@@ -100,6 +105,14 @@ public class TutorialManager : MonoBehaviour
         float ampladaNatural = alturaDesitjada * proporcio;
 
         float ampladaMaxima = ampladaDisponible * ampladaMaximaImatge;
+
+        float ampladaReservadaText = 450f;
+        float separacio = 25f;
+
+        ampladaMaxima = Mathf.Min(
+            ampladaMaxima,
+            Mathf.Max(0f, ampladaDisponible - ampladaReservadaText - separacio)
+        );
 
         float ampladaFinal = Mathf.Min(ampladaNatural, ampladaMaxima);
 
@@ -110,6 +123,17 @@ public class TutorialManager : MonoBehaviour
 
         layoutImatge.flexibleWidth = 0f;
         layoutImatge.flexibleHeight = 0f;
+
+        if (pagina.prioritzarMida)
+        {
+            layoutImatge.minWidth = ampladaFinal;
+            layoutImatge.minHeight = alturaFinal;
+        }
+        else
+        {
+            layoutImatge.minWidth = -1f;
+            layoutImatge.minHeight = -1f;
+        }
 
         LayoutRebuilder.MarkLayoutForRebuild(tutorialContent);
     }

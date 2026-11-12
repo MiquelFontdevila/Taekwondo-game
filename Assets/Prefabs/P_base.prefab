@@ -262,6 +262,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
+      propertyPath: m_TagString
+      value: JugadorNoi
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.16
@@ -505,6 +509,7 @@ MonoBehaviour:
   duradaFlash: 0.1
   colorIntencioAtac: {r: 1, g: 0.45, b: 0.35, a: 1}
   colorIntencioDefensa: {r: 0.4, g: 0.75, b: 1, a: 1}
+  puntIntencio: {fileID: 0}
 --- !u!4 &6714167797433514420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 7695c8a6ec499aa4788f6c00f1045a34, type: 3}

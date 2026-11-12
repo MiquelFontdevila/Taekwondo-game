@@ -21,7 +21,7 @@ public class CombatUIManager : MonoBehaviour
     private TextMeshProUGUI textInfoTorn; // TurnInfoTMP
 
     [SerializeField]
-    private string missatgePrincipal = "Què farà el jugador?";
+    private string missatgePrincipal = "Tria la teva accio!";
 
     [Header("Barra d'Estamina")]
     [SerializeField]
@@ -300,10 +300,10 @@ public class CombatUIManager : MonoBehaviour
 
         FormatMissatgeDestacat();
         string missatgeTornRealitzat =
-            "El jugador ha realitzat <b>"
+            "Accio Jugador: <b>"
             + NomAccio(accioJug)
             + "</b>!"
-            + "\n\nEl rival ha realitzat <b>"
+            + "\n\nAccio Rival: <b>"
             + NomAccio(accioRiv)
             + "</b>!";
 
@@ -337,16 +337,19 @@ public class CombatUIManager : MonoBehaviour
         barraEstaminaGroup.SetActive(false);
 
         string missatge;
+
         switch (resultat)
         {
             case Estat.victoria:
-                missatge = "Guanya el jugador!";
+                missatge = "HAS GUANYAT!";
                 break;
+
             case Estat.derrota:
-                missatge = "Has perdut! Guanya el rival!";
+                missatge = "HAS PERDUT!";
                 break;
+
             default:
-                missatge = "Empat!";
+                missatge = "EMPAT!";
                 break;
         }
 

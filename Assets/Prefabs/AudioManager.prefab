@@ -568,6 +568,10 @@ MonoBehaviour:
   SFXSource: {fileID: 4772269496892529517}
   background: {fileID: 8300000, guid: 51f724ed44eb13e4498a25effe243c5b, type: 3}
   buttons_UI: {fileID: 8300000, guid: 7796592d23cdbf54bbd01e9068b59f78, type: 3}
+  sfxImpacteAlt: {fileID: 8300000, guid: 3c996cf0547240c4e8f69b06880701a9, type: 3}
+  sfxImpacteCos: {fileID: 8300000, guid: 4b251340af264334594c6dd92c00e344, type: 3}
+  sfxImpacteBloquejat: {fileID: 8300000, guid: 6257bfb3f1abf434c86204ded70208dd, type: 3}
+  sfxEsquiva: {fileID: 8300000, guid: 623c5374f6892e94bab11beda91ba78a, type: 3}
   Atac_alt_noi: {fileID: 8300000, guid: 5a44f0f72f8f5f446ad5fce064ea2b07, type: 3}
   Atac_cos_noi: {fileID: 8300000, guid: 8a731132e3a71d046b2ae9670a904cca, type: 3}
   Bloqueig_noi: {fileID: 8300000, guid: 2231c38ebff63bd4eade0ac598b1e25f, type: 3}
@@ -589,12 +593,12 @@ MonoBehaviour:
   duradaFadeIn: 1
   duradaFadeOut: 0.8
   reproduirMusicaInici: 1
-  introSource: {fileID: 0}
-  loopSource: {fileID: 0}
-  victoriaIntro: {fileID: 0}
-  victoriaLoop: {fileID: 0}
-  derrotaIntro: {fileID: 0}
-  derrotaLoop: {fileID: 0}
-  empatIntro: {fileID: 0}
-  empatLoop: {fileID: 0}
+  introSource: {fileID: 3458758420569011585}
+  loopSource: {fileID: 2055900540138242349}
+  victoriaIntro: {fileID: 8300000, guid: e5774a95a7146e94999a8bde6e692570, type: 3}
+  victoriaLoop: {fileID: 8300000, guid: 1c7e200dd4ddbc046a76104aeebc5e18, type: 3}
+  derrotaIntro: {fileID: 8300000, guid: 098cc137931572d4f9c3eab3557e3d44, type: 3}
+  derrotaLoop: {fileID: 8300000, guid: 3d133f3968d20ce439067cf8b1831369, type: 3}
+  empatIntro: {fileID: 8300000, guid: 77666ebb8e357844fbb5b980e76760be, type: 3}
+  empatLoop: {fileID: 8300000, guid: e989d6f91b4d2cf4682bdd993e2fd25a, type: 3}
   mainAudioMixer: {fileID: 24100000, guid: 97d5e361ff9667748b4aed223ec8225d, type: 2}

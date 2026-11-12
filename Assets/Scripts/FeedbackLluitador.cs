@@ -17,6 +17,11 @@ public class FeedbackLluitador : MonoBehaviour
     [SerializeField]
     private Transform puntImpacteAlt;
 
+    public Transform PuntReferenciaIntencio
+    {
+        get { return puntImpacteAlt != null ? puntImpacteAlt : transform; }
+    }
+
     [SerializeField]
     private Transform puntImpacteCos;
 

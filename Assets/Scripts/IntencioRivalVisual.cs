@@ -1,89 +1,118 @@
+
 using UnityEngine;
-using UnityEngine.UI;
 
 public class IntencioRivalVisual : MonoBehaviour
 {
-    [Header("Icona de la UI")]
-    [SerializeField]
-    private Image imatgeIntencio;
-
     [Header("Sprites")]
-    [SerializeField]
-    private Sprite spriteAtac;
+    [SerializeField] private Sprite spriteAtac;
+    [SerializeField] private Sprite spriteDefensa;
 
-    [SerializeField]
-    private Sprite spriteDefensa;
-
-    [Header("Posicionament")]
-    [SerializeField]
-    private Camera cameraCombat;
-
-    [SerializeField]
-    private float alturaIcona = 2f;
-
-    [SerializeField]
-    private float desplacamentHoritzontal = 0f;
+    [Header("Posicionament al mon")]
+    [SerializeField] private float alturaIcona = 0.8f;
+    [SerializeField] private float desplacamentHoritzontal = 0f;
 
     [Header("Mida")]
-    [SerializeField, Min(1f)]
-    private float midaIcona = 80f;
+    [SerializeField, Min(0.1f)]
+    private float alturaSprite = 1f;
 
-    [Header("Animacio de desaparicio")]
+    [Header("Animacio")]
     [SerializeField, Min(0.1f)]
     private float duradaDesaparicio = 2f;
 
     [SerializeField, Min(0f)]
-    private float distanciaPujada = 65f;
+    private float distanciaPujada = 0.7f;
+
+    [Header("Ordre visual")]
+    [SerializeField] private int ordreAddicional = 100;
 
     private Lluitador rivalActual;
     private FeedbackLluitador feedbackRival;
 
-    private RectTransform pareIcona;
-    private Canvas canvasIcona;
+    private Transform puntReferencia;
+    private GameObject objecteIcona;
+    private SpriteRenderer rendererIcona;
 
-    private bool intencioVisible;
     private float tempsTranscorregut;
-
-    private void Awake()
-    {
-        if (imatgeIntencio == null)
-            return;
-
-        pareIcona = imatgeIntencio.transform.parent as RectTransform;
-
-        canvasIcona = imatgeIntencio.GetComponentInParent<Canvas>();
-
-        imatgeIntencio.raycastTarget = false;
-        imatgeIntencio.gameObject.SetActive(false);
-    }
+    private bool intencioVisible;
 
     public void Mostrar(Lluitador rival, string accio)
     {
-        if (rival == null || imatgeIntencio == null)
-            return;
-
         Ocultar();
 
-        bool atacara = accio == "patadaAlta" || accio == "patadaAlCos" || accio == "empenta";
+        if (rival == null)
+            return;
 
-        bool defensara = accio == "bloqueigAlt" || accio == "bloqueigAlCos" || accio == "esquivar";
+        bool atacara =
+            accio == "patadaAlta" ||
+            accio == "patadaAlCos" ||
+            accio == "empenta";
+
+        bool defensara =
+            accio == "bloqueigAlt" ||
+            accio == "bloqueigAlCos" ||
+            accio == "esquivar";
 
         if (!atacara && !defensara)
             return;
 
+        Sprite sprite = atacara
+            ? spriteAtac
+            : spriteDefensa;
+
+        if (sprite == null)
+        {
+            Debug.LogWarning(
+                "Falta assignar el sprite de la intencio."
+            );
+            return;
+        }
+
         rivalActual = rival;
 
-        feedbackRival = rivalActual.GetComponent<FeedbackLluitador>();
+        feedbackRival =
+            rival.GetComponent<FeedbackLluitador>();
 
-        imatgeIntencio.sprite = atacara ? spriteAtac : spriteDefensa;
+        puntReferencia = feedbackRival != null
+            ? feedbackRival.PuntReferenciaIntencio
+            : rival.transform;
 
-        imatgeIntencio.preserveAspect = true;
+        objecteIcona = new GameObject(
+            "IconaIntencioRival"
+        );
 
-        imatgeIntencio.rectTransform.sizeDelta = new Vector2(midaIcona, midaIcona);
+        rendererIcona =
+            objecteIcona.AddComponent<SpriteRenderer>();
 
-        imatgeIntencio.color = Color.white;
-        imatgeIntencio.enabled = true;
-        imatgeIntencio.gameObject.SetActive(true);
+        rendererIcona.sprite = sprite;
+        rendererIcona.color = Color.white;
+
+        SpriteRenderer spriteRival =
+            rival.GetComponentInChildren<SpriteRenderer>(true);
+
+        if (spriteRival != null)
+        {
+            rendererIcona.sortingLayerID =
+                spriteRival.sortingLayerID;
+
+            rendererIcona.sortingOrder =
+                spriteRival.sortingOrder + ordreAddicional;
+        }
+        else
+        {
+            rendererIcona.sortingOrder =
+                ordreAddicional;
+        }
+
+        float alturaOriginal = sprite.bounds.size.y;
+
+        if (alturaOriginal > 0f)
+        {
+            float escala =
+                alturaSprite / alturaOriginal;
+
+            objecteIcona.transform.localScale =
+                Vector3.one * escala;
+        }
 
         if (feedbackRival != null)
             feedbackRival.MostrarIntencio(atacara);
@@ -92,6 +121,12 @@ public class IntencioRivalVisual : MonoBehaviour
         intencioVisible = true;
 
         ActualitzarPosicio(0f);
+
+        Debug.Log(
+            "Intencio rival: " + rival.name +
+            " | Punt: " + puntReferencia.name +
+            " | Posicio: " + puntReferencia.position
+        );
     }
 
     private void Update()
@@ -101,26 +136,24 @@ public class IntencioRivalVisual : MonoBehaviour
 
         tempsTranscorregut += Time.deltaTime;
 
-        float progres = Mathf.Clamp01(tempsTranscorregut / duradaDesaparicio);
-
-        float moviment = Mathf.SmoothStep(0f, 1f, progres);
+        float progres = Mathf.Clamp01(
+            tempsTranscorregut / duradaDesaparicio
+        );
 
         float opacitat = 1f - progres;
 
-        if (imatgeIntencio != null)
+        if (rendererIcona != null)
         {
-            Color color = imatgeIntencio.color;
+            Color color = rendererIcona.color;
             color.a = opacitat;
-            imatgeIntencio.color = color;
+            rendererIcona.color = color;
         }
 
         if (feedbackRival != null)
             feedbackRival.ActualitzarIntencio(opacitat);
 
         if (progres >= 1f)
-        {
             Ocultar();
-        }
     }
 
     private void LateUpdate()
@@ -128,66 +161,34 @@ public class IntencioRivalVisual : MonoBehaviour
         if (!intencioVisible)
             return;
 
-        float progres = Mathf.Clamp01(tempsTranscorregut / duradaDesaparicio);
+        float progres = Mathf.Clamp01(
+            tempsTranscorregut / duradaDesaparicio
+        );
 
-        float moviment = Mathf.SmoothStep(0f, 1f, progres);
+        float moviment = Mathf.SmoothStep(
+            0f, 1f, progres
+        );
 
         ActualitzarPosicio(moviment);
     }
 
     private void ActualitzarPosicio(float moviment)
     {
-        if (
-            rivalActual == null
-            || imatgeIntencio == null
-            || pareIcona == null
-            || canvasIcona == null
-        )
+        if (puntReferencia == null ||
+            objecteIcona == null)
             return;
 
-        Camera cam = cameraCombat != null ? cameraCombat : Camera.main;
+        Vector3 posicio =
+            puntReferencia.position;
 
-        if (cam == null)
-            return;
+        posicio.x += desplacamentHoritzontal;
 
-        Transform referencia =
-            feedbackRival != null ? feedbackRival.PuntIntencio : rivalActual.transform;
+        posicio.y += alturaIcona;
+        posicio.y += distanciaPujada * moviment;
 
-        Vector3 posicioMon =
-            referencia.position
-            + Vector3.up * alturaIcona
-            + Vector3.right * desplacamentHoritzontal;
+        posicio.z = puntReferencia.position.z;
 
-        Vector3 posicioPantalla = cam.WorldToScreenPoint(posicioMon);
-
-        if (posicioPantalla.z <= 0f)
-        {
-            imatgeIntencio.enabled = false;
-            return;
-        }
-
-        imatgeIntencio.enabled = true;
-
-        Camera camUI =
-            canvasIcona.renderMode == RenderMode.ScreenSpaceOverlay
-                ? null
-                : canvasIcona.worldCamera;
-
-        Vector2 posicioLocal;
-
-        bool correcte = RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            pareIcona,
-            posicioPantalla,
-            camUI,
-            out posicioLocal
-        );
-
-        if (!correcte)
-            return;
-
-        posicioLocal.y += distanciaPujada * moviment;
-
-        imatgeIntencio.rectTransform.anchoredPosition = posicioLocal;
+        objecteIcona.transform.position = posicio;
     }
 
     public void Ocultar()
@@ -198,14 +199,15 @@ public class IntencioRivalVisual : MonoBehaviour
         if (feedbackRival != null)
             feedbackRival.OcultarIntencio();
 
-        if (imatgeIntencio != null)
-        {
-            imatgeIntencio.gameObject.SetActive(false);
-            imatgeIntencio.color = Color.white;
-        }
+        if (objecteIcona != null)
+            Destroy(objecteIcona);
+
+        objecteIcona = null;
+        rendererIcona = null;
 
         rivalActual = null;
         feedbackRival = null;
+        puntReferencia = null;
     }
 
     private void OnDisable()

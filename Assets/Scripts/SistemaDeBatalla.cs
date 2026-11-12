@@ -32,6 +32,10 @@ public class SistemaDeBatalla : MonoBehaviour
     public Lluitador lluitadorJugador;
     public Lluitador lluitadorRival;
 
+    [Header("Identificacio de veus")]
+    [SerializeField]
+    private Lluitador personatgeNoi;
+
     public string accioJugador;
     public string accioRival;
 
@@ -111,7 +115,20 @@ public class SistemaDeBatalla : MonoBehaviour
         }
 
         lluitadorJugador = jugadorTriat;
+
+        if (lluitadorJugador == personatgeNoi)
+        {
+            lluitadorJugador.gameObject.tag = "JugadorNoi";
+        }
+        else
+        {
+            lluitadorJugador.gameObject.tag = "JugadorNoia";
+        }
+
+        lluitadorRival.gameObject.tag = "Rival";
+
         animatorJugador = lluitadorJugador.GetComponentInChildren<Animator>(true);
+
         animatorRival = lluitadorRival.GetComponentInChildren<Animator>(true);
 
         SetupBatalla();
@@ -637,18 +654,28 @@ public class SistemaDeBatalla : MonoBehaviour
         if (defensor == null)
             return;
 
-        FeedbackLluitador feedback = defensor.GetComponent<FeedbackLluitador>();
-
-        if (feedback == null)
-            return;
-
         if (defensa == "esquivar")
+        {
+            if (audioManager != null)
+                audioManager.ReproduirSoEsquiva();
+
             return;
+        }
 
         bool bloquejat =
             (atacAlt && defensa == "bloqueigAlt") || (atacCos && defensa == "bloqueigAlCos");
 
-        feedback.MostrarImpacte(bloquejat, atacAlt);
+        FeedbackLluitador feedback = defensor.GetComponent<FeedbackLluitador>();
+
+        if (feedback != null)
+        {
+            feedback.MostrarImpacte(bloquejat, atacAlt);
+        }
+
+        if (audioManager != null)
+        {
+            audioManager.ReproduirSoContacte(bloquejat, atacAlt);
+        }
     }
 
     private void IniciarFeedbackEsquives()
