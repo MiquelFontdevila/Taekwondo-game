@@ -1,45 +1,36 @@
+
 using UnityEngine;
 
 public class IntencioRivalVisual : MonoBehaviour
 {
-    [Header("Sprites")]
-    [SerializeField]
-    private Sprite spriteAtac;
+    [Header("Icones")]
+    [SerializeField] private Sprite spriteAtac;
+    [SerializeField] private Sprite spriteDefensa;
 
-    [SerializeField]
-    private Sprite spriteDefensa;
+    [Header("Posicio respecte al rival")]
+    [SerializeField] private float desplacamentX = 0f;
+    [SerializeField] private float desplacamentY = 3.2f;
 
-    [Header("Posicionament al mon")]
-    [SerializeField]
-    private float alturaIcona = 0.8f;
-
-    [SerializeField]
-    private float desplacamentHoritzontal = 0f;
-
-    [Header("Mida")]
+    [Header("Mida de la icona")]
     [SerializeField, Min(0.1f)]
-    private float alturaSprite = 1f;
+    private float midaIcona = 0.8f;
 
     [Header("Animacio")]
     [SerializeField, Min(0.1f)]
-    private float duradaDesaparicio = 2f;
+    private float durada = 2f;
 
     [SerializeField, Min(0f)]
-    private float distanciaPujada = 0.7f;
+    private float distanciaPujada = 0.5f;
 
-    [Header("Ordre visual")]
-    [SerializeField]
-    private int ordreAddicional = 100;
-
-    private Lluitador rivalActual;
     private FeedbackLluitador feedbackRival;
-
-    private Transform puntReferencia;
     private GameObject objecteIcona;
     private SpriteRenderer rendererIcona;
 
-    private float tempsTranscorregut;
-    private bool intencioVisible;
+    private Vector3 posicioLocalInicial;
+    private Transform transformRival;
+
+    private float temps;
+    private bool mostrant;
 
     public void Mostrar(Lluitador rival, string accio)
     {
@@ -48,83 +39,123 @@ public class IntencioRivalVisual : MonoBehaviour
         if (rival == null)
             return;
 
-        bool atacara = accio == "patadaAlta" || accio == "patadaAlCos" || accio == "empenta";
+        bool atac =
+            accio == "patadaAlta" ||
+            accio == "patadaAlCos" ||
+            accio == "empenta";
 
-        bool defensara = accio == "bloqueigAlt" || accio == "bloqueigAlCos" || accio == "esquivar";
+        bool defensa =
+            accio == "bloqueigAlt" ||
+            accio == "bloqueigAlCos" ||
+            accio == "esquivar";
 
-        if (!atacara && !defensara)
+        if (!atac && !defensa)
             return;
 
-        Sprite sprite = atacara ? spriteAtac : spriteDefensa;
+        Sprite sprite = atac ? spriteAtac : spriteDefensa;
 
         if (sprite == null)
         {
-            Debug.LogWarning("Falta assignar el sprite de la intencio.");
+            Debug.LogWarning(
+                "Falta assignar un sprite d'intencio."
+            );
             return;
         }
 
-        rivalActual = rival;
+        transformRival = rival.transform;
 
-        feedbackRival = rival.GetComponent<FeedbackLluitador>();
+        feedbackRival =
+            rival.GetComponent<FeedbackLluitador>();
 
-        puntReferencia = feedbackRival != null ? feedbackRival.PuntIntencio : rival.transform;
-
+        // Crear la icona directament DINS del rival.
         objecteIcona = new GameObject("IconaIntencioRival");
 
-        rendererIcona = objecteIcona.AddComponent<SpriteRenderer>();
+        objecteIcona.transform.SetParent(
+            transformRival,
+            false
+        );
+
+        rendererIcona =
+            objecteIcona.AddComponent<SpriteRenderer>();
 
         rendererIcona.sprite = sprite;
         rendererIcona.color = Color.white;
 
-        SpriteRenderer spriteRival = rival.GetComponentInChildren<SpriteRenderer>(true);
+        // Mostrar la icona davant dels personatges.
+        SpriteRenderer[] spritesRival =
+            rival.GetComponentsInChildren<SpriteRenderer>(true);
 
-        if (spriteRival != null)
-        {
-            rendererIcona.sortingLayerID = spriteRival.sortingLayerID;
+        int ordreMaxim = 0;
+        int capa = 0;
+        bool trobat = false;
 
-            rendererIcona.sortingOrder = spriteRival.sortingOrder + ordreAddicional;
-        }
-        else
+        foreach (SpriteRenderer sr in spritesRival)
         {
-            rendererIcona.sortingOrder = ordreAddicional;
+            if (sr == null || sr == rendererIcona)
+                continue;
+
+            if (!trobat || sr.sortingOrder > ordreMaxim)
+            {
+                ordreMaxim = sr.sortingOrder;
+                capa = sr.sortingLayerID;
+                trobat = true;
+            }
         }
+
+        if (trobat)
+            rendererIcona.sortingLayerID = capa;
+
+        rendererIcona.sortingOrder = ordreMaxim + 10;
+
+        // Posicio desitjada en unitats del mon.
+        Vector3 offsetMon = new Vector3(
+            desplacamentX,
+            desplacamentY,
+            0f
+        );
+
+        // Convertir-la a coordenades locals del rival.
+        // Aixi la seva escala no desplaca la icona.
+        posicioLocalInicial =
+            transformRival.InverseTransformVector(offsetMon);
+
+        objecteIcona.transform.localPosition =
+            posicioLocalInicial;
+
+        objecteIcona.transform.localRotation =
+            Quaternion.identity;
 
         float alturaOriginal = sprite.bounds.size.y;
 
+        float escalaPare = Mathf.Max(
+            Mathf.Abs(transformRival.lossyScale.y),
+            0.0001f
+        );
+
         if (alturaOriginal > 0f)
         {
-            float escala = alturaSprite / alturaOriginal;
+            float escala =
+                midaIcona / (alturaOriginal * escalaPare);
 
-            objecteIcona.transform.localScale = Vector3.one * escala;
+            objecteIcona.transform.localScale =
+                Vector3.one * escala;
         }
 
         if (feedbackRival != null)
-            feedbackRival.MostrarIntencio(atacara);
+            feedbackRival.MostrarIntencio(atac);
 
-        tempsTranscorregut = 0f;
-        intencioVisible = true;
-
-        ActualitzarPosicio(0f);
-
-        Debug.Log(
-            "Intencio rival: "
-                + rival.name
-                + " | Punt: "
-                + puntReferencia.name
-                + " | Posicio: "
-                + puntReferencia.position
-        );
+        temps = 0f;
+        mostrant = true;
     }
 
     private void Update()
     {
-        if (!intencioVisible)
+        if (!mostrant)
             return;
 
-        tempsTranscorregut += Time.deltaTime;
+        temps += Time.deltaTime;
 
-        float progres = Mathf.Clamp01(tempsTranscorregut / duradaDesaparicio);
-
+        float progres = Mathf.Clamp01(temps / durada);
         float opacitat = 1f - progres;
 
         if (rendererIcona != null)
@@ -137,43 +168,31 @@ public class IntencioRivalVisual : MonoBehaviour
         if (feedbackRival != null)
             feedbackRival.ActualitzarIntencio(opacitat);
 
+        if (objecteIcona != null && transformRival != null)
+        {
+            float moviment = Mathf.SmoothStep(
+                0f,
+                1f,
+                progres
+            );
+
+            Vector3 pujadaLocal =
+                transformRival.InverseTransformVector(
+                    Vector3.up * distanciaPujada * moviment
+                );
+
+            objecteIcona.transform.localPosition =
+                posicioLocalInicial + pujadaLocal;
+        }
+
         if (progres >= 1f)
             Ocultar();
     }
 
-    private void LateUpdate()
-    {
-        if (!intencioVisible)
-            return;
-
-        float progres = Mathf.Clamp01(tempsTranscorregut / duradaDesaparicio);
-
-        float moviment = Mathf.SmoothStep(0f, 1f, progres);
-
-        ActualitzarPosicio(moviment);
-    }
-
-    private void ActualitzarPosicio(float moviment)
-    {
-        if (puntReferencia == null || objecteIcona == null)
-            return;
-
-        Vector3 posicio = puntReferencia.position;
-
-        posicio.x += desplacamentHoritzontal;
-
-        posicio.y += alturaIcona;
-        posicio.y += distanciaPujada * moviment;
-
-        posicio.z = puntReferencia.position.z;
-
-        objecteIcona.transform.position = posicio;
-    }
-
     public void Ocultar()
     {
-        intencioVisible = false;
-        tempsTranscorregut = 0f;
+        mostrant = false;
+        temps = 0f;
 
         if (feedbackRival != null)
             feedbackRival.OcultarIntencio();
@@ -183,10 +202,8 @@ public class IntencioRivalVisual : MonoBehaviour
 
         objecteIcona = null;
         rendererIcona = null;
-
-        rivalActual = null;
         feedbackRival = null;
-        puntReferencia = null;
+        transformRival = null;
     }
 
     private void OnDisable()
