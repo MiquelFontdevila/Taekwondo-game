@@ -1,15 +1,20 @@
-
 using UnityEngine;
 
 public class IntencioRivalVisual : MonoBehaviour
 {
     [Header("Sprites")]
-    [SerializeField] private Sprite spriteAtac;
-    [SerializeField] private Sprite spriteDefensa;
+    [SerializeField]
+    private Sprite spriteAtac;
+
+    [SerializeField]
+    private Sprite spriteDefensa;
 
     [Header("Posicionament al mon")]
-    [SerializeField] private float alturaIcona = 0.8f;
-    [SerializeField] private float desplacamentHoritzontal = 0f;
+    [SerializeField]
+    private float alturaIcona = 0.8f;
+
+    [SerializeField]
+    private float desplacamentHoritzontal = 0f;
 
     [Header("Mida")]
     [SerializeField, Min(0.1f)]
@@ -23,7 +28,8 @@ public class IntencioRivalVisual : MonoBehaviour
     private float distanciaPujada = 0.7f;
 
     [Header("Ordre visual")]
-    [SerializeField] private int ordreAddicional = 100;
+    [SerializeField]
+    private int ordreAddicional = 100;
 
     private Lluitador rivalActual;
     private FeedbackLluitador feedbackRival;
@@ -42,76 +48,54 @@ public class IntencioRivalVisual : MonoBehaviour
         if (rival == null)
             return;
 
-        bool atacara =
-            accio == "patadaAlta" ||
-            accio == "patadaAlCos" ||
-            accio == "empenta";
+        bool atacara = accio == "patadaAlta" || accio == "patadaAlCos" || accio == "empenta";
 
-        bool defensara =
-            accio == "bloqueigAlt" ||
-            accio == "bloqueigAlCos" ||
-            accio == "esquivar";
+        bool defensara = accio == "bloqueigAlt" || accio == "bloqueigAlCos" || accio == "esquivar";
 
         if (!atacara && !defensara)
             return;
 
-        Sprite sprite = atacara
-            ? spriteAtac
-            : spriteDefensa;
+        Sprite sprite = atacara ? spriteAtac : spriteDefensa;
 
         if (sprite == null)
         {
-            Debug.LogWarning(
-                "Falta assignar el sprite de la intencio."
-            );
+            Debug.LogWarning("Falta assignar el sprite de la intencio.");
             return;
         }
 
         rivalActual = rival;
 
-        feedbackRival =
-            rival.GetComponent<FeedbackLluitador>();
+        feedbackRival = rival.GetComponent<FeedbackLluitador>();
 
-        puntReferencia = feedbackRival != null
-            ? feedbackRival.PuntReferenciaIntencio
-            : rival.transform;
+        puntReferencia = feedbackRival != null ? feedbackRival.PuntIntencio : rival.transform;
 
-        objecteIcona = new GameObject(
-            "IconaIntencioRival"
-        );
+        objecteIcona = new GameObject("IconaIntencioRival");
 
-        rendererIcona =
-            objecteIcona.AddComponent<SpriteRenderer>();
+        rendererIcona = objecteIcona.AddComponent<SpriteRenderer>();
 
         rendererIcona.sprite = sprite;
         rendererIcona.color = Color.white;
 
-        SpriteRenderer spriteRival =
-            rival.GetComponentInChildren<SpriteRenderer>(true);
+        SpriteRenderer spriteRival = rival.GetComponentInChildren<SpriteRenderer>(true);
 
         if (spriteRival != null)
         {
-            rendererIcona.sortingLayerID =
-                spriteRival.sortingLayerID;
+            rendererIcona.sortingLayerID = spriteRival.sortingLayerID;
 
-            rendererIcona.sortingOrder =
-                spriteRival.sortingOrder + ordreAddicional;
+            rendererIcona.sortingOrder = spriteRival.sortingOrder + ordreAddicional;
         }
         else
         {
-            rendererIcona.sortingOrder =
-                ordreAddicional;
+            rendererIcona.sortingOrder = ordreAddicional;
         }
 
         float alturaOriginal = sprite.bounds.size.y;
 
         if (alturaOriginal > 0f)
         {
-            float escala =
-                alturaSprite / alturaOriginal;
+            float escala = alturaSprite / alturaOriginal;
 
-            objecteIcona.transform.localScale =
-                Vector3.one * escala;
+            objecteIcona.transform.localScale = Vector3.one * escala;
         }
 
         if (feedbackRival != null)
@@ -123,9 +107,12 @@ public class IntencioRivalVisual : MonoBehaviour
         ActualitzarPosicio(0f);
 
         Debug.Log(
-            "Intencio rival: " + rival.name +
-            " | Punt: " + puntReferencia.name +
-            " | Posicio: " + puntReferencia.position
+            "Intencio rival: "
+                + rival.name
+                + " | Punt: "
+                + puntReferencia.name
+                + " | Posicio: "
+                + puntReferencia.position
         );
     }
 
@@ -136,9 +123,7 @@ public class IntencioRivalVisual : MonoBehaviour
 
         tempsTranscorregut += Time.deltaTime;
 
-        float progres = Mathf.Clamp01(
-            tempsTranscorregut / duradaDesaparicio
-        );
+        float progres = Mathf.Clamp01(tempsTranscorregut / duradaDesaparicio);
 
         float opacitat = 1f - progres;
 
@@ -161,25 +146,19 @@ public class IntencioRivalVisual : MonoBehaviour
         if (!intencioVisible)
             return;
 
-        float progres = Mathf.Clamp01(
-            tempsTranscorregut / duradaDesaparicio
-        );
+        float progres = Mathf.Clamp01(tempsTranscorregut / duradaDesaparicio);
 
-        float moviment = Mathf.SmoothStep(
-            0f, 1f, progres
-        );
+        float moviment = Mathf.SmoothStep(0f, 1f, progres);
 
         ActualitzarPosicio(moviment);
     }
 
     private void ActualitzarPosicio(float moviment)
     {
-        if (puntReferencia == null ||
-            objecteIcona == null)
+        if (puntReferencia == null || objecteIcona == null)
             return;
 
-        Vector3 posicio =
-            puntReferencia.position;
+        Vector3 posicio = puntReferencia.position;
 
         posicio.x += desplacamentHoritzontal;
 

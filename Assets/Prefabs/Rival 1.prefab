@@ -55,12 +55,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3049526226434704986}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6149998, y: 12.67, z: 0}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 32.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1427961989510389536}
+  m_Father: {fileID: 1863744704290683144}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5578467409661386450
 GameObject:
@@ -361,7 +361,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5527726859590322594}
-    - targetCorrespondingSourceObject: {fileID: -7123660824139145226, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4862211285556646486}
     - targetCorrespondingSourceObject: {fileID: 1618904590296278774, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
@@ -530,11 +530,6 @@ MonoBehaviour:
   colorIntencioAtac: {r: 1, g: 0.45, b: 0.35, a: 1}
   colorIntencioDefensa: {r: 0.4, g: 0.75, b: 1, a: 1}
   puntIntencio: {fileID: 4862211285556646486}
---- !u!4 &1427961989510389536 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -7123660824139145226, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}
-  m_PrefabInstance: {fileID: 1077081470399873238}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1766834654134724128 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1618904590296278774, guid: d63b17b5892a80844a75c5aaa1a1c945, type: 3}

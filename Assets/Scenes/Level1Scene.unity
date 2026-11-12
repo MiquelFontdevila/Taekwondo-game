@@ -4463,6 +4463,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4862211285556646486, guid: 7d178b886230f2140adacd3905c77f21, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862211285556646486, guid: 7d178b886230f2140adacd3905c77f21, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 32.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5523328690937926291, guid: 7d178b886230f2140adacd3905c77f21, type: 3}
       propertyPath: fxEsquiva
       value: 
@@ -8599,11 +8607,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntencioRivalVisual
   spriteAtac: {fileID: 21300000, guid: ed4ff99a3ad806d4288d1f891eabe217, type: 3}
   spriteDefensa: {fileID: 21300000, guid: 5e39588f18bb2c94798a4f806c0d971b, type: 3}
-  alturaIcona: 0.8
+  alturaIcona: 0.1
   desplacamentHoritzontal: 0
   alturaSprite: 1
   duradaDesaparicio: 2
-  distanciaPujada: 0.7
+  distanciaPujada: 0.35
   ordreAddicional: 100
 --- !u!114 &1701260232 stripped
 MonoBehaviour:
